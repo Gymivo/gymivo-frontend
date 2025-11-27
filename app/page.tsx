@@ -12,6 +12,12 @@ import TalkSvg from "@/public/landing/landing-svg/talk.svg";
 import AnalysisSvg from "@/public/landing/landing-svg/analysis.svg";
 import Workout1Icon from "@/public/landing/landing-pic/workout1.jpg";
 import Workout2Icon from "@/public/landing/landing-pic/workout2.jpg";
+import Workout3Icon from "@/public/landing/landing-pic/workout3.jpg";
+import Workout4Icon from "@/public/landing/landing-pic/workout4.jpg";
+import CoachchatIcon from "@/public/landing/landing-svg/coachchat.svg";
+import DownloadappIcon from "@/public/landing/landing-svg/downloadapp.svg";
+import HometrainingIcon from "@/public/landing/landing-svg/hometraining.svg";
+
 
 
 export default function Home() {
@@ -21,11 +27,20 @@ export default function Home() {
     { src: RightCycle, alt: "right" },
   ];
 
+  const logos = [
+  { src: CoachchatIcon, alt: "Coach Chat" },
+  { src: DownloadappIcon, alt: "Download App" },
+  { src: HometrainingIcon, alt: "Home Training" },
+  { src: CoachchatIcon, alt: "Coach Chat" },
+  { src: DownloadappIcon, alt: "Download App" },
+  { src: HometrainingIcon, alt: "Home Training" },
+  ];
+
   return (
     <div className="min-h-screen relative">
       <Header />
 
-      <main className="pt-36 px-5 w-full mx-auto">
+      <main className="pt-36 w-full mx-auto">
         <div className="flex flex-col text-center items-center">
           <p className="font-bold text-[40px]">با ما مربیت</p>
           <p className="text-primary-300 font-bold text-[40px]">همیشه</p>
@@ -98,14 +113,14 @@ export default function Home() {
                 font-bold text-[14px]
                 text-neutral-darker rounded px-1
               ">
-                برنامت تو جیبته
+                مربیت رو پیدا کن
               </p>
 
               <p className="
                 font-light text-[12px] mt-1
                 text-neutral-darker rounded px-1
               ">
-                در سریع ترین حالت ممکن برنامه تمرینیت رو از مربیت بگیر
+                با سیستم جستجوی قوی مربی حرفه ایی خودت رو انتخاب کن
               </p>
             </div>
           </div>
@@ -166,8 +181,8 @@ export default function Home() {
         <div className="flex items-center justify-center gap-6 px-2 mb-10">
           <div className="relative w-[163px] h-[180px] rounded-[12px] overflow-hidden">
             <Image
-              src={Workout1Icon}
-              alt="Workout 1"
+              src={Workout3Icon}
+              alt="Workout 3"
               className="w-full h-full object-cover"
             />
 
@@ -186,22 +201,22 @@ export default function Home() {
                 font-bold text-[14px]
                 text-neutral-darker rounded px-1
               ">
-                برنامت تو جیبته
+                مربی خودت باش
               </p>
 
               <p className="
                 font-light text-[12px] mt-1
                 text-neutral-darker rounded px-1
               ">
-                در سریع ترین حالت ممکن برنامه تمرینیت رو از مربیت بگیر
+                مربی خودت باش
               </p>
             </div>
           </div>
 
           <div className="relative w-[163px] h-[180px] rounded-[12px] overflow-hidden">
             <Image
-              src={Workout2Icon}
-              alt="Workout 2"
+              src={Workout4Icon}
+              alt="Workout 4"
               className="w-full h-full object-cover"
             />
 
@@ -220,16 +235,30 @@ export default function Home() {
                 font-bold text-[14px]
                 text-neutral-darker rounded px-1
               ">
-                برنامت تو جیبته
+                شرکت در چالش ها 
               </p>
 
               <p className="
                 font-light text-[12px] mt-1
                 text-neutral-darker rounded px-1
               ">
-                در سریع ترین حالت ممکن برنامه تمرینیت رو از مربیت بگیر
+                در چالش‌های گروهی شرکت کن و خودت رو محک بزن
               </p>
             </div>
+          </div>
+        </div>
+
+        <div className="w-full max-w-[375px] h-[104px] bg-gradient-to-r from-[#F8FFBF] to-[#ECFB6D] flex items-center justify-around px-4 py-4 gap-5 mx-auto rounded">
+          <div className="flex flex-col items-center gap-1">
+            <Image src={CoachchatIcon} alt="Coach Chat" width={82} height={72} />
+          </div>
+
+          <div className="flex flex-col items-center gap-1">
+            <Image src={DownloadappIcon} alt="Download App" width={82} height={72} />
+          </div>
+
+          <div className="flex flex-col items-center gap-1">
+            <Image src={HometrainingIcon} alt="Home Training" width={82} height={72} />
           </div>
         </div>
 
