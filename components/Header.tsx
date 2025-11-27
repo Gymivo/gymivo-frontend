@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import menuIcon from "@/public/png/menu.png";
-import searchIcon from "@/public/png/search-normal.png";
-import gimivoIcon from "@/public/png/gymivo.png";
-import userIcon from "@/public/png/user-square.png";
+import menuIcon from "@/public/svg/menu.svg";
+import searchIcon from "@/public/svg/search.svg";
+import gymivoIcon from "@/public/svg/gymivo.svg";
+import userIcon from "@/public/svg/user-square.svg";
 
 
 export default function Header() {
@@ -17,7 +17,7 @@ export default function Header() {
           <Image src={searchIcon} alt="search" width={24} height={24} />
         </div>
         <div className="flex">
-          <Image src={gimivoIcon} alt="gimivo" width={100} height={24} />
+          <Image src={gymivoIcon} alt="gimivo" width={100} height={24} />
         </div>
         <div className="flex gap-3 items-center">
           <span>ورود</span>

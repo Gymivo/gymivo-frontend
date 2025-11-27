@@ -19,6 +19,14 @@ module.exports = {
           800: "#61691D",
           900: "#464C12",
         },
+        neutral: {
+          white: "#FFFFFF",  // white
+          ligher: "#E0E0E0", // lighter gray
+          light: "#D5D5D5", // light gray
+          gray: "#949494", // gray
+          dark: "#6E6E6E", // dark gray
+          darker: "#212121", // dark
+        },
       },
     },
   },
