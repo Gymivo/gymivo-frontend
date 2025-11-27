@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import menuIcon from "@/public/svg/menu.svg";
-import searchIcon from "@/public/svg/search.svg";
-import gymivoIcon from "@/public/svg/gymivo.svg";
-import userIcon from "@/public/svg/user-square.svg";
+import menuIcon from "@/public/svg/header/menu.svg";
+import searchIcon from "@/public/svg/header/search.svg";
+import gymivoIcon from "@/public/svg/header/gymivo.svg";
+import userIcon from "@/public/svg/header/user-square.svg";
 
 
 export default function Header() {
