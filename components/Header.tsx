@@ -9,7 +9,7 @@ import userIcon from "@/public/svg/header/user-square.svg";
 
 export default function Header() {
   return (
-    <header className="w-[343px] h-16 flex items-center p-[20px_16px] rounded-2xl bg-[#6E6E6E80] backdrop-blur-[20px] absolute top-[10] left-1/2 -translate-x-1/2">
+    <header className="w-[343px] h-16 z-50 flex items-center p-[20px_16px] rounded-2xl bg-[#6E6E6E80] backdrop-blur-[20px] absolute top-[10] left-1/2 -translate-x-1/2">
       <div className="flex w-full justify-between items-center">
 
         <div className="flex gap-3">

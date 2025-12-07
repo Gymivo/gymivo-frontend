@@ -6,6 +6,7 @@ import Button from "@/components/Button";
 import Carousel from "@/components/Carousel";
 
 import RightCycle from "@/public/landing/landing-cycle/right.png";
+import LandingBg from "@/public/backgroud/landing.jpg";
 import MiddleCycle from "@/public/landing/landing-cycle/middle.png";
 import LeftCycle from "@/public/landing/landing-cycle/left.png";
 import TalkSvg from "@/public/landing/landing-svg/talk.svg";
@@ -17,6 +18,14 @@ import Workout4Icon from "@/public/landing/landing-pic/workout4.jpg";
 import CoachchatIcon from "@/public/landing/landing-svg/coachchat.svg";
 import DownloadappIcon from "@/public/landing/landing-svg/downloadapp.svg";
 import HometrainingIcon from "@/public/landing/landing-svg/hometraining.svg";
+import HowImage from "@/public/landing/how/how.png";
+import CoachImage from "@/public/landing/coach/coach.png";
+import gymivoIcon from "@/public/svg/header/gymivo.svg";
+import WhatsappIcon from "@/public/svg/social/Whatsapp.svg";
+import TelegramIcon from "@/public/svg/social/Telegram.svg";
+import GmailIcon from "@/public/svg/social/Gmail.svg";
+import InstagramIcon from "@/public/svg/social/Instagram.svg";
+import FrameIcon from "@/public/svg/social/picture-frame.svg";
 
 
 
@@ -40,21 +49,39 @@ export default function Home() {
     <div className="min-h-screen relative">
       <Header />
 
-      <main className="pt-36 w-full mx-auto">
-        <div className="flex flex-col text-center items-center">
-          <p className="font-bold text-[40px]">با ما مربیت</p>
-          <p className="text-primary-300 font-bold text-[40px]">همیشه</p>
-          <p className="font-bold text-[40px]">کنارته!</p>
+      <main className="w-full mx-auto">
+        <div className="relative min-h-screen w-full overflow-hidden">
 
-          <p className="mt-4 font-bold w-[343px] text-[24px] text-center px-4">
-            به راحتی مربیت رو پیدا کن، برنامه بگیر، تغییراتت رو ببین و پیشرفت کن.
-          </p>
-        </div>
+          <Image
+            src={LandingBg}
+            alt="Landing background"
+            fill
+            priority
+            className="object-cover"
+            style={{ objectPosition: "35% center" }}
+          />
 
-        <div className="mt-60 mb-32 flex items-center justify-center">
-          <Button variant="primary" size="cta" arrow="left">
-            دریافت برنامه
-          </Button>
+          <div className="absolute inset-0 bg-black/40 z-[1]" />
+
+          <div className="relative z-[2] pt-36 w-full mx-auto">
+
+            <div className="flex flex-col text-center items-center">
+              <p className="font-bold text-[40px]">با ما مربیت</p>
+              <p className="text-primary-300 font-bold text-[40px]">همیشه</p>
+              <p className="font-bold text-[40px]">کنارته!</p>
+
+              <p className="mt-4 font-bold w-[343px] text-[24px] text-center px-4">
+                به راحتی مربیت رو پیدا کن، برنامه بگیر، تغییراتت رو ببین و پیشرفت کن.
+              </p>
+            </div>
+
+            <div className="mt-60 mb-32 flex items-center justify-center">
+              <Button variant="primary" size="cta" arrow="left">
+                دریافت برنامه
+              </Button>
+            </div>
+
+          </div>
         </div>
 
         <div className="flex flex-col">
@@ -248,7 +275,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full max-w-[375px] h-[104px] bg-gradient-to-r from-[#F8FFBF] to-[#ECFB6D] flex items-center justify-around px-4 py-4 gap-5 mx-auto rounded">
+        <div className="w-full bg-gradient-to-r from-[#F8FFBF] to-[#ECFB6D] flex items-center justify-around px-4 py-4 gap-5 mx-auto rounded">
           <div className="flex flex-col items-center gap-1">
             <Image src={CoachchatIcon} alt="Coach Chat" width={82} height={72} />
           </div>
@@ -259,6 +286,69 @@ export default function Home() {
 
           <div className="flex flex-col items-center gap-1">
             <Image src={HometrainingIcon} alt="Home Training" width={82} height={72} />
+          </div>
+        </div>
+
+        <div className="flex items-center justify-center bg-white">
+          <Image alt="how" src={HowImage}/>
+        </div>
+
+        <div className="flex flex-col items-center justify-center bg-neutral-gray">
+          <Image alt="how" src={CoachImage}/>
+          <div className="flex items-center justify-center p-5">
+            <Button variant="primary" size="cta" arrow="left">
+              ورود به عنوان مربی
+            </Button>
+          </div>
+        </div>
+
+        <div className="bg-neutral-darker">
+          <div className="p-5">
+            <Image src={gymivoIcon} alt="gimivo" width={100} height={24} />
+          </div>
+
+          <div className="flex justify-between">
+            <div className="p-5 flex flex-col">
+              <h2 className="py-4">صفحات <span className="text-primary-300">جیمیوو</span></h2>
+              <p>درباره ما</p>
+              <p>ارتباط با ما </p>
+              <p>قوانین و مقررات</p>
+              <p>سوالات متداول</p>
+              <p>همکاری با جیمیوو</p>
+            </div>
+
+            <div className="p-5 flex flex-col">
+              <h2 className="py-4">خدمات <span className="text-primary-300">جیمیوو</span></h2>
+              <p>برنامه های من</p>
+              <p>جستجوی حرکات </p>
+              <p>ساخت برنامه شخصی</p>
+              <p>جستجوی مربیان</p>
+            </div>
+          </div>
+
+          <div className="p-5">
+            <h2>فضای مجازی</h2>
+            <div className="flex gap-5 justify-end">
+              <Image alt="whatsapp" src={WhatsappIcon}/>
+              <Image alt="whatsapp" src={GmailIcon}/>
+              <Image alt="whatsapp" src={TelegramIcon}/>
+              <Image alt="whatsapp" src={InstagramIcon}/>
+            </div>
+          </div>
+
+          <div className="p-5">
+            <h2>نمادها</h2>
+            <div className="py-5 flex justify-between">
+              <Image alt="whatsapp" src={FrameIcon}/>
+              <Image alt="whatsapp" src={FrameIcon}/>
+              <Image alt="whatsapp" src={FrameIcon}/>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center">
+            <p className="py-5 text-sm">
+              در این سایت سعی شده است سادگی کار حفظ شود.
+            </p>
           </div>
         </div>
 
