@@ -19,14 +19,14 @@ import CoachchatIcon from "@/public/landing/landing-svg/coachchat.svg";
 import DownloadappIcon from "@/public/landing/landing-svg/downloadapp.svg";
 import HometrainingIcon from "@/public/landing/landing-svg/hometraining.svg";
 import HowImage from "@/public/landing/how/how.png";
-import CoachImage from "@/public/landing/coach/coach.png";
 import gymivoIcon from "@/public/svg/header/gymivo.svg";
 import WhatsappIcon from "@/public/svg/social/Whatsapp.svg";
 import TelegramIcon from "@/public/svg/social/Telegram.svg";
 import GmailIcon from "@/public/svg/social/Gmail.svg";
 import InstagramIcon from "@/public/svg/social/Instagram.svg";
 import FrameIcon from "@/public/svg/social/picture-frame.svg";
-
+import Phone1 from "@/public/landing/landing-svg/phone1.svg";
+import Phone2 from "@/public/landing/landing-svg/phone2.svg";
 
 
 export default function Home() {
@@ -37,12 +37,12 @@ export default function Home() {
   ];
 
   const logos = [
-  { src: CoachchatIcon, alt: "Coach Chat" },
-  { src: DownloadappIcon, alt: "Download App" },
-  { src: HometrainingIcon, alt: "Home Training" },
-  { src: CoachchatIcon, alt: "Coach Chat" },
-  { src: DownloadappIcon, alt: "Download App" },
-  { src: HometrainingIcon, alt: "Home Training" },
+    { src: CoachchatIcon, alt: "Coach Chat" },
+    { src: DownloadappIcon, alt: "Download App" },
+    { src: HometrainingIcon, alt: "Home Training" },
+    { src: CoachchatIcon, alt: "Coach Chat" },
+    { src: DownloadappIcon, alt: "Download App" },
+    { src: HometrainingIcon, alt: "Home Training" },
   ];
 
   return (
@@ -51,7 +51,6 @@ export default function Home() {
 
       <main className="w-full mx-auto">
         <div className="relative min-h-screen w-full overflow-hidden">
-
           <Image
             src={LandingBg}
             alt="Landing background"
@@ -64,23 +63,22 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/40 z-[1]" />
 
           <div className="relative z-[2] pt-36 w-full mx-auto">
-
             <div className="flex flex-col text-center items-center">
               <p className="font-bold text-[40px]">با ما مربیت</p>
               <p className="text-primary-300 font-bold text-[40px]">همیشه</p>
               <p className="font-bold text-[40px]">کنارته!</p>
 
               <p className="mt-4 font-bold w-[343px] text-[24px] text-center px-4">
-                به راحتی مربیت رو پیدا کن، برنامه بگیر، تغییراتت رو ببین و پیشرفت کن.
+                به راحتی مربیت رو پیدا کن، برنامه بگیر، تغییراتت رو ببین و
+                پیشرفت کن.
               </p>
             </div>
 
-            <div className="mt-60 mb-32 flex items-center justify-center">
+            <div className="mt-56 mb-32 flex items-center justify-center">
               <Button variant="primary" size="cta" arrow="left">
                 دریافت برنامه
               </Button>
             </div>
-
           </div>
         </div>
 
@@ -290,12 +288,52 @@ export default function Home() {
         </div>
 
         <div className="flex items-center justify-center bg-white">
-          <Image alt="how" src={HowImage}/>
+          <Image alt="how" src={HowImage} />
         </div>
 
-        <div className="flex flex-col items-center justify-center bg-neutral-gray">
-          <Image alt="how" src={CoachImage}/>
-          <div className="flex items-center justify-center p-5">
+        <div className="flex flex-col items-center justify-center bg-neutral-gray py-10 px-6">
+          <div className="max-w-[400px] w-full space-y-8">
+            <div className="text-center space-y-4">
+              <h2 className="text-2xl font-bold flex">
+                <span className="text-primary-300">مربی‌گری</span>راحت‌تر از همیشه
+              </h2>
+              <p className="flex text-right">
+                برنامه‌هات رو هوشمند مدیریت کن، شاگردهای بیشتری جذب کن و تمام فرآیند مربی‌گری رو خیلی راحت فقط با گوشی انجام بده
+              </p>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <div className="flex-1 space-y-2">
+                <h3 className="text-lg font-bold">مدیریت راحت شاگردان</h3>
+                <p className="text-sm">
+                  تمام اطلاعات شاگرد، برنامه‌ها، پیام‌ها، تمرین‌ها و گزارش پیشرفت‌ها یکجا و مرتب در اختیارته. بدون نیاز به پیامرسان، دفترچه یا چندتا فایل پراکنده.
+                </p>
+              </div>
+              <div className="w-32 flex-shrink-0 relative h-40">
+                <div>
+                  <Image alt="phone1" src={Phone1} className="h-48"/>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 pt-4">
+              <div className="w-32 flex-shrink-0 relative h-40">
+                <div>
+                  <Image alt="phone2" src={Phone2} className="h-48"/>
+                </div>
+              </div>
+              <div className="flex-1 space-y-2">
+                <h3 className="text-lg font-bold">برنامه حرفه ایی اما راحت</h3>
+                <p className="text-sm">
+                  با سیستم برنامه‌نویسی <span className="text-primary-300">جیمی‌وو</span> می‌تونی خیلی سریع برنامه بسازی، حرکات مختلف رو اضافه کنی، و برای هر شاگرد شخصی‌سازی کنی.
+                </p>
+              </div>
+            </div>
+
+            <p className="text-center pt-3">همین حالا حرفه‌ای‌تر شروع کن</p>
+          </div>
+
+          <div className="flex items-center justify-center p-5 mt-3">
             <Button variant="primary" size="cta" arrow="left">
               ورود به عنوان مربی
             </Button>
@@ -329,19 +367,19 @@ export default function Home() {
           <div className="p-5">
             <h2>فضای مجازی</h2>
             <div className="flex gap-5 justify-end">
-              <Image alt="whatsapp" src={WhatsappIcon}/>
-              <Image alt="whatsapp" src={GmailIcon}/>
-              <Image alt="whatsapp" src={TelegramIcon}/>
-              <Image alt="whatsapp" src={InstagramIcon}/>
+              <Image alt="whatsapp" src={WhatsappIcon} />
+              <Image alt="whatsapp" src={GmailIcon} />
+              <Image alt="whatsapp" src={TelegramIcon} />
+              <Image alt="whatsapp" src={InstagramIcon} />
             </div>
           </div>
 
           <div className="p-5">
             <h2>نمادها</h2>
             <div className="py-5 flex justify-between">
-              <Image alt="whatsapp" src={FrameIcon}/>
-              <Image alt="whatsapp" src={FrameIcon}/>
-              <Image alt="whatsapp" src={FrameIcon}/>
+              <Image alt="whatsapp" src={FrameIcon} />
+              <Image alt="whatsapp" src={FrameIcon} />
+              <Image alt="whatsapp" src={FrameIcon} />
             </div>
           </div>
 
@@ -351,7 +389,6 @@ export default function Home() {
             </p>
           </div>
         </div>
-
       </main>
     </div>
   );
