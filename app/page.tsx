@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import Carousel from "@/components/Carousel";
 
@@ -19,12 +20,6 @@ import CoachchatIcon from "@/public/landing/landing-svg/coachchat.svg";
 import DownloadappIcon from "@/public/landing/landing-svg/downloadapp.svg";
 import HometrainingIcon from "@/public/landing/landing-svg/hometraining.svg";
 import HowImage from "@/public/landing/how/how.png";
-import gymivoIcon from "@/public/svg/header/gymivo.svg";
-import WhatsappIcon from "@/public/svg/social/Whatsapp.svg";
-import TelegramIcon from "@/public/svg/social/Telegram.svg";
-import GmailIcon from "@/public/svg/social/Gmail.svg";
-import InstagramIcon from "@/public/svg/social/Instagram.svg";
-import FrameIcon from "@/public/svg/social/picture-frame.svg";
 import Phone1 from "@/public/landing/landing-svg/phone1.svg";
 import Phone2 from "@/public/landing/landing-svg/phone2.svg";
 
@@ -46,7 +41,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen relative">
+    <div className="m-auto min-h-screen max-w-[500px] relative">
       <Header />
 
       <main className="w-full mx-auto">
@@ -340,55 +335,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="bg-neutral-darker">
-          <div className="p-5">
-            <Image src={gymivoIcon} alt="gimivo" width={100} height={24} />
-          </div>
+        <Footer />
 
-          <div className="flex justify-between">
-            <div className="p-5 flex flex-col">
-              <h2 className="py-4">صفحات <span className="text-primary-300">جیمیوو</span></h2>
-              <p>درباره ما</p>
-              <p>ارتباط با ما </p>
-              <p>قوانین و مقررات</p>
-              <p>سوالات متداول</p>
-              <p>همکاری با جیمیوو</p>
-            </div>
-
-            <div className="p-5 flex flex-col">
-              <h2 className="py-4">خدمات <span className="text-primary-300">جیمیوو</span></h2>
-              <p>برنامه های من</p>
-              <p>جستجوی حرکات </p>
-              <p>ساخت برنامه شخصی</p>
-              <p>جستجوی مربیان</p>
-            </div>
-          </div>
-
-          <div className="p-5">
-            <h2>فضای مجازی</h2>
-            <div className="flex gap-5 justify-end">
-              <Image alt="whatsapp" src={WhatsappIcon} />
-              <Image alt="whatsapp" src={GmailIcon} />
-              <Image alt="whatsapp" src={TelegramIcon} />
-              <Image alt="whatsapp" src={InstagramIcon} />
-            </div>
-          </div>
-
-          <div className="p-5">
-            <h2>نمادها</h2>
-            <div className="py-5 flex justify-between">
-              <Image alt="whatsapp" src={FrameIcon} />
-              <Image alt="whatsapp" src={FrameIcon} />
-              <Image alt="whatsapp" src={FrameIcon} />
-            </div>
-          </div>
-
-          <div className="flex items-center justify-center">
-            <p className="py-5 text-sm">
-              در این سایت سعی شده است سادگی کار حفظ شود.
-            </p>
-          </div>
-        </div>
       </main>
     </div>
   );

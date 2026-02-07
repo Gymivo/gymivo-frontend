@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import menuIcon from "@/public/svg/header/menu.svg";
 import searchIcon from "@/public/svg/header/search.svg";
@@ -18,13 +19,13 @@ import contactIcon from "@/public/svg/header/contact.svg";
 import cooperateIcon from "@/public/svg/header/cooperate.svg";
 
 const menuItems = [
-  { label: "خانه", icon: homeIcon },
-  { label: "ثبت نام مربی", icon: coachIcon },
-  { label: "مربیان", icon: trainersIcon },
-  { label: "حرکات ورزشی", icon: movesIcon },
-  { label: "درباره ما", icon: aboutIcon },
-  { label: "ارتباط با ما", icon: contactIcon },
-  { label: "همکاری با جیمیوو", icon: cooperateIcon },
+  { label: "خانه", icon: homeIcon, href: "/" },
+  { label: "ثبت نام مربی", icon: coachIcon, href: "/coach-register" },
+  { label: "مربیان", icon: trainersIcon, href: "/trainers" },
+  { label: "حرکات ورزشی", icon: movesIcon, href: "/moves" },
+  { label: "درباره ما", icon: aboutIcon, href: "/about" },
+  { label: "ارتباط با ما", icon: contactIcon, href: "/contact" },
+  { label: "همکاری با جیمیوو", icon: cooperateIcon, href: "/cooperate" },
 ];
 
 export default function Header() {
@@ -32,7 +33,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-[343px] h-16 z-50 flex items-center p-[20px_16px] rounded-2xl bg-[#6E6E6E80] backdrop-blur-[20px] absolute top-[10px] left-1/2 -translate-x-1/2">
+      <header className="w-[343px] h-16 z-50 fixed flex items-center p-[20px_16px] rounded-2xl bg-[#595858B2] backdrop-blur-[20px] top-[10px] left-1/2 -translate-x-1/2">
         <div className="flex w-full justify-between items-center">
 
           <div className="flex gap-3">
@@ -87,9 +88,11 @@ export default function Header() {
           </div>
 
           <nav className="flex flex-col gap-3 mt-2">
-            {menuItems.map((item, index) => (
-              <button
-                key={index}
+            {menuItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
                 className="
                   flex items-center gap-2
                   px-2 py-2
@@ -102,7 +105,7 @@ export default function Header() {
                 <span className="font-bold text-lg">
                   {item.label}
                 </span>
-              </button>
+              </Link>
             ))}
           </nav>
         </div>
