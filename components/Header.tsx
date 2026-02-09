@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import menuIcon from "@/public/svg/header/menu.svg";
 import searchIcon from "@/public/svg/header/search.svg";
-import gymivoIcon from "@/public/svg/header/gymivo.svg";
+import gymivoIcon from "@/public/svg/header/gymivo.png";
 import greenIcon from "@/public/svg/header/green-icon.svg";
 import userIcon from "@/public/svg/header/user-square.svg";
 import closeIcon from "@/public/svg/header/close.svg";

@@ -1,6 +1,6 @@
 import Button from "./Button";
 import Image from "next/image";
-import gymivoIcon from "@/public/svg/header/gymivo.svg";
+import gymivoIcon from "@/public/svg/header/gymivo.png";
 import WhatsappIcon from "@/public/svg/social/Whatsapp.svg";
 import TelegramIcon from "@/public/svg/social/Telegram.svg";
 import GmailIcon from "@/public/svg/social/Gmail.svg";
