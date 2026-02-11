@@ -2,18 +2,18 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-import Team from "@/public/svg/about/team.svg";
-import Goal from "@/public/svg/about/goal.svg";
-import Body from "@/public/svg/about/body.svg";
-import Hype from "@/public/svg/about/hype.svg";
-import Medal from "@/public/svg/about/medal.svg";
-import Mountain from "@/public/svg/about/mountain.svg";
-import Face from "@/public/svg/about/face.svg";
-import Pose from "@/public/svg/about/pose.svg";
-import Alish from "@/public/svg/about/ali.sh.svg";
-import Alis from "@/public/svg/about/ali.s.svg";
-import Naeem from "@/public/svg/about/naeem.svg";
-import Sit from "@/public/svg/about/sit.svg";
+import Team from "@/public/about/team.svg";
+import Goal from "@/public/about/goal.svg";
+import Body from "@/public/about/body.svg";
+import Hype from "@/public/about/hype.svg";
+import Medal from "@/public/about/medal.svg";
+import Mountain from "@/public/about/mountain.svg";
+import Face from "@/public/about/face.svg";
+import Pose from "@/public/about/pose.svg";
+import Alish from "@/public/about/ali.sh.svg";
+import Alis from "@/public/about/ali.s.svg";
+import Naeem from "@/public/about/naeem.svg";
+import Sit from "@/public/about/sit.svg";
 import Button from "@/components/Button";
 
 
