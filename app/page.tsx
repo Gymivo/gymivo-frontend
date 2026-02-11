@@ -6,22 +6,32 @@ import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import Carousel from "@/components/Carousel";
 
-import RightCycle from "@/public/landing/landing-cycle/right.png";
+import RightCycle from "@/public/landing/cycle/right.png";
 import LandingBg from "@/public/backgroud/landing.jpg";
-import MiddleCycle from "@/public/landing/landing-cycle/middle.png";
-import LeftCycle from "@/public/landing/landing-cycle/left.png";
-import TalkSvg from "@/public/landing/landing-svg/talk.svg";
-import AnalysisSvg from "@/public/landing/landing-svg/analysis.svg";
-import Workout1Icon from "@/public/landing/landing-pic/workout1.jpg";
-import Workout2Icon from "@/public/landing/landing-pic/workout2.jpg";
-import Workout3Icon from "@/public/landing/landing-pic/workout3.jpg";
-import Workout4Icon from "@/public/landing/landing-pic/workout4.jpg";
-import CoachchatIcon from "@/public/landing/landing-svg/coachchat.svg";
-import DownloadappIcon from "@/public/landing/landing-svg/downloadapp.svg";
-import HometrainingIcon from "@/public/landing/landing-svg/hometraining.svg";
-import HowImage from "@/public/landing/how/how.png";
-import Phone1 from "@/public/landing/landing-svg/phone1.svg";
-import Phone2 from "@/public/landing/landing-svg/phone2.svg";
+import MiddleCycle from "@/public/landing/cycle/middle.png";
+import LeftCycle from "@/public/landing/cycle/left.png";
+import TalkSvg from "@/public/landing/svg/talk.svg";
+import AnalysisSvg from "@/public/landing/svg/analysis.svg";
+import Workout1Icon from "@/public/landing/motivate/workout1.jpg";
+import Workout2Icon from "@/public/landing/motivate/workout2.jpg";
+import Workout3Icon from "@/public/landing/motivate/workout3.jpg";
+import Workout4Icon from "@/public/landing/motivate/workout4.jpg";
+import CoachchatIcon from "@/public/landing/svg/coachchat.svg";
+import DownloadappIcon from "@/public/landing/svg/downloadapp.svg";
+import HometrainingIcon from "@/public/landing/svg/hometraining.svg";
+import Phone1 from "@/public/landing/svg/phone1.svg";
+import Phone2 from "@/public/landing/svg/phone2.svg";
+import Step1Image from "@/public/landing/how/step1.svg";
+import Step2Image from "@/public/landing/how/step2.svg";
+import Step3Image from "@/public/landing/how/step3.svg";
+import UserSearch from "@/public/landing/how/user-search.svg";
+import PlanIcon from "@/public/landing/how/plan.svg";
+import LinkIcon from "@/public/landing/how/link.svg";
+import point1 from "@/public/landing/how/point1.svg";
+import point2 from "@/public/landing/how/point2.svg";
+import point3 from "@/public/landing/how/point3.svg";
+
+
 
 
 export default function Home() {
@@ -282,9 +292,129 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex items-center justify-center bg-white">
-          <Image alt="how" src={HowImage} />
-        </div>
+        <section className="bg-white px-4 py-12">
+          <div className="text-start mb-14">
+            <h2 className="text-xl font-bold text-neutral-darker">
+              چطوری برنامه بگیرم و ورزش رو شروع کنم؟
+            </h2>
+
+            <p className="mt-4 text-lg text-neutral-darker leading-6">
+              قبل از هرچیزی نیاز به یه مربی داری تا مطمئن بشی توی مسیر درستی قرار گرفتی
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-12">
+            <div className="flex flex-col items-center gap-4">
+              <div className="absolute -mt-5 flex items-start justify-start self-start">
+                <Image
+                  src={point1}
+                  alt="user search"
+                  width={140}
+                  height={140}
+                />
+              </div>
+              <div className="flex gap-2 items-center justify-center">
+                <Image
+                  src={UserSearch}
+                  alt="user search"
+                  width={25}
+                  height={25}
+                />
+                <h3 className="text-lg font-bold text-neutral-darker">
+                  مربیت رو انتخاب کن
+                </h3>
+              </div>
+
+              <div className="self-start mt-5 bg-primary-200 flex text-neutral-darker px-5 py-4 rounded-2xl max-w-[260px] text-right">
+                <p className="text-sm leading-7 flex items-center justify-center">
+                  با سیستم جستجوی قدرتمند، مربی که دقیقا دنبالشی رو پیدا کن
+                </p>
+
+                <Image
+                  className="-ml-12 -mt-8"
+                  src={Step1Image}
+                  alt="choose coach"
+                  width={300}
+                  height={300}
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col items-center gap-4">
+              <div className="flex gap-2 items-start self-start justify-start">
+                <Image
+                  src={PlanIcon}
+                  alt="user search"
+                  width={25}
+                  height={25}
+                />
+                <h3 className="text-lg font-bold text-neutral-darker">
+                  برنامت رو سفارش بده
+                </h3>
+              </div>
+
+              <div className="absolute -mt-28 ml-20 flex items-end justify-end self-end">
+                <Image
+                  src={point2}
+                  alt="user search"
+                  width={100}
+                  height={100}
+                />
+              </div>
+
+              <div className="self-end mt-5 bg-primary-200 flex text-neutral-darker px-5 py-4 rounded-2xl max-w-[260px] text-right">
+                <p className="text-sm leading-7 flex items-center justify-center">
+                  بعد از پیدا کردن مربیت و تکمیل پروفایلت میتونی برنامت رو سفارش بدی
+                </p>
+
+                <Image
+                  className="-ml-5 -mt-8"
+                  src={Step2Image}
+                  alt="order program"
+                  width={200}
+                  height={200}
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col items-center gap-4">
+              <div className="absolute -mt-36 mr-14 flex items-start justify-start self-start">
+                <Image
+                  src={point3}
+                  alt="user search"
+                  width={70}
+                  height={70}
+                />
+              </div>
+
+              <div className="flex gap-2 items-center self-center justify-center">
+                <Image
+                  src={LinkIcon}
+                  alt="user search"
+                  width={25}
+                  height={25}
+                />
+                <h3 className="text-lg font-bold text-neutral-darker">
+                  برنامت تو جیبته!
+                </h3>
+              </div>
+
+              <div className="self-center mt-5 bg-primary-200 flex text-neutral-darker px-5 py-4 rounded-2xl max-w-[260px] text-right">
+                <p className="text-sm leading-7 flex items-center justify-center">
+                  مربیت که برنامت رو آماده کرد بلافاصله با پیامک لینکش رو برات میفرستیم
+                </p>
+
+                <Image
+                  className="-ml-5 -mt-8 px-5"
+                  src={Step3Image}
+                  alt="order program"
+                  width={170}
+                  height={170}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
 
         <div className="flex flex-col items-center justify-center bg-neutral-gray py-10 px-6">
           <div className="max-w-[400px] w-full space-y-8">
