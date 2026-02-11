@@ -43,7 +43,15 @@ export default function Header() {
             <Image src={searchIcon} alt="search" width={24} height={24} />
           </div>
 
-          <Image src={gymivoIcon} alt="gymivo" width={100} height={24} />
+          <Link href="/">
+            <Image
+              src={gymivoIcon}
+              alt="gymivo"
+              width={100}
+              height={24}
+              className="cursor-pointer"
+            />
+          </Link>
 
           <div className="flex gap-3 items-center">
             <span className="text-white">ورود</span>
