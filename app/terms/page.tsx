@@ -1,126 +1,150 @@
 import Image from "next/image";
 import Header from "@/components/Header";
-import Button from "@/components/Button";
 import Footer from "@/components/Footer";
-import { TextField } from "@mui/material";
-import { InputAdornment } from "@mui/material";
 
-import ContactIllustration from "@/public/terms/phone.svg";
-import Profile from "@/public/terms/profile.svg";
-import Mail from "@/public/terms/mail.svg";
+import Terms from "@/public/terms/draw.svg";
 
 export default function TermsPage() {
   return (
     <div className="m-auto min-h-screen max-w-[500px] relative">
       <Header />
 
-      <main className="bg-white pt-36 px-4 py-12 text-center">
+      <main className="px-4 py-12 pt-36 text-center">
         <h1 className="text-5xl font-bold text-neutral-darker">
-          ارتباط با ما
+          قوانین و مقررات
         </h1>
 
-        <p className="mt-5 text-xl font-bold text-neutral-darker">
-          هر چی بگی گوش میکنیم
+        <p className="mt-6 text-xl font-bold text-neutral-darker">
+          باید حواسمون رو جمع کنیم
         </p>
 
         <div className="mt-10 flex justify-center">
           <Image
-            src={ContactIllustration}
-            alt="Contact illustration"
-            width={260}
-            height={260}
+            src={Terms}
+            alt="Terms illustration"
+            width={270}
+            height={270}
             priority
           />
         </div>
 
-        <p className="mt-10 text-xl px-5 leading-7 text-neutral-darker">
-          ما این جاییم که دغدغه هات رو بشنویم و تموم تلاشمون رو میکنیم تا با ما بهترین تجربه ها رو داشته باشی . راستی! همه چیز بین خودمون میمونه.
+        <p className="my-5 text-lg leading-7 text-neutral-darker">
+          به جیمیوو خوش اومدی! اینجا قوانین رو ساده و شفاف نوشتیم تا با خیال راحت از خدماتمون استفاده کنی. لطفاً چند دقیقه وقت بذار و مطالعه‌شون کن؛ موندن تو سایت یعنی این قوانین رو کامل قبول داری و بهش پایبندی.
         </p>
-      </main>
 
-        <div className="my-12 flex flex-col gap-6 px-2">
-            <div className="flex items-end -gap-5">
-                <Image
-                    alt="profile"
-                    src={Profile}
-                    width={55}
-                    height={55}
-                    className="shrink-0"
-                />
+        <div className="bg-neutral-dark p-5 rounded-xl text-base leading-7 text-white text-right space-y-8">
 
-                <TextField
-                    variant="standard"
-                    fullWidth
-                    placeholder="نام خودتون رو وارد کنید..."
-                    sx={{
-                    direction: "rtl",
+          <div>
+            <h2 className="font-bold text-base mb-4">
+              قوانین و مقررات استفاده از وبسایت جیمیوو
+            </h2>
+          </div>
 
-                    "& .MuiInputBase-root": {
-                        padding: "8px",
-                    },
+          <div>
+            <h3 className="font-bold mb-2">۱. پذیرش قوانین</h3>
+            <p>
+              کاربر گرامی، لطفاً موارد زیر را بهدقت مطالعه فرمایید. استفاده شما از وبسایت جیمیوو بهمعنای پذیرش کامل تمامی این قوانین و مقررات میباشد.
+            </p>
+          </div>
 
-                    "& .MuiInputBase-input": {
-                        textAlign: "right",
-                    },
-                    }}
-                />
-            </div>
+          <div>
+            <h3 className="font-bold mb-2">۲. شرایط ثبتنام و حساب کاربری</h3>
+            <ul className="list-disc pr-5 space-y-2">
+              <li>ثبتنام فقط برای افراد بالای ۱۸ سال مجاز است.</li>
+              <li>هر کاربر فقط مجاز به داشتن یک حساب کاربری میباشد.</li>
+              <li>اطلاعات هویتی واردشده توسط کاربر باید کاملاً صحیح و مطابق با مدارک شناسایی معتبر باشد.</li>
+              <li>مسئولیت حفظ محرمانگی رمز عبور و اطلاعات حساب کاربری بر عهده کاربر است.</li>
+              <li>درصورت مشاهده هرگونه فعالیت مشکوک، حساب کاربری مسدود خواهد شد.</li>
+            </ul>
+          </div>
 
-            <TextField
-                variant="outlined"
-                fullWidth
-                placeholder="ایمیلتون هم بنویسید..."
-                sx={{
-                    direction: "rtl",
+          <div>
+            <h3 className="font-bold mb-2">۳. قوانین مربیان و ورزشکاران</h3>
+            <ul className="list-disc pr-5 space-y-2">
+              <li>مربیان موظف به ارائه برنامههای تخصصی متناسب با سطح و وضعیت جسمانی ورزشکاران میباشند.</li>
+              <li>ورزشکاران تأیید میکنند که پیش از شروع هرگونه برنامه ورزشی، از نظر پزشکی معاینه شده و مجوز فعالیت ورزشی دریافت کردهاند.</li>
+              <li>هرگونه آسیب جسمانی ناشی از اجرای حرکات ورزشی بر عهده شخص ورزشکار بوده و وبسایت هیچگونه مسئولیتی در این خصوص ندارد.</li>
+            </ul>
+          </div>
 
-                    "& .MuiOutlinedInput-root": {
-                    flexDirection: "row-reverse",
-                    borderRadius: "16px",
-                    },
+          <div>
+            <h3 className="font-bold mb-2">۴. محتوای آموزشی و حرکات ورزشی</h3>
+            <ul className="list-disc pr-5 space-y-2">
+              <li>کلیه محتوای تصویری، متنی و ویدئویی ارائهشده در سایت متعلق به [نام سایت] بوده و هرگونه کپیبرداری بدون ذکر منبع پیگرد قانونی دارد.</li>
+              <li>کاربران مجاز به فروش مجدد یا توزیع محتوای سایت نیستند.</li>
+            </ul>
+          </div>
 
-                    "& .MuiInputBase-input": {
-                    textAlign: "right",
-                    paddingRight: "8px",
-                    paddingLeft: "8px",
-                    },
-                }}
-                InputProps={{
-                    endAdornment: (
-                    <InputAdornment position="end">
-                        <Image
-                        src={Mail}
-                        alt="mail"
-                        width={30}
-                        height={30}
-                        />
-                    </InputAdornment>
-                    ),
-                }}
-            />
+          <div>
+            <h3 className="font-bold mb-2">۵. قوانین پرداخت و صورتحساب</h3>
+            <ul className="list-disc pr-5 space-y-2">
+              <li>تمامی پرداختها از طریق درگاههای رسمی و مورد تأیید بانک مرکزی انجام میپذیرد.</li>
+              <li>مبلغ هر جلسه یا دوره آموزشی مطابق با تعرفه اعلامشده در سایت محاسبه میگردد.</li>
+              <li>فاکتور رسمی پس از پرداخت قابل دریافت خواهد بود.</li>
+            </ul>
+          </div>
 
-            <TextField
-                variant="outlined"
-                fullWidth
-                multiline
-                minRows={5}
-                placeholder="صحبتتون..."
-                sx={{
-                    direction: "rtl",
+          <div>
+            <h3 className="font-bold mb-2">۶. شرایط انصراف و استرداد وجه</h3>
+            <ul className="list-disc pr-5 space-y-2">
+              <li>درصورت انصراف کاربر از دریافت خدمات تا ۲۴ ساعت قبل از شروع اولین جلسه، ۹۰٪ مبلغ واریزی عودت داده میشود.</li>
+              <li>پس از شروع دوره، استرداد وجه فقط به تشخیص مدیر سایت و در موارد خاص امکانپذیر است.</li>
+              <li>درصورت لغو برنامه توسط مربی، وجه کامل به حساب کاربر بازگردانده میشود.</li>
+            </ul>
+          </div>
 
-                    "& .MuiOutlinedInput-root": {
-                    borderRadius: "16px",
-                    },
+          <div>
+            <h3 className="font-bold mb-2">۷. حریم خصوصی و حفاظت از دادهها</h3>
+            <ul className="list-disc pr-5 space-y-2">
+              <li>اطلاعات شخصی کاربران نزد سایت امانت بوده و جز در موارد قانونی به هیچ شخص یا سازمانی ارائه نخواهد شد.</li>
+              <li>وبسایت متعهد به رعایت کامل قوانین جرایم رایانهای و حمایت از دادههای شخصی کاربران میباشد.</li>
+              <li>کلیه ارتباطات کاربران با سایت از طریق پروتکل امن HTTPS انجام میپذیرد.</li>
+            </ul>
+          </div>
 
-                    "& .MuiInputBase-input": {
-                    textAlign: "right",
-                    paddingRight: "8px",
-                    paddingLeft: "8px",
-                    },
-                }}
-            />
+          <div>
+            <h3 className="font-bold mb-2">۸. قوانین مربوط به نماد اعتماد و شاپرک</h3>
+            <ul className="list-disc pr-5 space-y-2">
+              <li>این وبسایت دارای نماد اعتماد الکترونیکی از مرکز توسعه تجارت الکترونیکی میباشد.</li>
+              <li>تمامی تراکنشهای مالی تحت نظارت شرکت شاپرک و شبکه بانکی کشور انجام میگیرد.</li>
+              <li>کاربران میتوانند شکایات خود را ابتدا از طریق پشتیبانی سایت و سپس از طریق سامانه ۱۲۴ و اینماد پیگیری نمایند.</li>
+            </ul>
+          </div>
 
-            <Button variant="primary" size="xl"> ارسال پیام </Button>
+          <div>
+            <h3 className="font-bold mb-2">۹. مسئولیتها و محدودیتها</h3>
+            <ul className="list-disc pr-5 space-y-2">
+              <li>وبسایت در قبال قطعی اینترنت، مشکلات زیرساختی کشور و حوادث غیرمترقبه مسئولیتی ندارد.</li>
+              <li>مسئولیت محتوای ارسالی توسط کاربران در بخش نظرات و دیدگاهها بر عهده خود کاربر میباشد.</li>
+              <li>وبسایت حق ویرایش یا حذف هرگونه محتوای مغایر با قوانین جمهوری اسلامی ایران را برای خود محفوظ میدارد.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-bold mb-2">۱۰. مالکیت فکری</h3>
+            <ul className="list-disc pr-5 space-y-2">
+              <li>کلیه حقوق مادی و معنوی این وبسایت متعلق به [نام شرکت/شخص حقیقی] بوده و طبق قانون حمایت از حقوق مؤلفان و مصنفان و قانون حمایت از حقوق پدیدآورندگان نرمافزار محافظت میگردد.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-bold mb-2">۱۱. حل اختلاف</h3>
+            <ul className="list-disc pr-5 space-y-2">
+              <li>درصورت بروز هرگونه اختلاف، ابتدا از طریق مذاکره و سپس از طریق مراجع قضایی جمهوری اسلامی ایران پیگیری خواهد شد.</li>
+              <li>محل انعقاد قرارداد و حل اختلاف، تهران/شهر محل ثبت شرکت تعیین میگردد.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-bold mb-2">۱۲. بهروزرسانی قوانین</h3>
+            <ul className="list-disc pr-5 space-y-2">
+              <li>وبسایت جیمیوو حق دارد در هر زمان و بدون اطلاع قبلی، قوانین را مطابق با تغییرات قوانین کشوری و الزامات اینماد بهروزرسانی نماید. نسخه بهروزرسانیشده از تاریخ درج در سایت لازمالاجرا میباشد.</li>
+            </ul>
+          </div>
+
         </div>
+
+      </main>
 
       <Footer />
     </div>
