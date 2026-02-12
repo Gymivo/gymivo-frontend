@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
+import Link from "next/link";
 import Team from "@/public/about/team.svg";
 import Goal from "@/public/about/goal.svg";
 import Body from "@/public/about/body.svg";
@@ -193,16 +193,18 @@ export default function AboutPage() {
           </div>
 
           <div className="mt-10 bg-[#F3FCF7] px-5 py-6 text-center">
-            <p className="text-sm text-neutral-darker mb-4">
+            <p className="text-lg text-neutral-darker mb-4">
               <strong>نظر شما برای ما مهمه</strong>
               <br />
                اگر پیشنهادی داری، خوشحال می‌شیم ازت بشنویم.
             </p>
 
             <div className="flex items-center justify-center p-2">
-              <Button variant="primary" size="md">
-                ارسال پیام
-              </Button>
+              <Link href="/contact">
+                <Button variant="primary" size="md">
+                  ارسال پیام
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
