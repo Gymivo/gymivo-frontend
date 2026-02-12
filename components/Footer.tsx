@@ -10,13 +10,13 @@ import FrameIcon from "@/public/svg/footer/picture-frame.svg";
 export default function Footer() {
   return (
     <div className="bg-neutral-darker">
-      <div className="p-5">
+      <div className="px-5 pt-10">
         <Image src={gymivoIcon} alt="gimivo" width={120} height={50} />
       </div>
 
       <div className="flex justify-between">
         <div className="p-5 flex flex-col">
-          <h2 className="py-4">
+          <h2 className="py-4 font-bold">
             صفحات <span className="text-primary-300">جیمیوو</span>
           </h2>
           <Link className="hover:underline" href="/about"><p>درباره ما</p></Link>
@@ -27,7 +27,7 @@ export default function Footer() {
         </div>
 
         <div className="p-5 flex flex-col">
-          <h2 className="py-4">
+          <h2 className="py-4 font-bold">
             خدمات <span className="text-primary-300">جیمیوو</span>
           </h2>
           <Link className="hover:underline" href="/myprograms"><p>برنامه های من</p></Link>
@@ -38,17 +38,17 @@ export default function Footer() {
       </div>
 
       <div className="p-5">
-        <h2>فضای مجازی</h2>
+        <h2 className="font-bold">فضای مجازی</h2>
         <div className="flex gap-5 justify-end">
-          <Image alt="whatsapp" src={WhatsappIcon} />
-          <Image alt="gmail" src={GmailIcon} />
-          <Image alt="telegram" src={TelegramIcon} />
-          <Image alt="instagram" src={InstagramIcon} />
+          <Image width={40} height={40} alt="whatsapp" src={WhatsappIcon} />
+          <Image width={40} height={40} alt="gmail" src={GmailIcon} />
+          <Image width={40} height={40} alt="telegram" src={TelegramIcon} />
+          <Image width={40} height={40} alt="instagram" src={InstagramIcon} />
         </div>
       </div>
 
       <div className="p-5">
-        <h2>نمادها</h2>
+        <h2 className="font-bold">نمادها</h2>
         <div className="py-5 flex justify-between">
           <Image alt="frame1" src={FrameIcon} width={110} height={110}/>
           <Image alt="frame2" src={FrameIcon} width={110} height={110}/>
