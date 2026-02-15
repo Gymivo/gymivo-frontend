@@ -305,7 +305,7 @@ export default function Home() {
 
           <div className="flex flex-col gap-12">
             <div className="flex flex-col items-center gap-4">
-              <div className="absolute -mt-5 flex items-start justify-start self-start">
+              <div className="absolute ml-20 -mt-2 flex items-start justify-start self-start">
                 <Image
                   src={point1}
                   alt="user search"
@@ -353,7 +353,7 @@ export default function Home() {
                 </h3>
               </div>
 
-              <div className="absolute -mt-28 ml-20 flex items-end justify-end self-end">
+              <div className="absolute -mt-28 ml-4 md:ml-20 flex items-end justify-end self-end">
                 <Image
                   src={point2}
                   alt="user search"
@@ -378,7 +378,7 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col items-center gap-4">
-              <div className="absolute -mt-36 mr-14 flex items-start justify-start self-start">
+              <div className="absolute -mt-40 md:-mt-36 mr-5 md:mr-14 flex items-start justify-start self-start">
                 <Image
                   src={point3}
                   alt="user search"

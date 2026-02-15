@@ -40,7 +40,7 @@ export default function Header() {
             <button onClick={() => setMenuOpen(true)}>
               <Image src={menuIcon} alt="menu" width={24} height={24} />
             </button>
-            <Image src={searchIcon} alt="search" width={24} height={24} />
+            <Image src={searchIcon} alt="search" width={20} height={20} />
           </div>
 
           <Link href="/">
@@ -53,10 +53,10 @@ export default function Header() {
             />
           </Link>
 
-          <div className="flex gap-3 items-center">
+          <Link href={"/welcome"} className="flex gap-1 items-center">
             <span className="text-white">ورود</span>
             <Image src={userIcon} alt="user" width={24} height={24} />
-          </div>
+          </Link>
 
         </div>
       </header>
