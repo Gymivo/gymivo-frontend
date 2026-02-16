@@ -50,9 +50,9 @@ export default function Footer() {
       <div className="p-5">
         <h2 className="font-bold">نمادها</h2>
         <div className="py-5 flex justify-between">
-          <Image alt="frame1" src={FrameIcon} width={110} height={110}/>
-          <Image alt="frame2" src={FrameIcon} width={110} height={110}/>
-          <Image alt="frame3" src={FrameIcon} width={110} height={110}/>
+          <Image alt="frame1" src={FrameIcon} width={90} height={90}/>
+          <Image alt="frame2" src={FrameIcon} width={90} height={90}/>
+          <Image alt="frame3" src={FrameIcon} width={90} height={90}/>
         </div>
       </div>
 
