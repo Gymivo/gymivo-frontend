@@ -21,8 +21,6 @@ export default function WelcomePage() {
       />
 
       <main className="relative z-10 h-full px-5 py-8 flex flex-col">
-
-
         <div className="flex-1 flex flex-col gap-5 items-center justify-center min-h-0">
           <h1 className="text-center mb-12 text-3xl font-bold text-neutral-darker">
             به جیمیوو خوش اومدی
