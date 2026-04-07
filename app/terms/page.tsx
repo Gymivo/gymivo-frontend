@@ -6,7 +6,7 @@ import Terms from "@/public/terms/draw.svg";
 
 export default function TermsPage() {
   return (
-    <div className="m-auto min-h-screen max-w-[500px] relative">
+    <div className="m-auto bg-gray-50 min-h-screen max-w-[450px] relative">
       <Header />
 
       <main className="px-4 py-12 pt-36 text-center">
