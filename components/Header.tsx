@@ -35,7 +35,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-[400px] h-16 z-50 fixed flex items-center p-3 rounded-2xl bg-black/60 backdrop-blur-[20px] top-[10px] left-1/2 -translate-x-1/2">
+      <header className="w-[400px] h-16 z-50 fixed flex items-center p-3 border border-white/25 shadow-xs shadow-white rounded-full bg-black/60 backdrop-blur-[20px] top-[10px] left-1/2 -translate-x-1/2">
         <div className="flex w-full justify-between items-center">
 
           <div className="flex gap-3">
