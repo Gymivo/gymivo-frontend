@@ -25,10 +25,10 @@ export default function DashboardPage() {
       <header className="fixed top-2 left-1/2 -translate-x-1/2 w-[400px] h-16 z-50 flex items-center justify-between p-3 rounded-2xl bg-black/60 backdrop-blur-[20px] border border-white/10">
         <div className="flex gap-1">
           <button onClick={() => router.push("/notifications")} className="p-2 rounded-full hover:bg-white/10 transition">
-            <Image src={notificationIcon} alt="Notifications" width={25} height={25} />
+            <Image src={notificationIcon} alt="Notifications" width={24} height={24} />
           </button>
           <button onClick={() => router.push("/schedule")} className="p-2 rounded-full hover:bg-white/10 transition">
-            <Image src={scheduleIcon} alt="Schedule" width={25} height={25} />
+            <Image src={scheduleIcon} alt="Schedule" width={24} height={24} />
           </button>
         </div>
 
