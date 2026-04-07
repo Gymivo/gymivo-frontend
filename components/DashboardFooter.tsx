@@ -19,7 +19,7 @@ export default function DashboardFooter() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const baseStyle = "bg-black/60 backdrop-blur-[20px] border border-white/10 rounded-2xl";
+  const baseStyle = "bg-black/60 backdrop-blur-[20px] border border-white/10 rounded-full border border-white/25 shadow-xs shadow-white";
 
   return (
     <div className="fixed bottom-0 left-0 w-full flex justify-center z-50">
