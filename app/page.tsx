@@ -51,7 +51,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="m-auto bg-gray-50 min-h-screen max-w-[500px] relative">
+    <div className="m-auto bg-gray-50 min-h-screen max-w-[450] relative">
       <Header />
 
       <main className="w-full mx-auto">
@@ -65,7 +65,7 @@ export default function Home() {
             style={{ objectPosition: "35% center" }}
           />
 
-          <div className="absolute inset-0 bg-black/40 z-[1]" />
+          <div className="absolute inset-0 bg-black/20 z-[1]" />
 
           <div className="relative z-[2] pt-36 w-full mx-auto">
             <div className="flex flex-col text-center items-center">

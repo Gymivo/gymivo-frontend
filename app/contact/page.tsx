@@ -13,10 +13,10 @@ import Mail from "@/public/contact/mail.svg";
 
 export default function ContactPage() {
   return (
-    <div className="m-auto min-h-screen max-w-[500px] relative">
+    <div className="m-auto bg-gray-50 min-h-screen max-w-[450px] relative">
       <Header />
 
-      <main className="bg-white pt-36 px-4 py-12 text-center">
+      <main className="pt-36 px-5 py-12 text-center">
         <h1 className="text-5xl font-bold text-neutral-darker">
           ارتباط با ما
         </h1>

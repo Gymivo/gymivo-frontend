@@ -12,6 +12,7 @@ import notificationIcon from "@/public/svg/header/notification.png";
 import scheduleIcon from "@/public/svg/header/schedule.png";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import gymivoIcon from "@/public/svg/header/gymivo.png";
+import Footer from "@/components/Footer";
 
 
 export default function DashboardPage() {
@@ -19,10 +20,9 @@ export default function DashboardPage() {
   const progress = 35;
 
   return (
-    <div className="relative bg-gray-50 top-0 left-0 w-full z-50 m-auto min-h-screen max-w-[500px]">
+    <div className="relative bg-gray-50 top-0 left-0 w-full z-50 m-auto min-h-screen max-w-[450px]">
 
       <header className="fixed top-2 left-1/2 -translate-x-1/2 w-[400px] h-16 z-50 flex items-center justify-between p-3 rounded-2xl bg-black/60 backdrop-blur-[20px] border border-white/10">
-        
         <div className="flex gap-1">
           <button onClick={() => router.push("/notifications")} className="p-2 rounded-full hover:bg-white/10 transition">
             <Image src={notificationIcon} alt="Notifications" width={25} height={25} />
@@ -34,13 +34,7 @@ export default function DashboardPage() {
 
         <div className="absolute left-1/2 -translate-x-1/2">
           <Link href="/">
-            <Image
-              src={gymivoIcon}
-              alt="gymivo"
-              width={100}
-              height={24}
-              className="cursor-pointer"
-            />
+            <Image src={gymivoIcon} alt="gymivo" width={100} height={24} className="cursor-pointer" />
           </Link>
         </div>
 
@@ -131,6 +125,7 @@ export default function DashboardPage() {
       </main>
 
       <DashboardFooter />
+      <Footer />
     </div>
   );
 }

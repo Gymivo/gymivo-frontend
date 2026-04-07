@@ -19,18 +19,12 @@ export default function DashboardFooter() {
   const pathname = usePathname();
   const router = useRouter();
 
+  const baseStyle = "bg-black/60 backdrop-blur-[20px] border border-white/10 rounded-2xl";
+
   return (
     <div className="fixed bottom-0 left-0 w-full flex justify-center z-50">
       <div className="w-full max-w-[400px] px-4 pb-4">
-        <div className="
-          flex justify-between items-center
-          px-3 py-2
-          rounded-[18px]
-          bg-black/60
-          backdrop-blur-[14px]
-          border border-white/10
-        "
-        >
+        <div className={`flex justify-between items-center px-3 py-3 ${baseStyle}`}>
           {navItems.map((item) => {
             const isActive =
               pathname === item.path ||
@@ -42,38 +36,25 @@ export default function DashboardFooter() {
               <button
                 key={item.name}
                 onClick={() => router.push(item.path)}
-                className="relative flex flex-col items-center justify-center flex-1"
+                className="relative flex flex-col items-center justify-center flex-1 rounded-full hover:bg-white/20 transition"
               >
                 <div
                   className={`
-                  absolute inset-0 mx-1 rounded-[14px]
-                  transition-all duration-300
-
-                  ${
-                    isActive
-                      ? `
-                      opacity-60 scale-100
-                      bg-gradient-to-r 
-                      from-primary-300/40 
-                      via-primary-300/30
-                      to-primary-300/40
-                      `
+                    absolute inset-0 rounded-full
+                    transition-all duration-300
+                    ${isActive
+                      ? "opacity-60 scale-100 bg-gradient-to-r from-primary-300/40 via-primary-300/30 to-primary-300/40"
                       : "opacity-0 scale-75"
-                  }
-                `}
+                    }
+                  `}
                 />
 
                 <div
                   className={`
-                  relative z-10 p-2 rounded-xl
-                  transition-all duration-300
-
-                  ${
-                    isActive
-                      ? "text-primary-300 scale-110"
-                      : "text-white/60"
-                  }
-                `}
+                    relative z-10 p-2 rounded-2xl
+                    transition-all duration-300
+                    ${isActive ? "text-primary-300 scale-110" : "text-white/60"}
+                  `}
                 >
                   <Icon fontSize="medium" />
                 </div>

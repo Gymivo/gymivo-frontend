@@ -19,7 +19,7 @@ import Button from "@/components/Button";
 
 export default function AboutPage() {
   return (
-    <div className="m-auto min-h-screen max-w-[500px] relative">
+    <div className="m-auto min-h-screen max-w-[450px] relative">
       <Header />
 
       <main className="w-full bg-white">
