@@ -417,7 +417,7 @@ export default function Home() {
         </section>
 
         <div className="flex flex-col items-center justify-center bg-neutral-gray py-10 px-6">
-          <div className="max-w-[400px] w-full space-y-8">
+          <div className="space-y-8">
             <div className="text-center space-y-4">
               <h2 className="text-2xl font-bold flex">
                 <span className="text-primary-300">مربی‌گری</span>راحت‌تر از همیشه
