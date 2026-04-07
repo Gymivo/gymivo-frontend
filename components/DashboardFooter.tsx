@@ -19,11 +19,11 @@ export default function DashboardFooter() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const baseStyle = "bg-black/60 backdrop-blur-[20px] border border-white/10 rounded-full border border-white/25 shadow-xs shadow-white";
+  const baseStyle = "bg-black/60 backdrop-blur-[20px] border border-white/10 rounded-3xl border border-white/25 shadow-xs shadow-white";
 
   return (
     <div className="fixed bottom-0 left-0 w-full flex justify-center z-50">
-      <div className="w-full max-w-[400px] px-4 pb-4">
+      <div className="w-full max-w-[340px] px-4 pb-4">
         <div className={`flex justify-between items-center px-3 py-3 ${baseStyle}`}>
           {navItems.map((item) => {
             const isActive =
@@ -40,7 +40,7 @@ export default function DashboardFooter() {
               >
                 <div
                   className={`
-                    absolute inset-0 rounded-full
+                    absolute inset-0 rounded-3xl
                     transition-all duration-300
                     ${isActive
                       ? "opacity-60 scale-100 bg-gradient-to-r from-primary-300/40 via-primary-300/30 to-primary-300/40"
@@ -51,7 +51,7 @@ export default function DashboardFooter() {
 
                 <div
                   className={`
-                    relative z-10 p-2 rounded-2xl
+                    relative z-10 p-2 rounded-3xl
                     transition-all duration-300
                     ${isActive ? "text-primary-300 scale-110" : "text-white/60"}
                   `}

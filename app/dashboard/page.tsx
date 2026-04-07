@@ -22,13 +22,13 @@ export default function DashboardPage() {
   return (
     <div className="relative bg-gray-50 top-0 left-0 w-full z-50 m-auto min-h-screen max-w-[450px]">
 
-      <header className="fixed top-2 left-1/2 -translate-x-1/2 w-[400px] border border-white/25 shadow-xs shadow-white h-16 z-50 flex items-center justify-between p-3 rounded-full bg-black/60 backdrop-blur-[20px]">
+      <header className="fixed top-2 left-1/2 -translate-x-1/2 w-[340px] border border-white/25 shadow-xs shadow-white h-16 z-50 flex items-center justify-between p-3 rounded-3xl bg-black/60 backdrop-blur-[20px]">
         <div className="flex gap-1">
           <button onClick={() => router.push("/notifications")} className="p-2 rounded-full hover:bg-white/10 transition">
-            <Image src={notificationIcon} alt="Notifications" width={24} height={24} />
+            <Image src={notificationIcon} alt="Notifications" width={22} height={22} />
           </button>
           <button onClick={() => router.push("/schedule")} className="p-2 rounded-full hover:bg-white/10 transition">
-            <Image src={scheduleIcon} alt="Schedule" width={24} height={24} />
+            <Image src={scheduleIcon} alt="Schedule" width={22} height={22} />
           </button>
         </div>
 
@@ -40,7 +40,7 @@ export default function DashboardPage() {
 
         <div className="flex items-center">
           <button onClick={() => router.push("/profile")} className="flex items-center justify-center p-2 rounded-full hover:bg-white/10 transition">
-            <Image src={userIcon} alt="Profile" width={28} height={28} />
+            <Image src={userIcon} alt="Profile" width={26} height={26} />
           </button>
         </div>
       </header>
@@ -49,9 +49,9 @@ export default function DashboardPage() {
 
         <div className="w-full flex justify-between items-center bg-neutral-darker rounded-2xl p-3">
           <div className="flex flex-col justify-center max-w-[220px]">
-            <p className="text-white font-bold text-xl pb-3">پروفایلتو تکمیل کن <br /> و شروع کن</p>
+            <p className="text-white font-bold text-lg pb-3">پروفایلتو تکمیل کن <br /> و شروع کن</p>
             <Button
-              size="cta"
+              size="md"
               variant="primary"
               arrow="none"
               onClick={() => router.push("/profile")}
@@ -60,7 +60,7 @@ export default function DashboardPage() {
             </Button>
           </div>
 
-          <div className="ml-3 w-24 h-24">
+          <div className="w-24 h-24">
             <CircularProgressbar
               value={progress}
               text={`${progress}%`}
@@ -76,9 +76,9 @@ export default function DashboardPage() {
 
         <div className="w-full flex justify-between items-center bg-neutral-darker rounded-2xl p-3">
           <div className="flex flex-col justify-center max-w-[220px]">
-            <p className="text-white font-bold text-xl pb-3">برای نمایش برنامه تمرینی خود ضربه بزنید</p>
+            <p className="text-white font-bold text-lg pb-3">برای نمایش برنامه تمرینی خود ضربه بزنید</p>
             <Button
-              size="cta"
+              size="md"
               variant="primary"
               arrow="none"
               onClick={() => router.push("/my-program")}
@@ -87,7 +87,7 @@ export default function DashboardPage() {
             </Button>
           </div>
 
-          <div className="ml-3 w-24 h-24 flex items-center justify-center">
+          <div className="w-24 h-24 flex items-center justify-center">
             <FitnessCenterIcon style={{ color: 'white', fontSize: 60 }} />
           </div>
         </div>
