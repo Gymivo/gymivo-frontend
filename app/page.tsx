@@ -51,7 +51,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="m-auto min-h-screen max-w-[500px] relative">
+    <div className="m-auto bg-gray-50 min-h-screen max-w-[500px] relative">
       <Header />
 
       <main className="w-full mx-auto">

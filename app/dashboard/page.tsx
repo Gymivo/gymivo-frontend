@@ -2,15 +2,16 @@
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import Button from "@/components/Button";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-
 import DashboardFooter from "@/components/DashboardFooter";
 import userIcon from "@/public/svg/header/user-square.svg";
 import notificationIcon from "@/public/svg/header/notification.png";
 import scheduleIcon from "@/public/svg/header/schedule.png";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import gymivoIcon from "@/public/svg/header/gymivo.png";
 
 
 export default function DashboardPage() {
@@ -18,10 +19,11 @@ export default function DashboardPage() {
   const progress = 35;
 
   return (
-    <div className="relative bg-gray-100 top-0 left-0 w-full z-50 m-auto min-h-screen max-w-[500px]">
+    <div className="relative bg-gray-50 top-0 left-0 w-full z-50 m-auto min-h-screen max-w-[500px]">
 
       <header className="fixed top-2 left-1/2 -translate-x-1/2 w-[400px] h-16 z-50 flex items-center justify-between p-3 rounded-2xl bg-black/60 backdrop-blur-[20px] border border-white/10">
-        <div className="flex gap-3">
+        
+        <div className="flex gap-1">
           <button onClick={() => router.push("/notifications")} className="p-2 rounded-full hover:bg-white/10 transition">
             <Image src={notificationIcon} alt="Notifications" width={25} height={25} />
           </button>
@@ -30,9 +32,23 @@ export default function DashboardPage() {
           </button>
         </div>
 
-        <button onClick={() => router.push("/profile")} className="flex items-center justify-center p-2 rounded-full hover:bg-white/10 transition">
-          <Image src={userIcon} alt="Profile" width={28} height={28} />
-        </button>
+        <div className="absolute left-1/2 -translate-x-1/2">
+          <Link href="/">
+            <Image
+              src={gymivoIcon}
+              alt="gymivo"
+              width={100}
+              height={24}
+              className="cursor-pointer"
+            />
+          </Link>
+        </div>
+
+        <div className="flex items-center">
+          <button onClick={() => router.push("/profile")} className="flex items-center justify-center p-2 rounded-full hover:bg-white/10 transition">
+            <Image src={userIcon} alt="Profile" width={28} height={28} />
+          </button>
+        </div>
       </header>
 
       <main className="p-28 flex flex-col items-center gap-5 px-5">
