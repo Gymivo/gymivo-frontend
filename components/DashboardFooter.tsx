@@ -21,7 +21,7 @@ export default function DashboardFooter() {
 
   return (
     <div className="fixed bottom-0 left-0 w-full flex justify-center z-50">
-      <div className="w-full max-w-[500px] px-4 pb-4">
+      <div className="w-full max-w-[400px] px-4 pb-4">
         <div className="
           flex justify-between items-center
           px-3 py-2
@@ -52,10 +52,10 @@ export default function DashboardFooter() {
                   ${
                     isActive
                       ? `
-                      opacity-100 scale-100
+                      opacity-60 scale-100
                       bg-gradient-to-r 
                       from-primary-300/40 
-                      via-primary-300/25 
+                      via-primary-300/30
                       to-primary-300/40
                       `
                       : "opacity-0 scale-75"
@@ -70,7 +70,7 @@ export default function DashboardFooter() {
 
                   ${
                     isActive
-                      ? "text-primary-300 scale-110 drop-shadow-[0_0_5px_rgba(163,230,53,0.7)]"
+                      ? "text-primary-300 scale-110"
                       : "text-white/60"
                   }
                 `}

@@ -41,7 +41,7 @@ export default function Button({
   };
 
   const sizes = {
-    cta: "w-[230px] h-[48px] px-[36px] py-[10px] text-[16px] rounded-[12px]",
+    cta: "w-[220px] h-[40px] px-[36px] py-[10px] text-[16px] rounded-[12px]",
     sm: "w-[104px] h-[32px] px-[12px] py-[6px] text-[12px] gap-[8px] rounded-[8px]",
     md: "w-[112px] h-[40px] px-[16px] py-[10px] text-[14px] gap-[8px] rounded-[12px]",
     lg: "w-[140px] h-[48px] px-[24px] py-[16px] text-[16px] gap-[8px] rounded-[12px]",
