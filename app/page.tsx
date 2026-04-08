@@ -16,17 +16,17 @@ import Workout1Icon from "@/public/landing/motivate/workout1.jpg";
 import Workout2Icon from "@/public/landing/motivate/workout2.jpg";
 import Workout3Icon from "@/public/landing/motivate/workout3.jpg";
 import Workout4Icon from "@/public/landing/motivate/workout4.jpg";
-import CoachchatIcon from "@/public/landing/svg/coachchat.svg";
-import DownloadappIcon from "@/public/landing/svg/downloadapp.svg";
-import HometrainingIcon from "@/public/landing/svg/hometraining.svg";
+import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
+import CloudDownloadOutlinedIcon from '@mui/icons-material/CloudDownloadOutlined';
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import Phone1 from "@/public/landing/svg/phone1.svg";
 import Phone2 from "@/public/landing/svg/phone2.svg";
 import Step1Image from "@/public/landing/how/step1.svg";
 import Step2Image from "@/public/landing/how/step2.svg";
 import Step3Image from "@/public/landing/how/step3.svg";
-import UserSearch from "@/public/landing/how/user-search.svg";
-import PlanIcon from "@/public/landing/how/plan.svg";
-import LinkIcon from "@/public/landing/how/link.svg";
+import PersonSearchIcon from '@mui/icons-material/PersonSearch';
+import ContentPasteIcon from '@mui/icons-material/ContentPaste';
+import FlashOnIcon from '@mui/icons-material/FlashOn';
 import point1 from "@/public/landing/how/point1.svg";
 import point2 from "@/public/landing/how/point2.svg";
 import point3 from "@/public/landing/how/point3.svg";
@@ -42,12 +42,9 @@ export default function Home() {
   ];
 
   const logos = [
-    { src: CoachchatIcon, alt: "Coach Chat" },
-    { src: DownloadappIcon, alt: "Download App" },
-    { src: HometrainingIcon, alt: "Home Training" },
-    { src: CoachchatIcon, alt: "Coach Chat" },
-    { src: DownloadappIcon, alt: "Download App" },
-    { src: HometrainingIcon, alt: "Home Training" },
+    { src: ChatOutlinedIcon, alt: "Coach Chat" },
+    { src: CloudDownloadOutlinedIcon, alt: "Download App" },
+    { src: FitnessCenterIcon, alt: "Home Training" },
   ];
 
   return (
@@ -279,16 +276,19 @@ export default function Home() {
         </div>
 
         <div className="w-full bg-gradient-to-r from-[#F8FFBF] to-[#ECFB6D] flex items-center justify-around px-4 py-4 gap-5 mx-auto rounded">
-          <div className="flex flex-col items-center gap-1">
-            <Image src={CoachchatIcon} alt="Coach Chat" width={82} height={72} />
+          <div className="flex text-black flex-col items-center gap-1">
+            <ChatOutlinedIcon style={{ fontSize: 50 }} />
+            <p className="text-sm">چت با مربی</p>
           </div>
 
-          <div className="flex flex-col items-center gap-1">
-            <Image src={DownloadappIcon} alt="Download App" width={82} height={72} />
+          <div className="flex text-black flex-col items-center gap-1">
+            <CloudDownloadOutlinedIcon style={{ fontSize: 50 }} />
+            <p className="text-sm">دانلود برنامه</p>
           </div>
 
-          <div className="flex flex-col items-center gap-1">
-            <Image src={HometrainingIcon} alt="Home Training" width={82} height={72} />
+          <div className="flex text-black flex-col items-center gap-1">
+            <FitnessCenterIcon style={{ fontSize: 50 }} />
+            <p className="text-sm">تمرین در خانه</p>
           </div>
         </div>
 
@@ -314,12 +314,7 @@ export default function Home() {
                 />
               </div>
               <div className="flex gap-2 items-center justify-center">
-                <Image
-                  src={UserSearch}
-                  alt="user search"
-                  width={25}
-                  height={25}
-                />
+                <PersonSearchIcon style={{ fontSize: 26 }} className="text-black"/>
                 <h3 className="text-lg font-bold text-neutral-darker">
                   مربیت رو انتخاب کن
                 </h3>
@@ -342,12 +337,7 @@ export default function Home() {
 
             <div className="flex flex-col items-center gap-4">
               <div className="flex gap-2 items-start self-start justify-start">
-                <Image
-                  src={PlanIcon}
-                  alt="user search"
-                  width={25}
-                  height={25}
-                />
+                <ContentPasteIcon style={{ fontSize: 26 }} className="text-black"/>
                 <h3 className="text-lg font-bold text-neutral-darker">
                   برنامت رو سفارش بده
                 </h3>
@@ -388,12 +378,7 @@ export default function Home() {
               </div>
 
               <div className="flex gap-2 items-center self-center justify-center">
-                <Image
-                  src={LinkIcon}
-                  alt="user search"
-                  width={25}
-                  height={25}
-                />
+                <FlashOnIcon style={{ fontSize: 26 }} className="text-black"/>
                 <h3 className="text-lg font-bold text-neutral-darker">
                   برنامت تو جیبته!
                 </h3>

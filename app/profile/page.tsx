@@ -15,9 +15,9 @@ export default function ProfilePage() {
   const router = useRouter();
 
   return (
-    <div className="relative bg-neutral-ligher top-0 left-0 w-full z-50 m-auto min-h-screen max-w-[400]">
+    <div className="relative bg-neutral-ligher top-0 left-0 w-full z-50 m-auto min-h-screen max-w-[400px]">
 
-      <main className="pt-6 pb-24 px-5 flex flex-col gap-5">
+      <main className="pt-6 pb-24 px-5 flex flex-col gap-3">
 
         <div className="w-full bg-neutral-darker rounded-2xl p-4 flex items-center justify-between">
 

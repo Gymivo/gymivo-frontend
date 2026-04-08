@@ -4,11 +4,11 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import Team from "@/public/about/team.svg";
 import Goal from "@/public/about/goal.svg";
-import Body from "@/public/about/body.svg";
-import Hype from "@/public/about/hype.svg";
-import Medal from "@/public/about/medal.svg";
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import Mountain from "@/public/about/mountain.svg";
-import Face from "@/public/about/face.svg";
+import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import Pose from "@/public/about/pose.svg";
 import Alish from "@/public/about/ali.sh.svg";
 import Alis from "@/public/about/ali.s.svg";
@@ -84,28 +84,28 @@ export default function AboutPage() {
 
           <div className="flex flex-col gap-4">
             <div className="inline-flex items-center gap-3 bg-[#C9F3DD] px-4 py-3 rounded-xl self-start">
-              <Image src={Hype} alt="hype" width={24} height={24} />
+              <SportsGymnasticsIcon style={{ fontSize: 24 }} className="text-black"/>
               <p className="text-lg text-neutral-darker font-extrabold">
                 وقتشه کم کم ورزشو بیاریم تو خونه!
               </p>
             </div>
 
             <div className="inline-flex items-center gap-3 bg-primary-100 px-4 py-3 rounded-xl self-end">
-              <Image src={Face} alt="face" width={24} height={24} />
+              <InsertEmoticonIcon style={{ fontSize: 24 }} className="text-black"/>
               <p className="text-lg text-neutral-darker font-extrabold">
                 برای رژیمت انگیزه نداری؟ اون با ما
               </p>
             </div>
 
             <div className="inline-flex items-center gap-3 bg-[#C9F3DD] px-4 py-3 rounded-xl self-start">
-              <Image src={Medal} alt="medal" width={24} height={24} />
+              <WorkspacePremiumIcon style={{ fontSize: 24 }} className="text-black"/>
               <p className="text-lg text-neutral-darker font-extrabold">
                 رفیق منتظر چالش های خفنمون باش
               </p>
             </div>
 
             <div className="inline-flex items-center gap-3 bg-primary-100 px-4 py-3 rounded-xl self-end">
-              <Image src={Body} alt="body" width={20} height={20} />
+              <EmojiPeopleIcon style={{ fontSize: 24 }} className="text-black"/>
               <p className="text-lg text-neutral-darker font-extrabold">
                 بدنت رو دقیق آنالیز کن و نگران چیزی نباش
               </p>

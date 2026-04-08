@@ -4,8 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/Button";
 import BastetballIcon from "@/public/welcome/basketball.svg";
-import PhoneIcon from "@/public/welcome/phone.svg";
-import PasswordballIcon from "@/public/welcome/password.svg";
+import KeyIcon from '@mui/icons-material/Key';
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import { TextField, InputAdornment } from "@mui/material";
 
 export default function WelcomePage() {
@@ -68,7 +68,7 @@ export default function WelcomePage() {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <Image src={PhoneIcon} alt="mail" width={30} height={30} />
+                    <PhoneIphoneIcon sx={{ fontSize: 26, color: "#949494" }} />
                   </InputAdornment>
                 ),
               }}
@@ -92,7 +92,7 @@ export default function WelcomePage() {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <Image src={PasswordballIcon} alt="password" width={30} height={30} />
+                    <KeyIcon sx={{ fontSize: 26, color: "#949494" }} />
                   </InputAdornment>
                 ),
               }}
