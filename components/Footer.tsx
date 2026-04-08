@@ -1,11 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import gymivoIcon from "@/public/svg/footer/gymivo.svg";
-import WhatsappIcon from "@/public/svg/footer/Whatsapp.svg";
-import TelegramIcon from "@/public/svg/footer/Telegram.svg";
-import GmailIcon from "@/public/svg/footer/Gmail.svg";
-import InstagramIcon from "@/public/svg/footer/Instagram.svg";
 import FrameIcon from "@/public/svg/footer/picture-frame.svg";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import EmailIcon from "@mui/icons-material/Email";
+import TelegramIcon from "@mui/icons-material/Telegram";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import CropOriginalIcon from '@mui/icons-material/CropOriginal';
 
 export default function Footer() {
   return (
@@ -39,20 +40,20 @@ export default function Footer() {
 
       <div className="p-5">
         <h2 className="font-bold">فضای مجازی</h2>
-        <div className="flex gap-5 justify-end">
-          <Image width={40} height={40} alt="whatsapp" src={WhatsappIcon} />
-          <Image width={40} height={40} alt="gmail" src={GmailIcon} />
-          <Image width={40} height={40} alt="telegram" src={TelegramIcon} />
-          <Image width={40} height={40} alt="instagram" src={InstagramIcon} />
-        </div>
+          <div className="flex gap-3 justify-end">
+            <WhatsAppIcon style={{ fontSize: 40 }} />
+            <EmailIcon style={{ fontSize: 40 }} />
+            <TelegramIcon style={{ fontSize: 40 }} />
+            <InstagramIcon style={{ fontSize: 40 }} />
+          </div>
       </div>
 
       <div className="p-5">
         <h2 className="font-bold">نمادها</h2>
         <div className="py-5 flex justify-between">
-          <Image alt="frame1" src={FrameIcon} width={90} height={90}/>
-          <Image alt="frame2" src={FrameIcon} width={90} height={90}/>
-          <Image alt="frame3" src={FrameIcon} width={90} height={90}/>
+          <CropOriginalIcon style={{ fontSize: 80 }} />
+          <CropOriginalIcon style={{ fontSize: 80 }} />
+          <CropOriginalIcon style={{ fontSize: 80 }} />
         </div>
       </div>
 

@@ -7,9 +7,9 @@ import Button from "@/components/Button";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import DashboardFooter from "@/components/DashboardFooter";
-import userIcon from "@/public/svg/header/user-square.svg";
-import notificationIcon from "@/public/svg/header/notification.png";
-import scheduleIcon from "@/public/svg/header/schedule.png";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import gymivoIcon from "@/public/svg/header/gymivo.png";
 import Footer from "@/components/Footer";
@@ -25,10 +25,10 @@ export default function DashboardPage() {
       <header className="w-full max-w-[340px] mx-auto mt-3 border border-white/25 shadow-xs shadow-white h-16 z-50 flex items-center justify-between px-3 rounded-3xl bg-black/60 backdrop-blur-[20px]">
         <div className="flex gap-1">
           <button onClick={() => router.push("/notifications")} className="p-2 rounded-full hover:bg-white/10 transition">
-            <Image src={notificationIcon} alt="Notifications" width={22} height={22} />
+            <NotificationsActiveIcon style={{ color: "white", fontSize: 27 }} />
           </button>
           <button onClick={() => router.push("/schedule")} className="p-2 rounded-full hover:bg-white/10 transition">
-            <Image src={scheduleIcon} alt="Schedule" width={22} height={22} />
+            <CalendarMonthIcon style={{ color: "white", fontSize: 27 }} />
           </button>
         </div>
 
@@ -40,7 +40,7 @@ export default function DashboardPage() {
 
         <div className="flex items-center">
           <button onClick={() => router.push("/profile")} className="p-2 rounded-full hover:bg-white/10 transition">
-            <Image src={userIcon} alt="Profile" width={26} height={26} />
+            <AccountCircleIcon style={{ color: "white", fontSize: 30 }} />
           </button>
         </div>
       </header>

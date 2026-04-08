@@ -6,10 +6,10 @@ import Button from "@/components/Button";
 import Footer from "@/components/Footer";
 import { TextField } from "@mui/material";
 import { InputAdornment } from "@mui/material";
-
 import ContactIllustration from "@/public/contact/phone.svg";
 import Profile from "@/public/contact/profile.svg";
-import Mail from "@/public/contact/mail.svg";
+import EmailIcon from "@mui/icons-material/Email";
+
 
 export default function ContactPage() {
   return (
@@ -89,12 +89,7 @@ export default function ContactPage() {
                 InputProps={{
                     endAdornment: (
                     <InputAdornment position="end">
-                        <Image
-                        src={Mail}
-                        alt="mail"
-                        width={30}
-                        height={30}
-                        />
+                      <EmailIcon style={{ fontSize: 30 }} />
                     </InputAdornment>
                     ),
                 }}
