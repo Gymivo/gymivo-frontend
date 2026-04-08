@@ -22,7 +22,7 @@ export default function DashboardPage() {
   return (
     <div className="relative bg-gray-50 top-0 left-0 w-full z-50 m-auto min-h-screen max-w-[450px]">
 
-      <header className="top-2 left-1/2 -translate-x-1/2 w-[340px] border border-white/25 shadow-xs shadow-white h-16 z-50 flex items-center justify-between p-3 rounded-3xl bg-black/60 backdrop-blur-[20px]">
+      <header className="w-full max-w-[340px] mx-auto mt-3 border border-white/25 shadow-xs shadow-white h-16 z-50 flex items-center justify-between px-3 rounded-3xl bg-black/60 backdrop-blur-[20px]">
         <div className="flex gap-1">
           <button onClick={() => router.push("/notifications")} className="p-2 rounded-full hover:bg-white/10 transition">
             <Image src={notificationIcon} alt="Notifications" width={22} height={22} />
@@ -39,13 +39,13 @@ export default function DashboardPage() {
         </div>
 
         <div className="flex items-center">
-          <button onClick={() => router.push("/profile")} className="flex items-center justify-center p-2 rounded-full hover:bg-white/10 transition">
+          <button onClick={() => router.push("/profile")} className="p-2 rounded-full hover:bg-white/10 transition">
             <Image src={userIcon} alt="Profile" width={26} height={26} />
           </button>
         </div>
       </header>
 
-      <main className="p-28 flex flex-col items-center gap-5 px-5">
+      <main className="p-16 flex flex-col items-center gap-5 px-5">
 
         <div className="w-full flex justify-between items-center bg-neutral-darker rounded-2xl p-3">
           <div className="flex flex-col justify-center max-w-[220px]">
