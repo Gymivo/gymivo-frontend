@@ -22,7 +22,7 @@ export default function DashboardPage() {
   return (
     <div className="relative bg-gray-50 top-0 left-0 w-full z-50 m-auto min-h-screen max-w-[450px]">
 
-      <header className="fixed top-2 left-1/2 -translate-x-1/2 w-[340px] border border-white/25 shadow-xs shadow-white h-16 z-50 flex items-center justify-between p-3 rounded-3xl bg-black/60 backdrop-blur-[20px]">
+      <header className="top-2 left-1/2 -translate-x-1/2 w-[340px] border border-white/25 shadow-xs shadow-white h-16 z-50 flex items-center justify-between p-3 rounded-3xl bg-black/60 backdrop-blur-[20px]">
         <div className="flex gap-1">
           <button onClick={() => router.push("/notifications")} className="p-2 rounded-full hover:bg-white/10 transition">
             <Image src={notificationIcon} alt="Notifications" width={22} height={22} />
