@@ -24,7 +24,7 @@ export default function DashboardFooter() {
   return (
     <div className="fixed bottom-0 left-0 w-full flex justify-center z-50">
       <div className="w-full max-w-[340px] px-4 pb-4">
-        <div className={`flex justify-between items-center px-3 py-3 ${baseStyle}`}>
+        <div className={`flex justify-between gap-1 p-1 items-center ${baseStyle}`}>
           {navItems.map((item) => {
             const isActive =
               pathname === item.path ||
@@ -36,7 +36,7 @@ export default function DashboardFooter() {
               <button
                 key={item.name}
                 onClick={() => router.push(item.path)}
-                className="relative flex flex-col items-center justify-center flex-1 rounded-full hover:bg-white/20 transition"
+                className="relative flex flex-col items-center justify-center flex-1 rounded-3xl hover:bg-white/20 transition"
               >
                 <div
                   className={`
