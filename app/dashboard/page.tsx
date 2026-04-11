@@ -11,8 +11,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
-import gymivoIcon from "@/public/svg/header/gymivo.png";
-import Footer from "@/components/Footer";
+import gymivoIcon from "@/public/Logo package/29.png";
+
 
 
 export default function DashboardPage() {
@@ -22,13 +22,13 @@ export default function DashboardPage() {
   return (
     <div className="relative bg-gray-50 top-0 left-0 w-full z-50 m-auto min-h-screen max-w-[450px]">
 
-      <header className="w-full max-w-[340px] mx-auto mt-3 border border-white/25 shadow-xs shadow-white h-16 z-50 flex items-center justify-between px-3 rounded-3xl bg-black/60 backdrop-blur-[20px]">
+      <header className="w-full h-16 flex items-center justify-between px-3">
         <div className="flex gap-1">
-          <button onClick={() => router.push("/notifications")} className="p-2 rounded-full hover:bg-white/10 transition">
-            <NotificationsActiveIcon style={{ color: "white", fontSize: 27 }} />
+          <button onClick={() => router.push("/notifications")} className="p-2 rounded-full hover:bg-black/10 transition">
+            <NotificationsActiveIcon style={{ color: "black", fontSize: 27 }} />
           </button>
-          <button onClick={() => router.push("/schedule")} className="p-2 rounded-full hover:bg-white/10 transition">
-            <CalendarMonthIcon style={{ color: "white", fontSize: 27 }} />
+          <button onClick={() => router.push("/schedule")} className="p-2 rounded-full hover:bg-black/10 transition">
+            <CalendarMonthIcon style={{ color: "black", fontSize: 27 }} />
           </button>
         </div>
 
@@ -39,8 +39,8 @@ export default function DashboardPage() {
         </div>
 
         <div className="flex items-center">
-          <button onClick={() => router.push("/profile")} className="p-2 rounded-full hover:bg-white/10 transition">
-            <AccountCircleIcon style={{ color: "white", fontSize: 30 }} />
+          <button onClick={() => router.push("/profile")} className="p-2 rounded-full hover:bg-black/10 transition">
+            <AccountCircleIcon style={{ color: "black", fontSize: 30 }} />
           </button>
         </div>
       </header>
@@ -125,7 +125,6 @@ export default function DashboardPage() {
       </main>
 
       <DashboardFooter />
-      <Footer />
     </div>
   );
 }
