@@ -32,11 +32,11 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const baseButtonClasses =
-    "p-2 rounded-full hover:bg-white/10 transition flex items-center justify-center";
+    "p-2 rounded-3xl hover:bg-white/10 transition flex items-center justify-center";
 
   return (
     <>
-      <header className="w-[340px] h-16 z-50 fixed flex items-center p-3 border border-white/25 shadow-xs shadow-white rounded-3xl bg-black/60 backdrop-blur-[20px] top-[10px] left-1/2 -translate-x-1/2">
+      <header className="w-[340px] h-14 z-50 fixed flex items-center p-3 border border-white/25 shadow-xs shadow-white rounded-3xl bg-black/60 backdrop-blur-[20px] top-[10px] left-1/2 -translate-x-1/2">
         <div className="flex w-full justify-between items-center">
 
           <div className="flex gap-1">
@@ -76,7 +76,7 @@ export default function Header() {
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="h-full bg-[#6E6E6ECC] backdrop-blur-[20px] rounded-l-[21px] px-4 py-2 flex flex-col gap-[10px] text-white">
+        <div className="h-full bg-[#6E6E6ECC] backdrop-blur-[20px] rounded-l-3xl px-4 py-2 flex flex-col gap-[10px] text-white">
           <div className="flex items-center justify-between m-4">
             <Image src={greenIcon} alt="logo" width={32} height={32} />
             <button onClick={() => setMenuOpen(false)}>
@@ -93,7 +93,7 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMenuOpen(false)}
-                  className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/10 transition"
+                  className="flex items-center gap-3 px-3 py-2 rounded-3xl hover:bg-white/10 transition"
                 >
                   <Icon className="text-white" fontSize="medium" />
                   <span className="font-bold text-lg">
