@@ -19,7 +19,7 @@ export default function DashboardFooter() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const baseStyle = "bg-black/60 backdrop-blur-[20px] border border-white/10 rounded-3xl border border-white/25 shadow-xs shadow-white";
+  const baseStyle = "bg-black/60 backdrop-blur-[20px] border border-white/10 rounded-2xl border border-white/25 shadow-xs shadow-white";
 
   return (
     <div className="fixed bottom-0 left-0 w-full flex justify-center z-50">
@@ -36,11 +36,11 @@ export default function DashboardFooter() {
               <button
                 key={item.name}
                 onClick={() => router.push(item.path)}
-                className="relative flex flex-col items-center justify-center flex-1 rounded-3xl hover:bg-white/20 transition"
+                className="relative flex flex-col items-center justify-center flex-1 rounded-2xl hover:bg-white/20 transition"
               >
                 <div
                   className={`
-                    absolute inset-0 rounded-3xl
+                    absolute inset-0 rounded-2xl
                     transition-all duration-300
                     ${isActive
                       ? "opacity-60 scale-100 bg-gradient-to-r from-primary-300/40 via-primary-300/30 to-primary-300/40"
@@ -51,7 +51,7 @@ export default function DashboardFooter() {
 
                 <div
                   className={`
-                    relative z-10 p-2 rounded-3xl
+                    relative z-10 p-2 rounded-2xl
                     transition-all duration-300
                     ${isActive ? "text-primary-300 scale-110" : "text-white/60"}
                   `}
