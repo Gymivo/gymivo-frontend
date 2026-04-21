@@ -32,15 +32,13 @@ export default function DashboardPage() {
           </button>
         </div>
 
-        <div className="absolute left-1/2 -translate-x-1/2">
-          <Link href="/">
-            <Image src={gymivoIcon} alt="gymivo" width={100} height={24} className="cursor-pointer" />
-          </Link>
-        </div>
-
-        <div className="flex items-center">
-          <button onClick={() => router.push("/profile")} className="p-2 rounded-full hover:bg-black/10 transition">
-            <AccountCircleIcon style={{ color: "black", fontSize: 30 }} />
+        <div className="flex end gap-1">
+          <div className="flex flex-col  items-center justify-center text-neutral-darker">
+            <h2 className="font-bold text-sm">محمد علی </h2>
+            <span className="font-extralight text-xs">وقت بخیر ورزشکار!</span>
+          </div>
+          <button onClick={() => router.push("/profile")} className="rounded-full hover:bg-black/10 transition">
+            <AccountCircleIcon style={{ color: "black", fontSize: 55 }} />
           </button>
         </div>
       </header>
