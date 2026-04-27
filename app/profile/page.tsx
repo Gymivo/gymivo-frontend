@@ -11,6 +11,7 @@ import GavelIcon from "@mui/icons-material/Gavel";
 import InfoIcon from "@mui/icons-material/Info";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 
 export default function ProfilePage() {
@@ -22,10 +23,21 @@ export default function ProfilePage() {
         relative
         bg-gradient-to-b from-neutral-200 to-gray-100
         top-0 left-0 w-full z-50 m-auto
-        min-h-screen max-w-[400px]
+        min-h-screen max-w-[450px]
       "
     >
-      <main className="pt-6 pb-24 px-5 flex flex-col gap-3">
+      <main className="pb-20 p-5 flex flex-col gap-3">
+
+        <div className="w-full flex justify-end">
+          <div className="rounded-full hover:bg-black/10">
+            <button
+              onClick={() => router.push("/dashboard")}
+              className="text-black p-2 flex items-center justify-center"
+            >
+              <ArrowBackIcon fontSize="medium" />
+            </button>
+          </div>
+        </div>
         <div className="w-full text-black p-5 text-lg flex items-center gap-1 flex-col">
           <div className="w-24 h-24 rounded-full overflow-hidden">
             <Image
