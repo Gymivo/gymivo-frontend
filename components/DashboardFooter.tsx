@@ -2,15 +2,15 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import HomeIcon from "@mui/icons-material/Home";
-import SearchIcon from "@mui/icons-material/Search";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import SportsIcon from '@mui/icons-material/Sports';
 import InsightsIcon from "@mui/icons-material/Insights";
 import PersonIcon from "@mui/icons-material/Person";
 
 const navItems = [
   { name: "home", icon: HomeIcon, path: "/dashboard" },
-  { name: "search", icon: SearchIcon, path: "/search" },
   { name: "plans", icon: FitnessCenterIcon, path: "/plans" },
+  { name: "coach", icon: SportsIcon, path: "/coach" },
   { name: "analyse", icon: InsightsIcon, path: "/analyse" },
   { name: "profile", icon: PersonIcon, path: "/profile" },
 ];
@@ -36,11 +36,11 @@ export default function DashboardFooter() {
               <button
                 key={item.name}
                 onClick={() => router.push(item.path)}
-                className="relative flex flex-col items-center justify-center flex-1 rounded-2xl hover:bg-white/20 transition"
+                className="relative flex flex-col items-center justify-center flex-1 rounded-xl hover:bg-white/20 transition"
               >
                 <div
                   className={`
-                    absolute inset-0 rounded-2xl
+                    absolute inset-0 rounded-xl
                     transition-all duration-300
                     ${isActive
                       ? "opacity-60 scale-100 bg-gradient-to-r from-primary-300/40 via-primary-300/30 to-primary-300/40"
@@ -51,7 +51,7 @@ export default function DashboardFooter() {
 
                 <div
                   className={`
-                    relative z-10 p-2 rounded-2xl
+                    relative z-10 p-2 rounded-xl
                     transition-all duration-300
                     ${isActive ? "text-primary-300 scale-110" : "text-white/60"}
                   `}
