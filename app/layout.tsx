@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+// @ts-ignore: allow CSS imports without type declarations
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,9 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <body className="font-vazirmatn antialiased">
-        {children}
-      </body>
+      <body className="font-vazirmatn antialiased">{children}</body>
     </html>
   );
 }

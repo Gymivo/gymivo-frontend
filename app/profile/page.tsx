@@ -11,8 +11,7 @@ import GavelIcon from "@mui/icons-material/Gavel";
 import InfoIcon from "@mui/icons-material/Info";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -27,7 +26,6 @@ export default function ProfilePage() {
       "
     >
       <main className="pb-20 p-5 flex flex-col gap-3">
-
         <div className="w-full flex justify-end">
           <div className="rounded-full hover:bg-black/10">
             <button
@@ -126,7 +124,7 @@ export default function ProfilePage() {
                   group
                   w-full flex items-center justify-between
                   px-3 py-3
-                  rounded-2xl
+                  rounded-full
                   bg-white 
                   transition-all duration-200
                   hover:bg-neutral-50
@@ -134,13 +132,7 @@ export default function ProfilePage() {
                 "
               >
                 <div className="flex items-center gap-3">
-                  <div
-                    className="
-                    p-2
-                    transition
-                    border h-10 w-10 rounded-xl
-                  "
-                  >
+                  <div className="p-1">
                     <Icon className="text-neutral-700" fontSize="small" />
                   </div>
 

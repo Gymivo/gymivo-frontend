@@ -7,7 +7,7 @@ import WelcomeArt from "@/public/welcome/welcome.svg";
 
 export default function WelcomePage() {
   return (
-    <div className="relative h-dvh max-w-[500px] mx-auto overflow-hidden bg-white flex flex-col">
+    <div className="relative h-dvh max-w-[450px] mx-auto overflow-hidden bg-white flex flex-col">
       
       <div
         className="pointer-events-none absolute top-0 left-0 w-full h-[40%]"
