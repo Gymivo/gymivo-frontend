@@ -4,9 +4,12 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import DashboardFooter from "@/components/DashboardFooter";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import SearchIcon from "@mui/icons-material/Search";
-import { TextField, InputAdornment } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import TelegramIcon from "@mui/icons-material/Telegram";
+import Image from "next/image";
+import Faq from "@/public/svg/profile/faq/Frame 203.svg";
 
 const faqData = [
   {
@@ -49,95 +52,97 @@ export default function FAQPage() {
 
   return (
     <div className="relative bg-gradient-to-b from-neutral-200 to-gray-100 top-0 left-0 w-full z-50 m-auto min-h-screen max-w-[450px]">
-      {/* Header */}
-      <header className="flex items-center justify-between px-4 py-4">
+      <header className="flex items-center justify-end px-4 py-4">
+        <h1 className="text-base font-bold text-neutral-darker">
+          سوالات متداول
+        </h1>
         <button
           onClick={() => router.back()}
           className="p-2 rounded-full hover:bg-black/10 transition"
         >
           <ArrowBackIcon style={{ color: "black", fontSize: 24 }} />
         </button>
-
-        <h1 className="text-lg font-bold text-neutral-darker">
-          سوالات متداول
-        </h1>
-
-        <div className="w-10" />
       </header>
 
-      <main className="px-4 pb-24">
-        {/* Search (disabled — not supported yet) */}
-        <div className="mb-6 opacity-50 pointer-events-none">
-          <TextField
-            fullWidth
-            disabled
-            placeholder="جستجو در سوالات..."
-            sx={{
-              direction: "rtl",
-              "& .MuiOutlinedInput-root": {
-                flexDirection: "row-reverse",
-                borderRadius: "14px",
-                backgroundColor: "white",
-              },
-              "& .MuiInputBase-input": {
-                textAlign: "right",
-                px: 1.5,
-                py: 1.2,
-              },
-            }}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <SearchIcon sx={{ fontSize: 22, color: "#949494" }} />
-                </InputAdornment>
-              ),
-            }}
+      <main className="px-4 pb-24 flex flex-col items-center">
+        <div className="w-full flex justify-center mb-4">
+          <Image
+            src={Faq}
+            alt="FAQ Illustration"
+            width={350}
+            height={160}
+            className="object-contain"
+            priority
           />
-          <p className="text-[10px] text-neutral-gray text-center mt-2">
-            فعلاً زبان‌های زیادی رو ساپورت نمی‌کنیم پس سرچ هم نداریم
-          </p>
         </div>
 
-        {/* FAQ List */}
-        <div className="flex flex-col gap-3">
+        <div className="w-full flex flex-col gap-4">
           {faqData.map((item, index) => {
             const isOpen = openIndex === index;
 
             return (
-              <div
-                key={index}
-                className="bg-white rounded-2xl border border-neutral-ligher overflow-hidden transition-all duration-200"
-              >
+              <div key={index} className="w-full flex flex-col">
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex items-center justify-between px-5 py-4 text-right hover:bg-neutral-50/50 transition"
+                  className="w-full flex items-center justify-between px-5 py-4 bg-white rounded-2xl text-right"
                 >
-                  <span className="text-sm font-bold text-neutral-darker leading-6 flex-1 ml-3">
-                    {item.q}
-                  </span>
-                  <ExpandMoreIcon
-                    style={{
-                      fontSize: 20,
-                      color: "#6E6E6E",
-                      transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                      transition: "transform 0.25s ease",
-                    }}
-                  />
+                  <div className="flex items-center gap-3 flex-1">
+                    <ChatBubbleOutlineIcon
+                      className="text-neutral-gray flex-shrink-0"
+                      fontSize="small"
+                    />
+                    <span className="text-sm font-bold text-neutral-darker leading-6">
+                      {item.q}
+                    </span>
+                  </div>
+
+                  <div
+                    className={`
+                      w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-200
+                      ${isOpen ? "bg-[#FDD0D2]" : "bg-[#DEF7EA]"}
+                    `}
+                  >
+                    {isOpen ? (
+                      <RemoveIcon
+                        className="text-neutral-darker"
+                        fontSize="small"
+                      />
+                    ) : (
+                      <AddIcon
+                        className="text-neutral-darker"
+                        fontSize="small"
+                      />
+                    )}
+                  </div>
                 </button>
 
                 <div
                   className={`
                     overflow-hidden transition-all duration-300 ease-in-out
-                    ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}
+                    ${isOpen ? "max-h-96 opacity-100 mt-1" : "max-h-0 opacity-0 mt-0"}
                   `}
                 >
-                  <p className="px-5 pb-4 pt-1 text-sm text-neutral-dark leading-7 border-t border-neutral-ligher/50">
+                  <div className="bg-white rounded-2xl px-10 py-3 text-sm text-neutral-dark leading-7">
                     {item.a}
-                  </p>
+                  </div>
                 </div>
               </div>
             );
           })}
+        </div>
+
+        <div className="w-full bg-[#EAF5FF] rounded-3xl p-5 mt-5 flex flex-col items-center justify-center text-center gap-3">
+          <p className="text-base font-bold text-neutral-darker">
+            پاسخ سوالتون رو پیدا نکردید ؟
+          </p>
+
+          <button
+            onClick={() => router.push("/contact")}
+            className="bg-[#2F98F5] text-white font-semibold text-sm px-5 py-2.5 rounded-xl flex items-center justify-center gap-2 hover:bg-[#2582d6] active:scale-95 transition"
+          >
+            <TelegramIcon fontSize="small" />
+            <span>ارتباط با ما</span>
+          </button>
         </div>
       </main>
 

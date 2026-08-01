@@ -17,7 +17,6 @@ import PoolIcon from "@mui/icons-material/Pool";
 import SportsMartialArtsIcon from "@mui/icons-material/SportsMartialArts";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-
 export default function DashboardPage() {
   const router = useRouter();
   const progress = 35;
@@ -50,7 +49,6 @@ export default function DashboardPage() {
       tag: "پیشرفته",
     },
   ];
-
 
   return (
     <div
@@ -259,7 +257,8 @@ export default function DashboardPage() {
                 key={idx}
                 className="flex flex-col items-center gap-2 group flex-shrink-0"
               >
-                <div className={`
+                <div
+                  className={`
                   w-16 h-16 rounded-2xl flex items-center justify-center transition-all
                   ${idx === 0 ? "bg-primary-300 text-black" : "bg-neutral-dark text-primary-300"}
                   group-hover:scale-105 active:scale-95
