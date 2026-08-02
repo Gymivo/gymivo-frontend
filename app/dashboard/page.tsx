@@ -53,10 +53,7 @@ export default function DashboardPage() {
   return (
     <div
       className="
-        relative
-        bg-gradient-to-b from-neutral-200 to-gray-100
-        top-0 left-0 w-full z-50 m-auto
-        min-h-screen max-w-[450px]
+
       "
     >
       <header className="w-full h-16 flex items-center justify-between px-3">
@@ -76,7 +73,7 @@ export default function DashboardPage() {
         </div>
 
         <Link
-          href="/profile"
+          href="/dashboard/profile"
           className="flex gap-1 rounded-full hover:bg-neutral-darker/10 transition p-1"
         >
           <div className="flex pr-2 flex-col items-center justify-center text-neutral-darker">
@@ -87,7 +84,7 @@ export default function DashboardPage() {
         </Link>
       </header>
 
-      <main className="flex flex-col items-center gap-5 p-5">
+      <main className="flex flex-col items-center gap-5 p-5 pb-20">
         <div
           className="relative w-full h-64 rounded-2xl overflow-hidden group cursor-pointer"
           onClick={() => router.push("/my-program")}
@@ -214,7 +211,7 @@ export default function DashboardPage() {
 
               <div className="flex items-center justify-end">
                 <button
-                  onClick={() => router.push("/profile")}
+                  onClick={() => router.push("/dashboard/profile")}
                   className="flex items-center gap-1 text-black text-xs font-bold group/btn transition-all px-2 py-1 rounded-lg hover:bg-black/10"
                 >
                   <span>تکمیل کن</span>

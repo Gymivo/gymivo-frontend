@@ -24,14 +24,7 @@ export default function ProfilePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div
-      className="
-        relative
-        bg-gradient-to-b from-neutral-200 to-gray-100
-        top-0 left-0 w-full z-50 m-auto
-        min-h-screen max-w-[450px]
-      "
-    >
+    <div>
       <main className="pb-20 p-5 flex flex-col gap-4">
         <div className="relative w-full flex justify-end">
           <div className="rounded-full hover:bg-black/10">
@@ -116,7 +109,7 @@ export default function ProfilePage() {
           {[
             {
               label: "ویرایش پروفایل",
-              path: "/profile/edit",
+              path: "/dashboard/profile/edit",
               icon: EditIcon,
               description: "شماره همراه، قد، سن",
             },

@@ -48,7 +48,6 @@ export default function EditProfilePage() {
       return;
     }
 
-    // TODO: API call to save profile
     router.back();
   };
 
@@ -61,8 +60,7 @@ export default function EditProfilePage() {
       : null;
 
   return (
-    <div className="relative bg-gradient-to-b from-neutral-200 to-gray-100 top-0 left-0 w-full z-50 m-auto min-h-screen max-w-[450px]">
-      {/* Header */}
+    <div>
       <header className="flex items-center justify-between px-4 py-3">
         <button
           onClick={() => router.back()}
@@ -84,7 +82,6 @@ export default function EditProfilePage() {
       </header>
 
       <main className="px-5 pb-24">
-        {/* Avatar */}
         <div className="flex justify-center mt-6 mb-8">
           <div className="relative">
             <div className="w-24 h-24 rounded-full overflow-hidden">
@@ -102,9 +99,7 @@ export default function EditProfilePage() {
           </div>
         </div>
 
-        {/* Form */}
         <div className="flex flex-col gap-4">
-          {/* Username */}
           <div>
             <TextField
               fullWidth
@@ -132,16 +127,13 @@ export default function EditProfilePage() {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <EditIcon
-                      sx={{ fontSize: 18, color: "#949494" }}
-                    />
+                    <EditIcon sx={{ fontSize: 18, color: "#949494" }} />
                   </InputAdornment>
                 ),
               }}
             />
           </div>
 
-          {/* Phone */}
           <div>
             <TextField
               fullWidth
@@ -169,16 +161,13 @@ export default function EditProfilePage() {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <EditIcon
-                      sx={{ fontSize: 18, color: "#949494" }}
-                    />
+                    <EditIcon sx={{ fontSize: 18, color: "#949494" }} />
                   </InputAdornment>
                 ),
               }}
             />
           </div>
 
-          {/* Weight */}
           <div>
             <TextField
               fullWidth
@@ -216,7 +205,6 @@ export default function EditProfilePage() {
             />
           </div>
 
-          {/* Height */}
           <div>
             <TextField
               fullWidth
@@ -254,7 +242,6 @@ export default function EditProfilePage() {
             />
           </div>
 
-          {/* Gender */}
           <div>
             <TextField
               fullWidth
@@ -281,7 +268,6 @@ export default function EditProfilePage() {
             </TextField>
           </div>
 
-          {/* Birth Date */}
           <div>
             <TextField
               fullWidth
@@ -304,9 +290,7 @@ export default function EditProfilePage() {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <EditIcon
-                      sx={{ fontSize: 18, color: "#949494" }}
-                    />
+                    <EditIcon sx={{ fontSize: 18, color: "#949494" }} />
                   </InputAdornment>
                 ),
               }}
@@ -314,7 +298,6 @@ export default function EditProfilePage() {
           </div>
         </div>
 
-        {/* BMI Display */}
         {bmi && (
           <div className="mt-6 p-4 bg-white rounded-2xl border border-neutral-ligher">
             <div className="flex items-center justify-between">

@@ -1,11 +1,9 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Footer from "@/components/DashboardFooter";
 import About from "@/components/about/page";
 
 export default function AboutPage() {
   return (
     <div>
-      <Header />
       <About />
       <Footer />
     </div>

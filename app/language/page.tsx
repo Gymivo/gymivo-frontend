@@ -24,8 +24,7 @@ export default function LanguagePage() {
   const [selected, setSelected] = useState("fa");
 
   return (
-    <div className="relative bg-gradient-to-b from-neutral-200 to-gray-100 top-0 left-0 w-full z-50 m-auto min-h-screen max-w-[450px]">
-      {/* Header */}
+    <div>
       <header className="flex items-center justify-between px-4 py-4">
         <button
           onClick={() => router.back()}
@@ -36,11 +35,9 @@ export default function LanguagePage() {
 
         <h1 className="text-lg font-bold text-neutral-darker">زبان</h1>
 
-        {/* Spacer for centering */}
         <div className="w-10" />
       </header>
 
-      {/* Language List */}
       <main className="px-4 pb-24">
         <div className="flex flex-col gap-2 mt-4">
           {languages.map((lang) => {
@@ -94,7 +91,6 @@ export default function LanguagePage() {
           })}
         </div>
 
-        {/* Note */}
         <div className="mt-8 px-2">
           <p className="text-sm text-neutral-dark leading-6 text-center">
             فعلاً زبان‌های زیادی رو ساپورت نمی‌کنیم.

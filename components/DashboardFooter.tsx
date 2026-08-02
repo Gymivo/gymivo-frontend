@@ -12,7 +12,7 @@ const navItems = [
   { name: "plans", icon: FitnessCenterIcon, path: "/plans" },
   { name: "coach", icon: SportsIcon, path: "/coach" },
   { name: "analyse", icon: AssessmentIcon, path: "/analyse" },
-  { name: "profile", icon: SettingsIcon, path: "/profile" },
+  { name: "profile", icon: SettingsIcon, path: "/dashboard/profile" },
 ];
 
 export default function DashboardFooter() {
@@ -24,7 +24,7 @@ export default function DashboardFooter() {
 
   return (
     <div className="fixed bottom-0 left-0 w-full flex justify-center z-50">
-      <div className="w-full max-w-[350px] p-3">
+      <div className="w-full max-w-[330px] p-3">
         <div
           className={`flex justify-between gap-1 p-1 items-center ${baseStyle}`}
         >

@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import Carousel from "@/components/Carousel";
-
+import Link from "next/link";
 import RightCycle from "@/public/landing/cycle/right.png";
 import LandingBg from "@/public/backgroud/landing.jpg";
 import MiddleCycle from "@/public/landing/cycle/middle.png";
@@ -16,23 +16,20 @@ import Workout1Icon from "@/public/landing/motivate/workout1.jpg";
 import Workout2Icon from "@/public/landing/motivate/workout2.jpg";
 import Workout3Icon from "@/public/landing/motivate/workout3.jpg";
 import Workout4Icon from "@/public/landing/motivate/workout4.jpg";
-import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
-import CloudDownloadOutlinedIcon from '@mui/icons-material/CloudDownloadOutlined';
+import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
+import CloudDownloadOutlinedIcon from "@mui/icons-material/CloudDownloadOutlined";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import Phone1 from "@/public/landing/svg/phone1.svg";
 import Phone2 from "@/public/landing/svg/phone2.svg";
 import Step1Image from "@/public/landing/how/step1.svg";
 import Step2Image from "@/public/landing/how/step2.svg";
 import Step3Image from "@/public/landing/how/step3.svg";
-import PersonSearchIcon from '@mui/icons-material/PersonSearch';
-import ContentPasteIcon from '@mui/icons-material/ContentPaste';
-import FlashOnIcon from '@mui/icons-material/FlashOn';
+import PersonSearchIcon from "@mui/icons-material/PersonSearch";
+import ContentPasteIcon from "@mui/icons-material/ContentPaste";
+import FlashOnIcon from "@mui/icons-material/FlashOn";
 import point1 from "@/public/landing/how/point1.svg";
 import point2 from "@/public/landing/how/point2.svg";
 import point3 from "@/public/landing/how/point3.svg";
-
-
-
 
 export default function Home() {
   const images = [
@@ -48,10 +45,10 @@ export default function Home() {
   ];
 
   return (
-    <div className="m-auto bg-gray-50 min-h-screen max-w-[450px] relative">
+    <div>
       <Header />
 
-      <main className="w-full mx-auto">
+      <main className="w-full bg-white mx-auto">
         <div className="relative min-h-screen w-full overflow-hidden">
           <Image
             src={LandingBg}
@@ -64,7 +61,7 @@ export default function Home() {
 
           <div className="absolute inset-0 bg-black/20 z-[1]" />
 
-          <div className="relative z-[2] pt-36 w-full mx-auto">
+          <div className="relative z-[2] mt-36 w-full mx-auto">
             <div className="flex flex-col text-center items-center">
               <p className="font-bold text-[40px]">با ما مربیت</p>
               <p className="text-primary-300 font-bold text-[40px]">همیشه</p>
@@ -76,11 +73,11 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="mt-56 mb-32 flex items-center justify-center">
+            <Link href="/dashboard" className="my-16 flex items-center justify-center">
               <Button variant="primary" size="cta" arrow="left">
                 دریافت برنامه
               </Button>
-            </div>
+            </Link>
           </div>
         </div>
 
@@ -125,7 +122,8 @@ export default function Home() {
               className="w-full h-full object-cover"
             />
 
-            <div className="
+            <div
+              className="
                 absolute
                 left-1/2 -translate-x-1/2
                 bottom-1
@@ -135,18 +133,23 @@ export default function Home() {
                 rounded-[8px]
                 flex flex-col justify-center
                 text-right
-              ">
-              <p className="
+              "
+            >
+              <p
+                className="
                 font-bold text-[14px]
                 text-neutral-darker rounded px-1
-              ">
+              "
+              >
                 مربیت رو پیدا کن
               </p>
 
-              <p className="
+              <p
+                className="
                 font-light text-[12px] mt-1
                 text-neutral-darker rounded px-1
-              ">
+              "
+              >
                 با سیستم جستجوی قوی مربی حرفه ایی خودت رو انتخاب کن
               </p>
             </div>
@@ -159,7 +162,8 @@ export default function Home() {
               className="w-full h-full object-cover"
             />
 
-            <div className="
+            <div
+              className="
                 absolute
                 left-1/2 -translate-x-1/2
                 bottom-1
@@ -169,18 +173,23 @@ export default function Home() {
                 rounded-[8px]
                 flex flex-col justify-center
                 text-right
-              ">
-              <p className="
+              "
+            >
+              <p
+                className="
                 font-bold text-[14px]
                 text-neutral-darker rounded px-1
-              ">
+              "
+              >
                 برنامت تو جیبته
               </p>
 
-              <p className="
+              <p
+                className="
                 font-light text-[12px] mt-1
                 text-neutral-darker rounded px-1
-              ">
+              "
+              >
                 در سریع ترین حالت ممکن برنامه تمرینیت رو از مربیت بگیر
               </p>
             </div>
@@ -213,7 +222,8 @@ export default function Home() {
               className="w-full h-full object-cover"
             />
 
-            <div className="
+            <div
+              className="
                 absolute
                 left-1/2 -translate-x-1/2
                 bottom-1
@@ -223,18 +233,23 @@ export default function Home() {
                 rounded-[8px]
                 flex flex-col justify-center
                 text-right
-              ">
-              <p className="
+              "
+            >
+              <p
+                className="
                 font-bold text-[14px]
                 text-neutral-darker rounded px-1
-              ">
+              "
+              >
                 مربی خودت باش
               </p>
 
-              <p className="
+              <p
+                className="
                 font-light text-[12px] mt-1
                 text-neutral-darker rounded px-1
-              ">
+              "
+              >
                 مربی خودت باش
               </p>
             </div>
@@ -247,7 +262,8 @@ export default function Home() {
               className="w-full h-full object-cover"
             />
 
-            <div className="
+            <div
+              className="
                 absolute
                 left-1/2 -translate-x-1/2
                 bottom-1
@@ -257,18 +273,23 @@ export default function Home() {
                 rounded-[8px]
                 flex flex-col justify-center
                 text-right
-              ">
-              <p className="
+              "
+            >
+              <p
+                className="
                 font-bold text-[14px]
                 text-neutral-darker rounded px-1
-              ">
-                شرکت در چالش ها 
+              "
+              >
+                شرکت در چالش ها
               </p>
 
-              <p className="
+              <p
+                className="
                 font-light text-[12px] mt-1
                 text-neutral-darker rounded px-1
-              ">
+              "
+              >
                 در چالش‌های گروهی شرکت کن و خودت رو محک بزن
               </p>
             </div>
@@ -299,7 +320,8 @@ export default function Home() {
             </h2>
 
             <p className="mt-4 text-lg text-neutral-darker leading-6">
-              قبل از هرچیزی نیاز به یه مربی داری تا مطمئن بشی توی مسیر درستی قرار گرفتی
+              قبل از هرچیزی نیاز به یه مربی داری تا مطمئن بشی توی مسیر درستی
+              قرار گرفتی
             </p>
           </div>
 
@@ -309,12 +331,15 @@ export default function Home() {
                 <Image
                   src={point1}
                   alt="user search"
-                  width={110}
-                  height={110}
+                  width={100}
+                  height={100}
                 />
               </div>
               <div className="flex gap-2 items-center justify-center">
-                <PersonSearchIcon style={{ fontSize: 26 }} className="text-black"/>
+                <PersonSearchIcon
+                  style={{ fontSize: 26 }}
+                  className="text-black"
+                />
                 <h3 className="text-lg font-bold text-neutral-darker">
                   مربیت رو انتخاب کن
                 </h3>
@@ -329,32 +354,31 @@ export default function Home() {
                   className="-ml-12 -mt-8"
                   src={Step1Image}
                   alt="choose coach"
-                  width={300}
-                  height={300}
+                  width={250}
+                  height={250}
                 />
               </div>
             </div>
 
             <div className="flex flex-col items-center gap-4">
               <div className="flex gap-2 items-start self-start justify-start">
-                <ContentPasteIcon style={{ fontSize: 26 }} className="text-black"/>
+                <ContentPasteIcon
+                  style={{ fontSize: 26 }}
+                  className="text-black"
+                />
                 <h3 className="text-lg font-bold text-neutral-darker">
                   برنامت رو سفارش بده
                 </h3>
               </div>
 
-              <div className="absolute -mt-28 ml-4 md:ml-20 flex items-end justify-end self-end">
-                <Image
-                  src={point2}
-                  alt="user search"
-                  width={85}
-                  height={85}
-                />
+              <div className="absolute -mt-24 ml-4 flex items-end justify-end self-end">
+                <Image src={point2} alt="user search" width={80} height={80} />
               </div>
 
               <div className="self-end mt-5 bg-primary-200 flex text-neutral-darker px-5 py-4 rounded-2xl max-w-[260px] text-right">
                 <p className="text-sm leading-7 flex items-center justify-center">
-                  بعد از پیدا کردن مربیت و تکمیل پروفایلت میتونی برنامت رو سفارش بدی
+                  بعد از پیدا کردن مربیت و تکمیل پروفایلت میتونی برنامت رو سفارش
+                  بدی
                 </p>
 
                 <Image
@@ -368,17 +392,12 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col items-center gap-4">
-              <div className="absolute -mt-32 md:-mt-36 mr-5 md:mr-14 flex items-start justify-start self-start">
-                <Image
-                  src={point3}
-                  alt="user search"
-                  width={55}
-                  height={55}
-                />
+              <div className="absolute -mt-32 mr-5 flex items-start justify-start self-start">
+                <Image src={point3} alt="user search" width={50} height={50} />
               </div>
 
               <div className="flex gap-2 items-center self-center justify-center">
-                <FlashOnIcon style={{ fontSize: 26 }} className="text-black"/>
+                <FlashOnIcon style={{ fontSize: 26 }} className="text-black" />
                 <h3 className="text-lg font-bold text-neutral-darker">
                   برنامت تو جیبته!
                 </h3>
@@ -386,7 +405,8 @@ export default function Home() {
 
               <div className="self-center mt-5 bg-primary-200 flex text-neutral-darker px-5 py-4 rounded-2xl max-w-[260px] text-right">
                 <p className="text-sm leading-7 flex items-center justify-center">
-                  مربیت که برنامت رو آماده کرد بلافاصله با پیامک لینکش رو برات میفرستیم
+                  مربیت که برنامت رو آماده کرد بلافاصله با پیامک لینکش رو برات
+                  میفرستیم
                 </p>
 
                 <Image
@@ -405,10 +425,12 @@ export default function Home() {
           <div className="space-y-8">
             <div className="text-center space-y-4">
               <h2 className="text-2xl font-bold flex">
-                <span className="text-primary-300">مربی‌گری</span>راحت‌تر از همیشه
+                <span className="text-primary-300">مربی‌گری</span>راحت‌تر از
+                همیشه
               </h2>
               <p className="flex text-right">
-                برنامه‌هات رو هوشمند مدیریت کن، شاگردهای بیشتری جذب کن و تمام فرآیند مربی‌گری رو خیلی راحت فقط با گوشی انجام بده
+                برنامه‌هات رو هوشمند مدیریت کن، شاگردهای بیشتری جذب کن و تمام
+                فرآیند مربی‌گری رو خیلی راحت فقط با گوشی انجام بده
               </p>
             </div>
 
@@ -416,12 +438,14 @@ export default function Home() {
               <div className="flex-1 space-y-2">
                 <h3 className="text-lg font-bold">مدیریت راحت شاگردان</h3>
                 <p className="text-sm">
-                  تمام اطلاعات شاگرد، برنامه‌ها، پیام‌ها، تمرین‌ها و گزارش پیشرفت‌ها یکجا و مرتب در اختیارته. بدون نیاز به پیامرسان، دفترچه یا چندتا فایل پراکنده.
+                  تمام اطلاعات شاگرد، برنامه‌ها، پیام‌ها، تمرین‌ها و گزارش
+                  پیشرفت‌ها یکجا و مرتب در اختیارته. بدون نیاز به پیامرسان،
+                  دفترچه یا چندتا فایل پراکنده.
                 </p>
               </div>
               <div className="w-32 flex-shrink-0 relative h-40">
                 <div>
-                  <Image alt="phone1" src={Phone1} className="h-48"/>
+                  <Image alt="phone1" src={Phone1} className="h-48" />
                 </div>
               </div>
             </div>
@@ -429,13 +453,16 @@ export default function Home() {
             <div className="flex items-center gap-4 pt-4">
               <div className="w-32 flex-shrink-0 relative h-40">
                 <div>
-                  <Image alt="phone2" src={Phone2} className="h-48"/>
+                  <Image alt="phone2" src={Phone2} className="h-48" />
                 </div>
               </div>
               <div className="flex-1 space-y-2">
                 <h3 className="text-lg font-bold">برنامه حرفه ایی اما راحت</h3>
                 <p className="text-sm">
-                  با سیستم برنامه‌نویسی <span className="text-primary-300">جیمی‌وو</span> می‌تونی خیلی سریع برنامه بسازی، حرکات مختلف رو اضافه کنی، و برای هر شاگرد شخصی‌سازی کنی.
+                  با سیستم برنامه‌نویسی{" "}
+                  <span className="text-primary-300">جیمی‌وو</span> می‌تونی خیلی
+                  سریع برنامه بسازی، حرکات مختلف رو اضافه کنی، و برای هر شاگرد
+                  شخصی‌سازی کنی.
                 </p>
               </div>
             </div>
@@ -451,7 +478,6 @@ export default function Home() {
         </div>
 
         <Footer />
-
       </main>
     </div>
   );
