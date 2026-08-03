@@ -1,18 +1,18 @@
 "use client";
 
 import DashboardFooter from "@/components/DashboardFooter";
-import About from "@/components/about/page";
+import Contact from "@/components/contact/page";
 import { useRouter } from "next/navigation";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-export default function AboutPage() {
+export default function ContactPage() {
   const router = useRouter();
 
   return (
-    <div className="pb-20">
+    <div>
       <header className="sticky top-0 z-50 bg-neutral-200 backdrop-blur-xl flex items-center justify-end px-4 py-4">
         <h1 className="text-base font-bold text-neutral-darker">
-          درباره ما
+          ارتباط با ما
         </h1>
         <button
           onClick={() => router.back()}
@@ -21,7 +21,7 @@ export default function AboutPage() {
           <ArrowBackIcon style={{ color: "black", fontSize: 24 }} />
         </button>
       </header>
-      <About />
+      <Contact />
       <DashboardFooter />
     </div>
   );

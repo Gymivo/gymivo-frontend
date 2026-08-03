@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import DashboardFooter from "@/components/DashboardFooter";
 import FaqPage from "@/components/faq/page";
@@ -8,11 +7,6 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function FAQPage() {
   const router = useRouter();
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
 
   return (
     <div>
