@@ -6,19 +6,42 @@ import Image from "next/image";
 import DashboardFooter from "@/components/DashboardFooter";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import CheckIcon from "@mui/icons-material/Check";
+import CloseIcon from "@mui/icons-material/Close";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 import CakeIcon from "@mui/icons-material/Cake";
+import Male from "@/public/svg/profile/gender/male.svg";
+import Female from "@/public/svg/profile/gender/female.svg";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import MaleIcon from "@mui/icons-material/Male";
 import FemaleIcon from "@mui/icons-material/Female";
 import { TextField } from "@mui/material";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import Picker from "react-mobile-picker";
 
 const weights = Array.from({ length: 300 - 20 + 1 }, (_, i) => 300 - i);
+const heights = Array.from({ length: 250 - 100 + 1 }, (_, i) => 250 - i);
+
+const years = Array.from({ length: 1403 - 1320 + 1 }, (_, i) =>
+  (1403 - i).toString(),
+);
+const months = [
+  "فروردین",
+  "اردیبهشت",
+  "خرداد",
+  "تیر",
+  "مرداد",
+  "شهریور",
+  "مهر",
+  "آبان",
+  "آذر",
+  "دی",
+  "بهمن",
+  "اسفند",
+];
+const days = Array.from({ length: 31 }, (_, i) => (i + 1).toString());
 
 export default function EditProfilePage() {
   const router = useRouter();
@@ -26,10 +49,19 @@ export default function EditProfilePage() {
   const [form, setForm] = useState({
     fullName: "علی رضایی",
     phone: "09123456789",
-    birthDate: "1379/12/25",
+    birthDate: "۱ فروردین ۱۴۰۰",
     username: "alireza",
     gender: "male",
     weight: 75,
+    height: 175,
+  });
+
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+
+  const [pickerValue, setPickerValue] = useState({
+    year: "1400",
+    month: "فروردین",
+    day: "1",
   });
 
   const handleChange = (field: string, value: any) => {
@@ -40,10 +72,23 @@ export default function EditProfilePage() {
     router.back();
   };
 
+  const handleConfirmDate = () => {
+    setForm((prev) => ({
+      ...prev,
+      birthDate: `${pickerValue.day} ${pickerValue.month} ${pickerValue.year}`,
+    }));
+    setIsDatePickerOpen(false);
+  };
+
   const defaultWeightIndex =
     weights.indexOf(form.weight) !== -1
       ? weights.indexOf(form.weight)
       : weights.indexOf(75);
+
+  const defaultHeightIndex =
+    heights.indexOf(form.height) !== -1
+      ? heights.indexOf(form.height)
+      : heights.indexOf(175);
 
   return (
     <div>
@@ -125,7 +170,10 @@ export default function EditProfilePage() {
             />
           </div>
 
-          <div className="flex items-end gap-2">
+          <div
+            className="flex items-end gap-2 cursor-pointer"
+            onClick={() => setIsDatePickerOpen(true)}
+          >
             <CakeIcon
               className="text-neutral-gray shrink-0 mb-2"
               fontSize="medium"
@@ -134,10 +182,10 @@ export default function EditProfilePage() {
               variant="standard"
               fullWidth
               value={form.birthDate}
-              onChange={(e) => handleChange("birthDate", e.target.value)}
               placeholder="تاریخ تولد"
               sx={{
                 direction: "rtl",
+                pointerEvents: "none",
                 "& .MuiInputBase-root": { padding: "8px" },
                 "& .MuiInputBase-input": { textAlign: "right" },
               }}
@@ -206,18 +254,12 @@ export default function EditProfilePage() {
           </div>
         </div>
 
-        <div className="relative border border-neutral-gray rounded-2xl p-4 mt-6">
+        <div className="relative border border-neutral-gray rounded-2xl p-4 pb-2 mt-6">
           <span className="absolute -top-3 right-4 bg-neutral-200 px-2 text-sm font-bold text-neutral-gray">
             وزن (kg)
           </span>
 
-          <div className="absolute top-2 left-1/2 -translate-x-1/2 flex flex-col items-center pointer-events-none z-10">
-            <span className="text-base font-black text-neutral-darker mt-1">
-              {form.weight} <span className="text-xs font-normal">kg</span>
-            </span>
-          </div>
-
-          <div className="mt-8">
+          <div>
             <Swiper
               initialSlide={defaultWeightIndex}
               slidesPerView={23}
@@ -242,7 +284,7 @@ export default function EditProfilePage() {
                       <div
                         className={`rounded-full transition-all ${
                           isSelected
-                            ? "w-1 h-9 bg-primary-400"
+                            ? "w-1 h-10 bg-primary-400"
                             : isMajor
                               ? "w-0.5 h-7 bg-neutral-500"
                               : "w-[1px] h-5 bg-neutral-400"
@@ -271,7 +313,212 @@ export default function EditProfilePage() {
             </Swiper>
           </div>
         </div>
+
+        <div className="bg-white rounded-xl h-[290px] mt-6 p-4 grid grid-cols-3 gap-2 overflow-hidden shadow-xs relative">
+          <div className="relative h-full flex items-center justify-center overflow-hidden">
+            <div className="h-[250px] w-full">
+              <Swiper
+                direction="vertical"
+                initialSlide={defaultHeightIndex}
+                slidesPerView={19}
+                centeredSlides={true}
+                grabCursor={true}
+                onSlideChange={(swiper) => {
+                  const selectedHeight = heights[swiper.activeIndex];
+                  handleChange("height", selectedHeight);
+                }}
+                className="h-full w-full"
+              >
+                {heights.map((h) => {
+                  const isSelected = form.height === h;
+                  const isMajor = h % 5 === 0;
+
+                  return (
+                    <SwiperSlide
+                      key={h}
+                      className="flex items-center justify-start select-none pl-3"
+                    >
+                      <div className="flex items-center gap-2 cursor-pointer">
+                        <div
+                          className={`rounded-full transition-all ${
+                            isSelected
+                              ? "h-1 w-10 bg-primary-400"
+                              : isMajor
+                                ? "h-0.5 w-7 bg-neutral-500"
+                                : "h-[1px] w-5 bg-neutral-400"
+                          }`}
+                        />
+
+                        {isMajor ? (
+                          <span
+                            className={`text-[9px] font-bold transition-all ${
+                              isSelected
+                                ? "text-black scale-110 font-black"
+                                : "text-neutral-400"
+                            }`}
+                          >
+                            {h}
+                          </span>
+                        ) : (
+                          <span className="text-[9px] opacity-0 select-none">
+                            -
+                          </span>
+                        )}
+                      </div>
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center relative h-full min-h-[250px]">
+            <div
+              className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ease-in-out ${
+                form.gender === "female"
+                  ? "opacity-0 scale-90 pointer-events-none"
+                  : "opacity-100 scale-100"
+              }`}
+            >
+              <Image
+                src={Male}
+                alt="Male"
+                width={150}
+                height={260}
+                priority
+                className="object-contain max-h-[270px] w-auto h-auto"
+              />
+            </div>
+
+            <div
+              className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ease-in-out ${
+                form.gender === "female"
+                  ? "opacity-100 scale-100"
+                  : "opacity-0 scale-90 pointer-events-none"
+              }`}
+            >
+              <Image
+                src={Female}
+                alt="Female"
+                width={150}
+                height={260}
+                priority
+                className="object-contain max-h-[270px] w-auto h-auto"
+              />
+            </div>
+          </div>
+
+          <div className="p-2 flex flex-col items-start">
+            <span className="text-sm text-neutral-darker">
+              قد:
+              <span className="font-black text-lg" dir="ltr">
+                {form.height} cm
+              </span>
+            </span>
+
+            <span className="text-sm text-neutral-darker mt-3">
+              وزن:
+              <span className="font-black text-lg" dir="ltr">
+                {form.weight} kg
+              </span>
+            </span>
+          </div>
+        </div>
       </main>
+
+      {isDatePickerOpen && (
+        <div className="fixed inset-0 z-[100] flex items-end justify-center bg-black/40 backdrop-blur-xs">
+          <div className="w-full max-w-[390px] bg-[#F9FAFB] rounded-t-[35px] p-5 shadow-2xl flex flex-col gap-4">
+            <div className="flex items-center justify-between border-b border-neutral-200 pb-3">
+              <button
+                type="button"
+                onClick={handleConfirmDate}
+                className="text-base font-bold text-neutral-darker hover:opacity-80 transition"
+              >
+                ثبت
+              </button>
+
+              <span className="text-base font-bold text-neutral-darker">
+                تاریخ تولد
+              </span>
+
+              <button
+                type="button"
+                onClick={() => setIsDatePickerOpen(false)}
+                className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-xs hover:bg-neutral-100 transition"
+              >
+                <CloseIcon style={{ fontSize: 18, color: "#333" }} />
+              </button>
+            </div>
+
+            <div className="my-2 dir-ltr relative select-none">
+              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-10 bg-[#F9FFC5] rounded-lg pointer-events-none z-0" />
+
+              <div className="relative z-10">
+                <Picker
+                  value={pickerValue}
+                  onChange={setPickerValue}
+                  wheelMode="normal"
+                >
+                  <Picker.Column name="day">
+                    {days.map((option) => (
+                      <Picker.Item key={option} value={option}>
+                        {({ selected }) => (
+                          <div
+                            className={`text-center transition-all select-none ${
+                              selected
+                                ? "font-black text-black text-base"
+                                : "text-neutral-400 text-sm"
+                            }`}
+                          >
+                            {option}
+                          </div>
+                        )}
+                      </Picker.Item>
+                    ))}
+                  </Picker.Column>
+
+                  <Picker.Column name="month">
+                    {months.map((option) => (
+                      <Picker.Item key={option} value={option}>
+                        {({ selected }) => (
+                          <div
+                            className={`text-center transition-all select-none ${
+                              selected
+                                ? "font-black text-black text-base"
+                                : "text-neutral-400 text-sm"
+                            }`}
+                          >
+                            {option}
+                          </div>
+                        )}
+                      </Picker.Item>
+                    ))}
+                  </Picker.Column>
+
+                  <Picker.Column name="year">
+                    {years.map((option) => (
+                      <Picker.Item key={option} value={option}>
+                        {({ selected }) => (
+                          <div
+                            className={`text-center transition-all select-none ${
+                              selected
+                                ? "font-black text-black text-base"
+                                : "text-neutral-400 text-sm"
+                            }`}
+                          >
+                            {option}
+                          </div>
+                        )}
+                      </Picker.Item>
+                    ))}
+                  </Picker.Column>
+                </Picker>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <DashboardFooter />
     </div>

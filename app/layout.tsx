@@ -13,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <body className="relative bg-neutral-200 top-0 left-0 w-full z-50 m-auto min-h-screen max-w-[375px]">
+      <body className="relative bg-neutral-200 top-0 left-0 w-full z-50 m-auto min-h-screen max-w-[390px]">
         {children}
       </body>
     </html>
