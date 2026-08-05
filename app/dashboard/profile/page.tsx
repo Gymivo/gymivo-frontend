@@ -25,42 +25,42 @@ export default function ProfilePage() {
 
   return (
     <div>
-      <main className="pb-20 p-5 flex flex-col gap-4">
-        <div className="relative w-full flex justify-end">
-          <div className="rounded-full hover:bg-black/10">
-            <button
-              onClick={() => setIsMenuOpen((prev) => !prev)}
-              className="text-black p-2 flex items-center justify-center focus:outline-none"
-            >
-              <MoreVertIcon fontSize="medium" />
-            </button>
-          </div>
-
-          {isMenuOpen && (
-            <>
-              <div
-                className="fixed inset-0 z-40"
-                onClick={() => setIsMenuOpen(false)}
-              />
-
-              <div className="absolute top-12 left-0 z-50 bg-white rounded-xl shadow-lg border border-neutral-100 p-1 min-w-[100px]">
-                <Button
-                  variant="white"
-                  size="md"
-                  arrow="none"
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    router.push("/welcome/login");
-                  }}
-                >
-                  خروج
-                  <LogoutIcon fontSize="medium" />
-                </Button>
-              </div>
-            </>
-          )}
+      <header className="sticky top-0 z-50 -mb-16 h-16 w-full bg-neutral-200 flex items-center justify-end px-4 gap-1">
+        <div className="rounded-full hover:bg-black/10">
+          <button
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            className="text-black p-2 flex items-center justify-center focus:outline-none"
+          >
+            <MoreVertIcon fontSize="medium" />
+          </button>
         </div>
 
+        {isMenuOpen && (
+          <>
+            <div
+              className="fixed inset-0 z-40"
+              onClick={() => setIsMenuOpen(false)}
+            />
+
+            <div className="absolute top-12 left-0 z-50 bg-white rounded-xl shadow-lg border border-neutral-100 p-1 min-w-[100px]">
+              <Button
+                variant="white"
+                size="md"
+                arrow="none"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  router.push("/welcome/login");
+                }}
+              >
+                خروج
+                <LogoutIcon fontSize="medium" />
+              </Button>
+            </div>
+          </>
+        )}
+      </header>
+
+      <main className="px-5 py-20 flex flex-col gap-5">
         <div className="w-full text-black text-lg flex items-center gap-1 flex-col">
           <div className="w-24 h-24 rounded-full overflow-hidden">
             <Image

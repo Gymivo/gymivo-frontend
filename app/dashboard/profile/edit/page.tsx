@@ -92,7 +92,7 @@ export default function EditProfilePage() {
 
   return (
     <div>
-      <header className="sticky top-0 z-50 -mb-16 h-16 w-full bg-neutral-200 flex items-center justify-between">
+      <header className="sticky top-0 z-50 -mb-16 h-16 w-full bg-neutral-200 flex items-center justify-between px-4 gap-1">
         <button
           onClick={handleSave}
           className="p-2 rounded-full hover:bg-primary-300/30 transition"

@@ -43,7 +43,7 @@ export default function LanguagePage() {
 
   return (
     <div>
-      <header className="sticky top-0 z-50 -mb-16 h-16 w-full bg-neutral-200 flex items-center justify-between">
+      <header className="sticky top-0 z-50 -mb-16 h-16 w-full bg-neutral-200 flex items-center justify-between px-4 gap-1">
         <button
           onClick={() => router.back()}
           className="p-2 rounded-full hover:bg-black/10 transition"

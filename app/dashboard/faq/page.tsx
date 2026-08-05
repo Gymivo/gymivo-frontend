@@ -10,7 +10,7 @@ export default function FAQPage() {
 
   return (
     <div>
-      <header className="sticky top-0 z-50 -mb-16 h-16 w-full bg-neutral-200 flex items-center justify-end">
+      <header className="sticky top-0 z-50 -mb-16 h-16 w-full bg-neutral-200 flex items-center justify-end px-4 gap-1">
         <h1 className="text-base font-bold text-neutral-darker">
           سوالات متداول
         </h1>
