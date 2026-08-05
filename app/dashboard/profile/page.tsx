@@ -11,7 +11,6 @@ import GavelIcon from "@mui/icons-material/Gavel";
 import InfoIcon from "@mui/icons-material/Info";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Weight from "@/public/svg/profile/weight.svg";
 import Ruler from "@/public/svg/profile/ruler.svg";
 import Calendar from "@/public/svg/profile/calendar.svg";
@@ -38,22 +37,30 @@ export default function ProfilePage() {
           </div>
 
           {isMenuOpen && (
-            <div className="absolute top-12 left-0 z-50 bg-white rounded-xl shadow-lg border border-neutral-100 p-1 min-w-[100px]">
-              <Button
-                variant="white"
-                size="md"
-                arrow="none"
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  router.push("/welcome/login");
-                }}
-              >
-                خروج
-                <LogoutIcon fontSize="medium" />
-              </Button>
-            </div>
+            <>
+              <div
+                className="fixed inset-0 z-40"
+                onClick={() => setIsMenuOpen(false)}
+              />
+
+              <div className="absolute top-12 left-0 z-50 bg-white rounded-xl shadow-lg border border-neutral-100 p-1 min-w-[100px]">
+                <Button
+                  variant="white"
+                  size="md"
+                  arrow="none"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    router.push("/welcome/login");
+                  }}
+                >
+                  خروج
+                  <LogoutIcon fontSize="medium" />
+                </Button>
+              </div>
+            </>
           )}
         </div>
+
         <div className="w-full text-black text-lg flex items-center gap-1 flex-col">
           <div className="w-24 h-24 rounded-full overflow-hidden">
             <Image
