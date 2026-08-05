@@ -24,11 +24,14 @@ export default function Carousel({ images }: CarouselProps) {
           "absolute transition-all duration-700 rounded-[12px]";
 
         if (index === current) {
-          positionClass += " left-1/2 top-0 transform -translate-x-1/2 z-10 scale-100 opacity-100";
+          positionClass +=
+            " left-1/2 top-0 transform -translate-x-1/2 z-10 scale-100 opacity-100";
         } else if (index === (current + 1) % images.length) {
-          positionClass += " left-[75%] top-0 transform -translate-x-1/2 z-0 scale-90 opacity-70";
+          positionClass +=
+            " left-[75%] top-0 transform -translate-x-1/2 z-0 scale-90 opacity-70";
         } else if (index === (current + images.length - 1) % images.length) {
-          positionClass += " left-[25%] top-0 transform -translate-x-1/2 z-0 scale-90 opacity-70";
+          positionClass +=
+            " left-[25%] top-0 transform -translate-x-1/2 z-0 scale-90 opacity-70";
         } else {
           positionClass += " opacity-0 scale-90 z-0";
         }
