@@ -18,6 +18,7 @@ import Calendar from "@/public/svg/profile/calendar.svg";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useState } from "react";
+import Button from "@/components/Button";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -38,16 +39,18 @@ export default function ProfilePage() {
 
           {isMenuOpen && (
             <div className="absolute top-12 left-0 z-50 bg-white rounded-xl shadow-lg border border-neutral-100 p-1 min-w-[100px]">
-              <button
+              <Button
+                variant="white"
+                size="md"
+                arrow="none"
                 onClick={() => {
                   setIsMenuOpen(false);
                   router.push("/welcome/login");
                 }}
-                className="w-full flex items-center justify-between p-3 rounded-lg text-neutral-darker hover:bg-neutral-100 transition-colors"
               >
+                خروج
                 <LogoutIcon fontSize="medium" />
-                <span className="text-base">خروج</span>
-              </button>
+              </Button>
             </div>
           )}
         </div>
@@ -74,33 +77,33 @@ export default function ProfilePage() {
         </div>
 
         <div className="w-full flex gap-3">
-          <div className="relative overflow-hidden flex-1 bg-white rounded-2xl p-3 flex flex-col items-center justify-center cursor-default bg-gradient-to-br from-white to-primary-0">
+          <div className="relative overflow-hidden flex-1 bg-white rounded-2xl p-3 flex flex-col items-center justify-center cursor-default bg-gradient-to-br from-white to-primary-100/50">
             <p className="text-neutral-600 text-md">سن:</p>
             <p className="text-neutral-700 font-semibold text-lg mt-1">۲۵</p>
             <Image
               src={Calendar}
               alt=""
-              className="absolute bottom-0 right-0 w-20 h-20 opacity-50 pointer-events-none"
+              className="absolute bottom-0 right-0 w-20 h-20 opacity-70 pointer-events-none"
             />
           </div>
 
-          <div className="relative overflow-hidden flex-1 bg-white rounded-2xl p-3 flex flex-col items-center justify-center cursor-default bg-gradient-to-br from-white to-primary-0">
+          <div className="relative overflow-hidden flex-1 bg-white rounded-2xl p-3 flex flex-col items-center justify-center cursor-default bg-gradient-to-br from-white to-primary-100/50">
             <p className="text-neutral-600 text-md">وزن:</p>
             <p className="text-neutral-700 font-semibold text-lg mt-1">۷۵kg</p>
             <Image
               src={Weight}
               alt=""
-              className="absolute bottom-0 right-0 w-20 h-20 opacity-50 pointer-events-none"
+              className="absolute bottom-0 right-0 w-20 h-20 opacity-70 pointer-events-none"
             />
           </div>
 
-          <div className="relative overflow-hidden flex-1 bg-white rounded-2xl p-3 flex flex-col items-center justify-center cursor-default bg-gradient-to-br from-white to-primary-0">
+          <div className="relative overflow-hidden flex-1 bg-white rounded-2xl p-3 flex flex-col items-center justify-center cursor-default bg-gradient-to-br from-white to-primary-100/50">
             <p className="text-neutral-600 text-md">قد:</p>
             <p className="text-neutral-700 font-semibold text-lg mt-1">۱۸۰cm</p>
             <Image
               src={Ruler}
               alt=""
-              className="absolute bottom-0 right-0 w-20 h-20 opacity-50 pointer-events-none"
+              className="absolute bottom-0 right-0 w-20 h-20 opacity-70 pointer-events-none"
             />
           </div>
         </div>

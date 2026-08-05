@@ -30,7 +30,10 @@ export default function DashboardFooter() {
         >
           {navItems.map((item) => {
             const isActive =
-              pathname === item.path || pathname.startsWith(item.path + "/");
+              item.path === "/dashboard"
+                ? pathname === "/dashboard"
+                : pathname === item.path ||
+                  pathname.startsWith(item.path + "/");
 
             const Icon = item.icon;
 

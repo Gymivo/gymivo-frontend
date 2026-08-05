@@ -43,7 +43,7 @@ export default function LanguagePage() {
 
   return (
     <div>
-      <header className="sticky top-0 z-50 bg-neutral-200 backdrop-blur-md flex items-center justify-between px-4 py-4">
+      <header className="sticky top-0 z-50 -mb-16 h-16 w-full bg-neutral-200 flex items-center justify-between">
         <button
           onClick={() => router.back()}
           className="p-2 rounded-full hover:bg-black/10 transition"
@@ -62,7 +62,7 @@ export default function LanguagePage() {
         </div>
       </header>
 
-      <main className="p-4 pb-24">
+      <main className="p-5 py-20">
         <div className="bg-white rounded-2xl p-4 shadow-xs flex flex-col gap-6">
           <div className="flex flex-col gap-3">
             <h2 className="text-xs font-bold text-neutral-dark text-right px-1">

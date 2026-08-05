@@ -3,7 +3,7 @@ import Terms from "@/public/terms/draw.svg";
 
 export default function TermsPage() {
   return (
-    <main className="px-4 py-14 pt-24 text-center">
+    <main className="px-5 py-20 text-center">
       <h1 className="text-5xl font-bold text-neutral-darker">
         قوانین و مقررات
       </h1>

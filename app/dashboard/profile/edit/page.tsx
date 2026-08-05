@@ -92,7 +92,7 @@ export default function EditProfilePage() {
 
   return (
     <div>
-      <header className="sticky top-0 z-50 bg-neutral-200/90 backdrop-blur-md flex items-center justify-between px-4 py-3">
+      <header className="sticky top-0 z-50 -mb-16 h-16 w-full bg-neutral-200 flex items-center justify-between">
         <button
           onClick={handleSave}
           className="p-2 rounded-full hover:bg-primary-300/30 transition"
@@ -113,7 +113,7 @@ export default function EditProfilePage() {
         </div>
       </header>
 
-      <main className="px-5 pb-24">
+      <main className="px-5 py-20">
         <div className="flex justify-center my-6">
           <div className="relative">
             <div className="w-24 h-24 rounded-full overflow-hidden">

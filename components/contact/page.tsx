@@ -10,7 +10,7 @@ import EmailIcon from "@mui/icons-material/Email";
 
 export default function ContactPage() {
   return (
-    <main className="pt-24 px-5 py-12 text-center bg-white">
+    <main className="px-5 py-20 text-center">
       <h1 className="text-4xl font-bold text-neutral-darker">ارتباط با ما</h1>
       <p className="mt-5 text-xl font-bold text-neutral-darker">
         هر چی بگی گوش میکنیم
@@ -29,7 +29,7 @@ export default function ContactPage() {
         بهترین تجربه ها رو داشته باشی . راستی! همه چیز بین خودمون میمونه.
       </p>
 
-      <div className="my-12 flex flex-col gap-6 px-2">
+      <div className="my-10 flex flex-col gap-6 px-2">
         <div className="flex items-end -gap-5">
           <Image
             alt="profile"

@@ -49,7 +49,7 @@ export default function FAQPage() {
   };
 
   return (
-    <main className="px-4 py-20 flex flex-col items-center">
+    <main className="px-5 py-20 flex flex-col items-center">
       <div className="w-full flex justify-center mb-4">
         <Image
           src={Faq}
@@ -76,7 +76,7 @@ export default function FAQPage() {
                     className="text-neutral-gray flex-shrink-0"
                     fontSize="small"
                   />
-                  <span className="text-sm font-bold text-neutral-darker leading-6">
+                  <span className="text-xs font-bold text-neutral-darker leading-6">
                     {item.q}
                   </span>
                 </div>
@@ -104,7 +104,7 @@ export default function FAQPage() {
                     ${isOpen ? "max-h-96 opacity-100 mt-1" : "max-h-0 opacity-0 mt-0"}
                   `}
               >
-                <div className="bg-white rounded-2xl px-10 py-3 text-sm text-neutral-dark leading-7">
+                <div className="text-xs bg-white rounded-2xl px-10 py-3 text-neutral-darker leading-7">
                   {item.a}
                 </div>
               </div>

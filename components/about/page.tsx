@@ -18,9 +18,9 @@ import Button from "@/components/Button";
 
 export default function AboutPage() {
   return (
-    <main className="w-full bg-white">
-      <section className="text-center">
-        <div className="py-20">
+    <main className="w-full">
+      <section className="text-center py-20">
+        <div className="pb-14">
           <h1 className="text-4xl font-bold text-neutral-darker">
             ما کی هستیم؟
           </h1>
@@ -186,7 +186,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="mt-10 bg-[#F3FCF7] px-5 py-6 text-center">
+        <div className="pb-20 bg-[#F3FCF7] p-5 text-center">
           <p className="text-lg text-neutral-darker mb-4">
             <strong>نظر شما برای ما مهمه</strong>
             <br />
