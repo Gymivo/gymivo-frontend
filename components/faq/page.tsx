@@ -31,7 +31,7 @@ const faqData = [
     a: "تحلیل دقیق بدن شامل بررسی شاخص‌های بدنی، ارزیابی وضعیت فعلی و ارائه گزارش‌های تخصصی برای کمک به رسیدن به اهداف ورزشی شما است.",
   },
   {
-    q: "آیا در آینده امکانات هوش مصنوعی به Gymivo اضافه خواهد شد؟",
+    q: "آیا هوش مصنوعی به Gymivo اضافه خواهد شد؟",
     a: "بله. در نسخه‌های آینده امکانات مبتنی بر هوش مصنوعی برای ارائه پیشنهادهای هوشمند، تحلیل پیشرفته و شخصی‌سازی بیشتر به سیستم اضافه خواهد شد.",
   },
   {
@@ -119,7 +119,7 @@ export default function FAQPage() {
         </p>
 
         <button
-          onClick={() => router.push("/contact")}
+          onClick={() => router.push("/dashboard/contact")}
           className="bg-[#2F98F5] text-white font-semibold text-sm px-5 py-2.5 rounded-xl flex items-center justify-center gap-2 hover:bg-[#2582d6] active:scale-95 transition"
         >
           <TelegramIcon fontSize="small" />

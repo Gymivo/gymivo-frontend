@@ -26,7 +26,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "rounded-[12px] font-vazirmatn font-bold flex items-center justify-center gap-2 transition";
+    "rounded-[12px] font-bold flex items-center justify-center gap-2 transition";
 
   const variants = {
     black: disabled
