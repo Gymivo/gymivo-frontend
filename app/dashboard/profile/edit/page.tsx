@@ -17,8 +17,8 @@ import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import MaleIcon from "@mui/icons-material/Male";
 import FemaleIcon from "@mui/icons-material/Female";
 import { TextField } from "@mui/material";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import { motion, MotionConfig, useReducedMotion } from "framer-motion";
+import MeasureRuler from "@/components/MeasureRuler";
 import Picker from "react-mobile-picker";
 
 const weights = Array.from({ length: 300 - 20 + 1 }, (_, i) => 300 - i);
@@ -80,17 +80,11 @@ export default function EditProfilePage() {
     setIsDatePickerOpen(false);
   };
 
-  const defaultWeightIndex =
-    weights.indexOf(form.weight) !== -1
-      ? weights.indexOf(form.weight)
-      : weights.indexOf(75);
-
-  const defaultHeightIndex =
-    heights.indexOf(form.height) !== -1
-      ? heights.indexOf(form.height)
-      : heights.indexOf(175);
+  const reduce = useReducedMotion();
+  const silhouettePx = Math.round(180 + (form.height - 100) * 0.52);
 
   return (
+    <MotionConfig reducedMotion="user">
     <div>
       <header className="sticky top-0 z-50 -mb-16 h-16 w-full bg-neutral-200 flex items-center justify-between px-4 gap-1">
         <button
@@ -259,117 +253,24 @@ export default function EditProfilePage() {
             وزن (kg)
           </span>
 
-          <div>
-            <Swiper
-              initialSlide={defaultWeightIndex}
-              slidesPerView={23}
-              centeredSlides={true}
-              grabCursor={true}
-              onSlideChange={(swiper) => {
-                const selectedWeight = weights[swiper.activeIndex];
-                handleChange("weight", selectedWeight);
-              }}
-              className="w-full py-2"
-            >
-              {weights.map((w) => {
-                const isSelected = form.weight === w;
-                const isMajor = w % 5 === 0;
-
-                return (
-                  <SwiperSlide
-                    key={w}
-                    className="flex justify-center items-end h-12 select-none"
-                  >
-                    <div className="flex flex-col items-center gap-1 cursor-pointer w-full">
-                      <div
-                        className={`rounded-full transition-all ${
-                          isSelected
-                            ? "w-1 h-10 bg-primary-400"
-                            : isMajor
-                              ? "w-0.5 h-7 bg-neutral-500"
-                              : "w-[1px] h-5 bg-neutral-400"
-                        }`}
-                      />
-
-                      {isMajor ? (
-                        <span
-                          className={`text-[9px] font-bold transition-all ${
-                            isSelected
-                              ? "text-black scale-110 font-black"
-                              : "text-neutral-400"
-                          }`}
-                        >
-                          {w}
-                        </span>
-                      ) : (
-                        <span className="text-[9px] opacity-0 select-none">
-                          -
-                        </span>
-                      )}
-                    </div>
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          </div>
+          <MeasureRuler
+            values={weights}
+            value={form.weight}
+            onChange={(v) => handleChange("weight", v)}
+            orientation="horizontal"
+            unit="kg"
+          />
         </div>
 
         <div className="bg-white rounded-xl h-[290px] mt-6 p-4 grid grid-cols-3 gap-2 overflow-hidden shadow-xs relative">
           <div className="relative h-full flex items-center justify-center overflow-hidden">
-            <div className="h-[250px] w-full">
-              <Swiper
-                direction="vertical"
-                initialSlide={defaultHeightIndex}
-                slidesPerView={19}
-                centeredSlides={true}
-                grabCursor={true}
-                onSlideChange={(swiper) => {
-                  const selectedHeight = heights[swiper.activeIndex];
-                  handleChange("height", selectedHeight);
-                }}
-                className="h-full w-full"
-              >
-                {heights.map((h) => {
-                  const isSelected = form.height === h;
-                  const isMajor = h % 5 === 0;
-
-                  return (
-                    <SwiperSlide
-                      key={h}
-                      className="flex items-center justify-start select-none pl-3"
-                    >
-                      <div className="flex items-center gap-2 cursor-pointer">
-                        <div
-                          className={`rounded-full transition-all ${
-                            isSelected
-                              ? "h-1 w-10 bg-primary-400"
-                              : isMajor
-                                ? "h-0.5 w-7 bg-neutral-500"
-                                : "h-[1px] w-5 bg-neutral-400"
-                          }`}
-                        />
-
-                        {isMajor ? (
-                          <span
-                            className={`text-[9px] font-bold transition-all ${
-                              isSelected
-                                ? "text-black scale-110 font-black"
-                                : "text-neutral-400"
-                            }`}
-                          >
-                            {h}
-                          </span>
-                        ) : (
-                          <span className="text-[9px] opacity-0 select-none">
-                            -
-                          </span>
-                        )}
-                      </div>
-                    </SwiperSlide>
-                  );
-                })}
-              </Swiper>
-            </div>
+            <MeasureRuler
+              values={heights}
+              value={form.height}
+              onChange={(v) => handleChange("height", v)}
+              orientation="vertical"
+              unit="cm"
+            />
           </div>
 
           <div className="flex items-center justify-center relative h-full min-h-[250px]">
@@ -380,14 +281,23 @@ export default function EditProfilePage() {
                   : "opacity-100 scale-100"
               }`}
             >
-              <Image
-                src={Male}
-                alt="Male"
-                width={150}
-                height={260}
-                priority
-                className="object-contain max-h-[270px] w-auto h-auto"
-              />
+              <motion.div
+                animate={{ height: silhouettePx }}
+                transition={
+                  reduce
+                    ? { duration: 0 }
+                    : { type: "spring", stiffness: 170, damping: 18 }
+                }
+              >
+                <Image
+                  src={Male}
+                  alt="Male"
+                  width={116}
+                  height={289}
+                  priority
+                  className="h-full w-auto object-contain"
+                />
+              </motion.div>
             </div>
 
             <div
@@ -397,30 +307,53 @@ export default function EditProfilePage() {
                   : "opacity-0 scale-90 pointer-events-none"
               }`}
             >
-              <Image
-                src={Female}
-                alt="Female"
-                width={150}
-                height={260}
-                priority
-                className="object-contain max-h-[270px] w-auto h-auto"
-              />
+              <motion.div
+                animate={{ height: silhouettePx }}
+                transition={
+                  reduce
+                    ? { duration: 0 }
+                    : { type: "spring", stiffness: 170, damping: 18 }
+                }
+              >
+                <Image
+                  src={Female}
+                  alt="Female"
+                  width={105}
+                  height={289}
+                  priority
+                  className="h-full w-auto object-contain"
+                />
+              </motion.div>
             </div>
           </div>
 
           <div className="p-2 flex flex-col items-start">
             <span className="text-sm text-neutral-darker">
               قد:
-              <span className="font-black text-lg" dir="ltr">
-                {form.height} cm
-              </span>
+              <motion.span
+                key={form.height}
+                initial={{ scale: 0.7, opacity: 0.4 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                className="font-black text-lg inline-block"
+                dir="ltr"
+              >
+                {form.height.toLocaleString("fa-IR")} cm
+              </motion.span>
             </span>
 
             <span className="text-sm text-neutral-darker mt-3">
               وزن:
-              <span className="font-black text-lg" dir="ltr">
-                {form.weight} kg
-              </span>
+              <motion.span
+                key={form.weight}
+                initial={{ scale: 0.7, opacity: 0.4 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                className="font-black text-lg inline-block"
+                dir="ltr"
+              >
+                {form.weight.toLocaleString("fa-IR")} kg
+              </motion.span>
             </span>
           </div>
         </div>
@@ -522,5 +455,6 @@ export default function EditProfilePage() {
 
       <DashboardFooter />
     </div>
+    </MotionConfig>
   );
 }
