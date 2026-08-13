@@ -18,9 +18,11 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useState } from "react";
 import Button from "@/components/Button";
+import { useAuth } from "@/components/AuthProvider";
 
 export default function ProfilePage() {
   const router = useRouter();
+  const { signOut } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -48,6 +50,7 @@ export default function ProfilePage() {
                 size="md"
                 arrow="none"
                 onClick={() => {
+                  signOut();
                   setIsMenuOpen(false);
                   router.push("/welcome/login");
                 }}

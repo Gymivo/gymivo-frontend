@@ -7,7 +7,7 @@ import WelcomeArt from "@/public/welcome/welcome.svg";
 
 export default function WelcomePage() {
   return (
-    <div className="relative h-dvh max-w-[375px] mx-auto overflow-hidden bg-white flex flex-col">
+    <div className="relative min-h-dvh bg-white flex flex-col">
       <div
         className="pointer-events-none absolute top-0 left-0 w-full h-[40%]"
         style={{
@@ -24,7 +24,7 @@ export default function WelcomePage() {
         }}
       />
 
-      <main className="relative z-10 flex-1 px-5 pt-[clamp(32px,8vh,80px)] pb-12 flex flex-col justify-between min-h-0">
+      <main className="relative z-10 flex-1 px-5 pt-[clamp(32px,8vh,80px)] pb-12 flex flex-col justify-between gap-6">
         <div className="flex flex-col items-center justify-center flex-1 gap-8 text-center">
           <h1 className="text-3xl font-bold text-neutral-darker leading-tight">
             به جیمیوو خوش اومدی

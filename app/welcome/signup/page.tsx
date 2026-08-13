@@ -17,6 +17,7 @@ import { normalizePersianDigits } from "@/lib/validators";
 interface FieldErrors {
   phone?: string;
   password?: string;
+  rePassword?: string;
   form?: string;
 }
 
@@ -33,11 +34,12 @@ const textFieldSx = {
   },
 };
 
-export default function LoginPage() {
+export default function SignupPage() {
   const router = useRouter();
-  const { signIn } = useAuth();
+  const { signUp } = useAuth();
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [rePassword, setRePassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<FieldErrors>({});
   // Synchronous guard — state can be stale when a second submit fires before
@@ -54,7 +56,7 @@ export default function LoginPage() {
     setErrors({});
     setLoading(true);
     try {
-      await signIn(normalizePersianDigits(phone), password);
+      await signUp(normalizePersianDigits(phone), password, rePassword);
       router.push("/dashboard");
     } catch (err) {
       if (err instanceof ApiError) {
@@ -63,8 +65,12 @@ export default function LoginPage() {
           // 422 — map field-level messages onto their inputs.
           next.phone = err.getFieldError("phone");
           next.password = err.getFieldError("password");
-          if (!next.phone && !next.password) next.form = err.message;
+          next.rePassword = err.getFieldError("rePassword");
+          if (!next.phone && !next.password && !next.rePassword) {
+            next.form = err.message;
+          }
         } else {
+          // e.g. 409 phone_already_exists — backend Persian message.
           next.form = err.message;
         }
         setErrors(next);
@@ -103,7 +109,7 @@ export default function LoginPage() {
         >
         <div className="flex flex-col items-center gap-6 text-center">
           <h1 className="text-3xl font-bold text-neutral-darker leading-tight">
-            ورود به حساب
+            ساخت حساب جدید
           </h1>
 
           <Image
@@ -116,7 +122,7 @@ export default function LoginPage() {
           />
 
           <p className="text-lg font-medium text-neutral-darker">
-            خوش برگشتی رفیق ! جات خالی بود
+            سلام رفیق ! خوشحالیم که اومدی
           </p>
 
           <div className="w-full flex flex-col gap-3.5 mt-2">
@@ -147,9 +153,9 @@ export default function LoginPage() {
 
             <TextField
               type="password"
-              autoComplete="current-password"
+              autoComplete="new-password"
               fullWidth
-              placeholder="پسوردتون..."
+              placeholder="پسوردت رو بنویس..."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               error={Boolean(errors.password)}
@@ -164,14 +170,24 @@ export default function LoginPage() {
               }}
             />
 
-            <div className="w-full text-right px-1">
-              <Link
-                href="/forgot-password"
-                className="text-blue-600 underline text-xs font-medium hover:text-blue-700 transition"
-              >
-                رمز عبورم رو فراموش کردم!
-              </Link>
-            </div>
+            <TextField
+              type="password"
+              autoComplete="new-password"
+              fullWidth
+              placeholder="دوباره بنویسش..."
+              value={rePassword}
+              onChange={(e) => setRePassword(e.target.value)}
+              error={Boolean(errors.rePassword)}
+              helperText={errors.rePassword}
+              sx={textFieldSx}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <KeyIcon sx={{ fontSize: 24, color: "#949494" }} />
+                  </InputAdornment>
+                ),
+              }}
+            />
           </div>
         </div>
 
@@ -193,17 +209,17 @@ export default function LoginPage() {
               size="cta"
               disabled={loading}
             >
-              {loading ? "در حال ورود..." : "ورود"}
+              {loading ? "در حال ساخت حساب..." : "ثبت‌نام"}
             </Button>
           </div>
 
           <p className="text-sm text-neutral-darker">
-            اکانت نداشتی ؟{" "}
+            قبلاً اومدی؟{" "}
             <Link
-              href="/welcome/signup"
+              href="/welcome/login"
               className="text-blue-600 underline font-semibold hover:text-blue-700 transition"
             >
-              میخوام ثبت نام کنم
+              میخوام وارد بشم
             </Link>
           </p>
         </div>

@@ -77,7 +77,7 @@ export default function DashboardPage() {
           className="flex gap-1 rounded-full hover:bg-neutral-darker/10 transition p-1"
         >
           <div className="flex pr-2 flex-col items-center justify-center text-neutral-darker">
-            <h2 className="font-bold text-sm">محمد علی </h2>
+            <h2 className="font-bold text-sm">نام کاربر</h2>
             <span className="font-extralight text-xs">وقت بخیر ورزشکار!</span>
           </div>
           <AccountCircleIcon style={{ color: "black", fontSize: 40 }} />

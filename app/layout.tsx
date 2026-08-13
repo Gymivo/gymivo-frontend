@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: "Gymivo",
@@ -14,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body className="relative bg-neutral-200 top-0 left-0 w-full z-50 m-auto min-h-screen max-w-[390px] shadow-2xl">
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
