@@ -13,7 +13,7 @@ import React from "react";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   variant?: "black" | "white" | "primary";
-  size?: "cta" | "sm" | "md" | "lg" | "xl" | "huge";
+  size?: "cta" | "sm" | "md" | "lg" | "xl" | "huge" | "compact";
   arrow?: "none" | "left" | "right";
 }
 
@@ -47,6 +47,7 @@ export default function Button({
     lg: "w-[140px] h-[48px] px-[24px] py-[16px] text-[16px] gap-[8px] rounded-[12px]",
     xl: "w-[148px] h-[56px] px-[24px] py-[16px] text-[16px] gap-[8px] rounded-[12px]",
     huge: "w-[228px] h-[96px] px-[48px] py-[32px] text-[20px] gap-[8px] rounded-[12px]",
+    compact: "h-[32px] px-[12px] py-[6px] text-[14px] gap-[8px] rounded-[8px]",
   };
 
   const getArrow = (side: "left" | "right") => {

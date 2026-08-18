@@ -27,6 +27,18 @@ module.exports = {
           dark: "#6E6E6E", // dark gray
           darker: "#212121", // dark
         },
+        success: {
+          400: "#71DEA4",
+          700: "#17673D",
+        },
+        warning: {
+          500: "#EEB13F",
+          800: "#926511",
+        },
+        danger: {
+          300: "#F28D90",
+          900: "#80282A",
+        },
       },
     },
   },
