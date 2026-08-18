@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState, type MouseEvent, type PointerEvent } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -78,9 +78,70 @@ const readyPlans: ReadyPlan[] = [
   },
 ];
 
+// function useDragScroll() {
+//   const ref = useRef<HTMLDivElement>(null);
+//   const drag = useRef({
+//     isDown: false,
+//     moved: false,
+//     startX: 0,
+//     startScrollLeft: 0,
+//   });
+
+//   const onPointerDown = (e: PointerEvent<HTMLDivElement>) => {
+//     if (e.pointerType !== "mouse") return;
+//     const el = ref.current;
+//     if (!el) return;
+//     e.preventDefault();
+//     drag.current = {
+//       isDown: true,
+//       moved: false,
+//       startX: e.clientX,
+//       startScrollLeft: el.scrollLeft,
+//     };
+//     el.setPointerCapture(e.pointerId);
+//   };
+
+//   const onPointerMove = (e: PointerEvent<HTMLDivElement>) => {
+//     const el = ref.current;
+//     const d = drag.current;
+//     if (!el || !d.isDown) return;
+//     const dx = e.clientX - d.startX;
+//     if (Math.abs(dx) > 3) d.moved = true;
+//     el.scrollLeft = d.startScrollLeft - dx;
+//   };
+
+//   const endDrag = (e: PointerEvent<HTMLDivElement>) => {
+//     drag.current.isDown = false;
+//     if (ref.current?.hasPointerCapture(e.pointerId)) {
+//       ref.current.releasePointerCapture(e.pointerId);
+//     }
+//   };
+
+//   const onClickCapture = (e: MouseEvent<HTMLDivElement>) => {
+//     if (drag.current.moved) {
+//       e.preventDefault();
+//       e.stopPropagation();
+//       drag.current.moved = false;
+//     }
+//   };
+
+//   return {
+//     ref,
+//     handlers: {
+//       onPointerDown,
+//       onPointerMove,
+//       onPointerUp: endDrag,
+//       onPointerCancel: endDrag,
+//       onClickCapture,
+//     },
+//   };
+// }
+
 export default function DashboardPage() {
   const router = useRouter();
   const [startModalOpen, setStartModalOpen] = useState(false);
+  // const categoriesScroll = useDragScroll();
+  // const movesScroll = useDragScroll();
 
   return (
     <div>
@@ -163,7 +224,11 @@ export default function DashboardPage() {
 
         <div className="w-full flex flex-col gap-4">
           <SectionHeader title="دسته بندی‌ها" href="/categories" />
-          <div className="flex gap-2 overflow-x-auto pb-2">
+          <div
+            // ref={categoriesScroll.ref}
+            // {...categoriesScroll.handlers}
+            className="flex gap-2 overflow-x-auto pb-2 select-none cursor-grab active:cursor-grabbing [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
             {[...categories].reverse().map((cat) => (
               <button
                 key={cat.name}
@@ -182,7 +247,11 @@ export default function DashboardPage() {
 
         <div className="w-full flex flex-col gap-4">
           <SectionHeader title="حرکات محبوب" href="/moves" />
-          <div className="flex gap-2 overflow-x-auto pb-4">
+          <div
+            // ref={movesScroll.ref}
+            // {...movesScroll.handlers}
+            className="flex gap-2 overflow-x-auto pb-2 select-none cursor-grab active:cursor-grabbing [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
             {[...moves].reverse().map((move, idx) => (
               <MoveCard
                 key={move.name}
