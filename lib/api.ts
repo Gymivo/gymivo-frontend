@@ -3,7 +3,24 @@ import {
   getStoredTokens,
   setStoredTokens,
 } from "./storage";
-import { ApiError, type ApiEnvelope, type AuthTokens } from "./types";
+import {
+  ApiError,
+  type ApiEnvelope,
+  type AuthTokens,
+  type Category,
+  type ContactResponse,
+  type DashboardResponse,
+  type LanguageOption,
+  type Move,
+  type PagedResponse,
+  type ProfileResponse,
+  type ReadyPlan,
+  type SettingsResponse,
+  type TrainingPlan,
+  type UpdateProfileRequest,
+  type UpdateProfileResponse,
+  type UsernameAvailability,
+} from "./types";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8080";
 
@@ -49,7 +66,9 @@ async function apiRequest<T>(
 
   const doRequest = async (accessToken?: string): Promise<T> => {
     const headers = new Headers(init.headers);
-    headers.set("Content-Type", "application/json");
+    // Only set the JSON content type for string bodies; FormData needs to set its
+    // own multipart boundary (avatar upload).
+    if (typeof init.body === "string") headers.set("Content-Type", "application/json");
     if (auth) {
       const token = accessToken ?? getStoredTokens()?.accessToken;
       if (token) headers.set("Authorization", `Bearer ${token}`);
@@ -127,6 +146,125 @@ export const authApi = {
       method: "POST",
       body: JSON.stringify({ refreshToken }),
     });
+  },
+};
+
+export const profileApi = {
+  get() {
+    return apiRequest<ProfileResponse>("/api/profile", {}, { auth: true });
+  },
+
+  /** Full replacement; the response carries a rotated token pair to store. */
+  update(body: UpdateProfileRequest) {
+    return apiRequest<UpdateProfileResponse>(
+      "/api/profile",
+      { method: "PUT", body: JSON.stringify(body) },
+      { auth: true },
+    );
+  },
+
+  /** Live handle check for the edit form; anonymous by design. */
+  checkUsername(username: string) {
+    return apiRequest<UsernameAvailability>(
+      `/api/profile/username-available?username=${encodeURIComponent(username)}`,
+    );
+  },
+
+  setAvatar(file: File) {
+    const form = new FormData();
+    form.append("file", file);
+    return apiRequest<ProfileResponse>(
+      "/api/profile/avatar",
+      { method: "POST", body: form },
+      { auth: true },
+    );
+  },
+
+  removeAvatar() {
+    return apiRequest<ProfileResponse>(
+      "/api/profile/avatar",
+      { method: "DELETE" },
+      { auth: true },
+    );
+  },
+};
+
+export const settingsApi = {
+  get() {
+    return apiRequest<SettingsResponse>("/api/settings", {}, { auth: true });
+  },
+
+  getLanguages() {
+    return apiRequest<LanguageOption[]>("/api/settings/languages", {}, { auth: true });
+  },
+
+  update(language: string) {
+    return apiRequest<SettingsResponse>(
+      "/api/settings",
+      { method: "PUT", body: JSON.stringify({ language }) },
+      { auth: true },
+    );
+  },
+};
+
+export const dashboardApi = {
+  get() {
+    return apiRequest<DashboardResponse>("/api/dashboard", {}, { auth: true });
+  },
+};
+
+export const plansApi = {
+  /** `data: null` is a valid response — the user has never had a plan. */
+  latest() {
+    return apiRequest<TrainingPlan | null>("/api/plans/latest", {}, { auth: true });
+  },
+};
+
+export const catalogApi = {
+  categories() {
+    return apiRequest<Category[]>("/api/categories");
+  },
+
+  moves(
+    params: { page?: number; pageSize?: number; categoryId?: string; popular?: boolean } = {},
+  ) {
+    const query = new URLSearchParams();
+    if (params.page) query.set("page", String(params.page));
+    if (params.pageSize) query.set("pageSize", String(params.pageSize));
+    if (params.categoryId) query.set("categoryId", params.categoryId);
+    if (params.popular) query.set("popular", "true");
+    const qs = query.toString();
+    return apiRequest<PagedResponse<Move>>(`/api/moves${qs ? `?${qs}` : ""}`);
+  },
+
+  move(id: string) {
+    return apiRequest<Move>(`/api/moves/${id}`);
+  },
+
+  readyPlans(params: { page?: number; pageSize?: number } = {}) {
+    const query = new URLSearchParams();
+    if (params.page) query.set("page", String(params.page));
+    if (params.pageSize) query.set("pageSize", String(params.pageSize));
+    const qs = query.toString();
+    return apiRequest<PagedResponse<ReadyPlan>>(`/api/ready-plans${qs ? `?${qs}` : ""}`);
+  },
+
+  readyPlan(id: string) {
+    return apiRequest<ReadyPlan>(`/api/ready-plans/${id}`);
+  },
+};
+
+export const contactApi = {
+  /** Anonymous by default; pass auth: true from the dashboard to link the account. */
+  send(
+    body: { fullName: string; email: string; message: string },
+    options: { auth?: boolean } = {},
+  ) {
+    return apiRequest<ContactResponse>(
+      "/api/contact",
+      { method: "POST", body: JSON.stringify(body) },
+      { auth: options.auth },
+    );
   },
 };
 

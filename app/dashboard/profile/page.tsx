@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -16,14 +17,74 @@ import Ruler from "@/public/svg/profile/ruler.svg";
 import Calendar from "@/public/svg/profile/calendar.svg";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { useState } from "react";
 import Button from "@/components/Button";
 import { useAuth } from "@/components/AuthProvider";
+import { profileApi, NETWORK_ERROR_MESSAGE } from "@/lib/api";
+import { ApiError, type ProfileResponse } from "@/lib/types";
+import { useRefetchOnShow } from "@/lib/use-refetch-on-show";
+
+const toPersianDigits = (n: number) =>
+  String(n).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[Number(d)]);
 
 export default function ProfilePage() {
   const router = useRouter();
   const { signOut } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [profile, setProfile] = useState<ProfileResponse | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    profileApi
+      .get()
+      .then((res) => {
+        if (!cancelled) setProfile(res);
+      })
+      .catch((err: unknown) => {
+        if (cancelled) return;
+        setError(
+          err instanceof ApiError
+            ? err.code === 0
+              ? NETWORK_ERROR_MESSAGE
+              : err.message
+            : NETWORK_ERROR_MESSAGE,
+        );
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  if (error) {
+    return (
+      <div>
+        <main className="flex flex-col items-center justify-center gap-4 p-5 pt-24 pb-24 min-h-[70vh]">
+          <p className="text-neutral-dark">{error}</p>
+          <button
+            onClick={() => {
+              setError(null);
+              window.location.reload();
+            }}
+            className="rounded-xl bg-primary-300 px-5 py-2.5 text-sm font-bold text-neutral-darker"
+          >
+            تلاش دوباره
+          </button>
+        </main>
+        <DashboardFooter />
+      </div>
+    );
+  }
+
+  if (!profile) {
+    return (
+      <div>
+        <main className="flex items-center justify-center min-h-[70vh] pb-24">
+          <div className="h-10 w-10 animate-spin rounded-full border-4 border-primary-300 border-t-transparent" />
+        </main>
+        <DashboardFooter />
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -65,9 +126,9 @@ export default function ProfilePage() {
 
       <main className="px-5 py-20 flex flex-col gap-5">
         <div className="w-full text-black text-lg flex items-center gap-1 flex-col">
-          <div className="w-24 h-24 rounded-full overflow-hidden">
+          <div className="w-24 h-24 rounded-full overflow-hidden bg-neutral-ligher">
             <Image
-              src="/dashboard/coach1.jpg"
+              src={profile.avatar?.url ?? "/dashboard/coach1.jpg"}
               alt="profile"
               width={80}
               height={80}
@@ -76,12 +137,18 @@ export default function ProfilePage() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <p className="text-center font-bold">علی رضایی</p>
+            <p className="text-center font-bold">
+              {profile.fullName ?? "کاربر جیمیوو"}
+            </p>
 
             <div className="flex flex-row items-center text-sm gap-1">
-              <p dir="ltr">@alireza</p>
-              <span>|</span>
-              <p>09123456789</p>
+              {profile.username && (
+                <>
+                  <p dir="ltr">@{profile.username}</p>
+                  <span>|</span>
+                </>
+              )}
+              <p dir="ltr">{profile.phone}</p>
             </div>
           </div>
         </div>
@@ -89,7 +156,9 @@ export default function ProfilePage() {
         <div className="w-full flex gap-3">
           <div className="relative overflow-hidden flex-1 bg-white rounded-2xl p-3 flex flex-col items-center justify-center cursor-default bg-gradient-to-br from-white to-primary-100/50">
             <p className="text-neutral-600 text-md">سن:</p>
-            <p className="text-neutral-700 font-semibold text-lg mt-1">۲۵</p>
+            <p className="text-neutral-700 font-semibold text-lg mt-1">
+              {profile.age ? toPersianDigits(profile.age) : "—"}
+            </p>
             <Image
               src={Calendar}
               alt=""
@@ -99,7 +168,16 @@ export default function ProfilePage() {
 
           <div className="relative overflow-hidden flex-1 bg-white rounded-2xl p-3 flex flex-col items-center justify-center cursor-default bg-gradient-to-br from-white to-primary-100/50">
             <p className="text-neutral-600 text-md">وزن:</p>
-            <p className="text-neutral-700 font-semibold text-lg mt-1">۷۵kg</p>
+            <p className="text-neutral-700 flex gap-1 font-semibold text-lg mt-1">
+              {profile.weightKg != null ? (
+                <>
+                  <span dir="ltr">kg </span>
+                  {toPersianDigits(profile.weightKg)}
+                </>
+              ) : (
+                "—"
+              )}
+            </p>
             <Image
               src={Weight}
               alt=""
@@ -109,7 +187,16 @@ export default function ProfilePage() {
 
           <div className="relative overflow-hidden flex-1 bg-white rounded-2xl p-3 flex flex-col items-center justify-center cursor-default bg-gradient-to-br from-white to-primary-100/50">
             <p className="text-neutral-600 text-md">قد:</p>
-            <p className="text-neutral-700 font-semibold text-lg mt-1">۱۸۰cm</p>
+            <p className="text-neutral-700 flex gap-1 font-semibold text-lg mt-1">
+              {profile.heightCm != null ? (
+                <>
+                  <span dir="ltr">cm</span>
+                  {toPersianDigits(profile.heightCm)}
+                </>
+              ) : (
+                "—"
+              )}
+            </p>
             <Image
               src={Ruler}
               alt=""
@@ -168,7 +255,7 @@ export default function ProfilePage() {
                   w-full flex items-center justify-between
                   px-3 py-3
                   rounded-full
-                  bg-white 
+                  bg-white
                   transition-all duration-200
                   hover:bg-neutral-50
                   active:scale-[0.95]

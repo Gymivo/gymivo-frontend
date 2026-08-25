@@ -9,66 +9,52 @@ import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import PlanCardImg from "@/public/dashboard/plan-card.png";
 import PlanNewImg from "@/public/dashboard/plan-new.png";
 import RulerPenIcon from "@/public/dashboard/icon-ruler-pen.svg";
+import type { TrainingPlan } from "@/lib/types";
+import { jalaliPartsFromIso } from "@/lib/jalali";
 
 type PlanState = "success" | "warning" | "expired";
 
 interface PlanStatusCardProps {
-  /** "new" renders the empty-state card; "active" renders the plan card. */
-  status: "active" | "new";
-  /** Remaining days of the active plan; drives the chip, progress bar and actions. */
-  daysLeft?: number;
+  /** The user's latest plan from /api/plans/latest; null is the never-had-one state. */
+  plan: TrainingPlan | null;
   /** Fired by شروع برنامه / برنامه جدید / درخواست برنامه buttons. */
   onStartProgram: () => void;
 }
 
-// Per Figma dashboard frame #915:3238.
-const PLAN = {
-  title: "برنامه تمرینی شما",
-  planType: "کات تخصصی",
-  weeks: "۸ هفته",
-  stats: [
-    { label: "انقضا", value: "۲۰ تیر ۱۴۰۴" },
-    { label: "جلسات", value: "۵ جلسه" },
-    { label: "مربی", value: "امیر حسینی" },
-  ],
-};
-
+// Per Figma dashboard frame #915:3238 + backend note 1068:1003: the card states are
+// derived client-side — daysLeft = 0 → منقضی, daysLeft ≤ 3 → رو به اتمام.
 const toPersianDigits = (n: number) =>
   String(n).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[Number(d)]);
 
 const STATE_STYLES: Record<
   PlanState,
-  { chipBg: string; text: string; bar: string; width: string }
+  { chipBg: string; text: string; bar: string }
 > = {
   success: {
     chipBg: "bg-[rgba(227,255,237,0.46)]",
     text: "text-success-700",
     bar: "bg-success-400",
-    width: "41%",
   },
   warning: {
     chipBg: "bg-[rgba(255,242,227,0.46)]",
     text: "text-warning-800",
     bar: "bg-warning-500",
-    width: "70%",
   },
   expired: {
     chipBg: "bg-[rgba(255,227,228,0.46)]",
     text: "text-danger-900",
     bar: "bg-danger-300",
-    width: "100%",
   },
 };
 
 export default function PlanStatusCard({
-  status,
-  daysLeft = 20,
+  plan,
   onStartProgram,
 }: PlanStatusCardProps) {
   const router = useRouter();
 
   // New user without any plan → dedicated empty-state card.
-  if (status === "new") {
+  if (!plan) {
     return (
       <div className="relative w-full h-[228px] rounded-2xl overflow-hidden">
         <Image
@@ -102,12 +88,21 @@ export default function PlanStatusCard({
   }
 
   const state: PlanState =
-    daysLeft <= 0 ? "expired" : daysLeft <= 10 ? "warning" : "success";
+    plan.daysLeft <= 0 ? "expired" : plan.daysLeft <= 3 ? "warning" : "success";
   const styles = STATE_STYLES[state];
   const statusText =
     state === "expired"
       ? "اتمام زمان برنامه"
-      : `${toPersianDigits(daysLeft)} روز تا پایان زمان برنامه`;
+      : `${toPersianDigits(plan.daysLeft)} روز تا پایان زمان برنامه`;
+
+  const { jy, jd, monthName } = jalaliPartsFromIso(plan.expiresAt);
+  const expiryLabel = `${toPersianDigits(jd)} ${monthName} ${toPersianDigits(jy)}`;
+
+  const stats = [
+    { label: "انقضا", value: expiryLabel },
+    { label: "جلسات", value: `${toPersianDigits(plan.sessionCount)} جلسه` },
+    { label: "مربی", value: plan.coach?.displayName ?? "—" },
+  ];
 
   return (
     <div className="relative w-full h-64 rounded-2xl overflow-hidden">
@@ -124,14 +119,14 @@ export default function PlanStatusCard({
         <div className="flex items-center justify-between gap-2.5">
           <div className="flex flex-col gap-1.5">
             <h2 className="text-white text-lg font-bold leading-tight">
-              {PLAN.title}
+              برنامه تمرینی شما
             </h2>
             <div className="flex items-center gap-2">
               <span className="text-white text-sm font-bold">
-                {PLAN.planType}
+                {plan.planType}
               </span>
               <span className="w-[45px] text-center rounded-xl border border-primary-200 bg-[rgba(110,110,110,0.1)] px-0.5 py-0.5 text-[9px] font-semibold text-primary-200">
-                {PLAN.weeks}
+                {toPersianDigits(plan.weeks)} هفته
               </span>
             </div>
           </div>{" "}
@@ -142,7 +137,7 @@ export default function PlanStatusCard({
 
         <div className="flex flex-col gap-2">
           <div className="flex items-stretch justify-between rounded-xl bg-[rgba(148,148,148,0.2)] backdrop-blur-md px-1 py-2">
-            {PLAN.stats.map((stat, idx) => (
+            {stats.map((stat, idx) => (
               <div
                 key={stat.label}
                 className={`flex-1 flex flex-col items-center gap-0.5 ${
@@ -159,7 +154,7 @@ export default function PlanStatusCard({
             <div className="relative w-full h-[6px] rounded-full bg-[#FFF5F5]">
               <div
                 className={`absolute start-0 top-0 h-full rounded-full ${styles.bar}`}
-                style={{ width: styles.width }}
+                style={{ width: `${plan.progressPercent}%` }}
               />
             </div>
             <div

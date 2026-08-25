@@ -1,16 +1,10 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
-
-export interface Move {
-  name: string;
-  img: string | StaticImageData;
-  /** Muscle groups shown as tags on the card. */
-  muscles: string[];
-}
+import type { Move } from "@/lib/types";
 
 interface MoveCardProps {
   move: Move;
@@ -20,13 +14,16 @@ interface MoveCardProps {
 /** 180×180 popular-move card (Figma workouts-category). */
 export default function MoveCard({ move, href }: MoveCardProps) {
   const router = useRouter();
+  const img = move.image?.url;
 
   return (
     <div
       onClick={() => router.push(href)}
-      className="relative w-[180px] h-[180px] shrink-0 rounded-xl overflow-hidden cursor-pointer"
+      className="relative w-[180px] h-[180px] shrink-0 rounded-xl overflow-hidden cursor-pointer bg-neutral-ligher"
     >
-      <Image src={move.img} alt={move.name} fill className="object-cover" />
+      {img && (
+        <Image src={img} alt={move.name} fill className="object-cover" />
+      )}
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0.6)_21%,rgba(255,255,255,0)_75%,rgba(153,153,153,1)_100%)]" />
 
       <div className="absolute inset-0 p-1.5 flex flex-col justify-between">

@@ -21,7 +21,7 @@ export default function ContactPage() {
           <ArrowBackIcon style={{ color: "black", fontSize: 24 }} />
         </button>
       </header>
-      <Contact />
+      <Contact signedIn />
       <DashboardFooter />
     </div>
   );
