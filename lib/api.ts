@@ -115,9 +115,18 @@ async function apiRequest<T>(
           [INVALID_TOKEN, TOKEN_EXPIRED, UNAUTHORIZED].includes(err.code)
         ) {
           clearStoredTokens();
+          window.location.replace("/welcome/login");
         }
         throw err;
       }
+    }
+
+    if (
+      envelope?.error &&
+      [INVALID_TOKEN, TOKEN_EXPIRED, UNAUTHORIZED].includes(envelope.error.code)
+    ) {
+      clearStoredTokens();
+      window.location.replace("/welcome/login");
     }
 
     throw buildError(body, res.status);

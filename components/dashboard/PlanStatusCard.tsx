@@ -11,6 +11,7 @@ import PlanNewImg from "@/public/dashboard/plan-new.png";
 import RulerPenIcon from "@/public/dashboard/icon-ruler-pen.svg";
 import type { TrainingPlan } from "@/lib/types";
 import { jalaliPartsFromIso } from "@/lib/jalali";
+import Button from "@/components/Button";
 
 type PlanState = "success" | "warning" | "expired";
 
@@ -53,7 +54,6 @@ export default function PlanStatusCard({
 }: PlanStatusCardProps) {
   const router = useRouter();
 
-  // New user without any plan → dedicated empty-state card.
   if (!plan) {
     return (
       <div className="relative w-full h-[228px] rounded-2xl overflow-hidden">
@@ -71,17 +71,16 @@ export default function PlanStatusCard({
           </p>
         </div>
         <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(180deg,rgba(176,176,176,0)_17%,rgba(38,38,38,1)_100%)] p-2.5 flex justify-center">
-          <button
-            onClick={onStartProgram}
-            className="h-12 rounded-xl bg-primary-100 px-6 flex items-center justify-center"
-          >
-            <span dir="ltr" className="flex items-center gap-2">
-              <OutlinedFlagIcon sx={{ fontSize: 24, color: "#6E6E6E" }} />
-              <span className="text-base font-semibold text-neutral-dark">
-                شروع برنامه
+          <div className="mb-10">
+            <Button onClick={onStartProgram} variant="primary" size="cta">
+              <span dir="ltr" className="flex items-center gap-2">
+                <OutlinedFlagIcon sx={{ fontSize: 24, color: "#6E6E6E" }} />
+                <span className="text-base font-semibold text-neutral-darker">
+                  شروع برنامه
+                </span>
               </span>
-            </span>
-          </button>
+            </Button>
+          </div>
         </div>
       </div>
     );

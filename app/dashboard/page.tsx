@@ -19,50 +19,42 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { catalogApi, dashboardApi, NETWORK_ERROR_MESSAGE } from "@/lib/api";
 import { ApiError, type DashboardResponse } from "@/lib/types";
 import { useRefetchOnShow } from "@/lib/use-refetch-on-show";
+import { useAuth } from "@/components/AuthProvider";
 
 const toPersianDigits = (n: number) =>
   String(n).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[Number(d)]);
 
 export default function DashboardPage() {
   const router = useRouter();
+  const { isAuthenticated } = useAuth();
   const [startModalOpen, setStartModalOpen] = useState(false);
   const [data, setData] = useState<DashboardResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const fetchData = useCallback(() => {
-    dashboardApi
-      .get()
-      .catch((err: unknown) => {
-        // The dashboard is open to signed-out visitors by design. The aggregate
-        // needs an account, so on 401 fall back to the anonymous catalogue
-        // endpoints and render the guest state (no plan, empty completion).
-        // (A missing/stale token surfaces as 1004/1005/1006 without a status.)
-        const isSignedOut =
-          err instanceof ApiError &&
-          (err.status === 401 || [1004, 1005, 1006].includes(err.code));
-        if (isSignedOut) {
-          return Promise.all([
-            catalogApi.categories(),
-            catalogApi.moves({ popular: true, pageSize: 20 }),
-            catalogApi.readyPlans(),
-          ]).then(
-            ([categories, moves, plans]): DashboardResponse => ({
-              user: {
-                id: "",
-                displayName: "ورزشکار",
-                avatar: null,
-                isPremium: false,
-              },
-              profileCompletion: { percent: 0, isComplete: false, missingFields: [] },
-              latestPlan: null,
-              categories,
-              popularMoves: moves.items,
-              readyPlans: plans.items,
-            }),
-          );
-        }
-        throw err;
-      })
+    const request = isAuthenticated
+      ? dashboardApi.get()
+      : Promise.all([
+          catalogApi.categories(),
+          catalogApi.moves({ popular: true, pageSize: 20 }),
+          catalogApi.readyPlans(),
+        ]).then(
+          ([categories, moves, plans]): DashboardResponse => ({
+            user: {
+              id: "",
+              displayName: "ورزشکار",
+              avatar: null,
+              isPremium: false,
+            },
+            profileCompletion: { percent: 0, isComplete: false, missingFields: [] },
+            latestPlan: null,
+            categories,
+            popularMoves: moves.items,
+            readyPlans: plans.items,
+          }),
+        );
+
+    request
       .then(setData)
       .catch((err: unknown) =>
         setError(
@@ -73,7 +65,7 @@ export default function DashboardPage() {
             : NETWORK_ERROR_MESSAGE,
         ),
       );
-  }, []);
+  }, [isAuthenticated]);
 
   useEffect(() => {
     fetchData();
