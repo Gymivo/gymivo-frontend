@@ -46,7 +46,11 @@ export default function DashboardPage() {
               avatar: null,
               isPremium: false,
             },
-            profileCompletion: { percent: 0, isComplete: false, missingFields: [] },
+            profileCompletion: {
+              percent: 0,
+              isComplete: false,
+              missingFields: [],
+            },
             latestPlan: null,
             categories,
             popularMoves: moves.items,
@@ -71,8 +75,6 @@ export default function DashboardPage() {
     fetchData();
   }, [fetchData]);
 
-  // History back restores this page without remounting — refetch so edits to
-  // the profile (name, avatar, completion) show up.
   useRefetchOnShow(fetchData);
 
   if (error) {
@@ -106,8 +108,14 @@ export default function DashboardPage() {
     );
   }
 
-  const { user, profileCompletion, latestPlan, categories, popularMoves, readyPlans } =
-    data;
+  const {
+    user,
+    profileCompletion,
+    latestPlan,
+    categories,
+    popularMoves,
+    readyPlans,
+  } = data;
 
   return (
     <div>
@@ -235,11 +243,7 @@ export default function DashboardPage() {
           <SectionHeader title="حرکات محبوب" href="/moves" />
           <div className="flex gap-2 overflow-x-auto pb-2 select-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {popularMoves.map((move) => (
-              <MoveCard
-                key={move.id}
-                move={move}
-                href={`/moves/${move.id}`}
-              />
+              <MoveCard key={move.id} move={move} href={`/moves/${move.id}`} />
             ))}
           </div>
         </div>

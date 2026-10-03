@@ -90,7 +90,6 @@ export default function EditProfilePage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const usernameTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Prefill from the profile API (also pre-validates the session).
   useEffect(() => {
     let cancelled = false;
     profileApi
@@ -144,7 +143,6 @@ export default function EditProfilePage() {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
-  // Live username check (Figma note 914:509) — debounced, only reports taken handles.
   const handleUsernameChange = (value: string) => {
     handleChange("username", value);
     setUsernameTaken(false);
@@ -156,7 +154,6 @@ export default function EditProfilePage() {
         .checkUsername(candidate)
         .then((res) => setUsernameTaken(!res.available))
         .catch(() => {
-          /* availability is advisory — errors are ignored */
         });
     }, 500);
   };
@@ -181,10 +178,7 @@ export default function EditProfilePage() {
         heightCm: form.height,
         weightKg: form.weight,
       });
-      // PUT /api/profile rotates the token pair (Figma note 914:514).
       setStoredTokens(res.tokens);
-      // replace, not back: back() restores the cached profile screen without
-      // remounting it, so it would show the pre-save values.
       router.replace("/dashboard/profile");
     } catch (err) {
       if (err instanceof ApiError) {
@@ -228,7 +222,11 @@ export default function EditProfilePage() {
 
   const handleConfirmDate = () => {
     const jm = jalaliMonthIndex(pickerValue.month);
-    const jd = clampJalaliDay(Number(pickerValue.year), jm, Number(pickerValue.day));
+    const jd = clampJalaliDay(
+      Number(pickerValue.year),
+      jm,
+      Number(pickerValue.day),
+    );
     setForm((prev) => ({
       ...prev,
       birthDate: `${jd} ${pickerValue.month} ${pickerValue.year}`,
@@ -382,7 +380,8 @@ export default function EditProfilePage() {
                 placeholder="نام کاربری مثلا: mohammad@"
                 error={Boolean(errors.username) || usernameTaken}
                 helperText={
-                  errors.username ?? (usernameTaken ? "این نام کاربری قبلاً گرفته شده" : undefined)
+                  errors.username ??
+                  (usernameTaken ? "این نام کاربری قبلاً گرفته شده" : undefined)
                 }
                 sx={{
                   direction: "rtl",

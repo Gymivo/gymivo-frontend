@@ -185,7 +185,7 @@ export default function PlanStatusCard({
               </button>
             )}
             <button
-              onClick={() => router.push("/my-program")}
+              onClick={() => router.push("/program")}
               className="ms-auto py-1"
             >
               <span dir="ltr" className="flex items-center gap-1">

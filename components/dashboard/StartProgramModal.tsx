@@ -13,14 +13,13 @@ interface StartProgramModalProps {
   onClose: () => void;
 }
 
-// Figma frame #1075:1561 — the design cares about the data, not the modal skin.
 const OPTIONS = [
   {
     title: "ساخت برنامه شخصی",
     desc: "برنامه تمرینی خودت رو بر اساس هدف و نیازت بساز و مدیریت کن.",
     img: PersonalPlanIllu,
     imgSize: { width: 104, height: 70 },
-    href: "/my-program",
+    href: "/program",
   },
   {
     title: "انتخاب مربی",
@@ -38,7 +37,6 @@ const OPTIONS = [
   },
 ];
 
-/** «چطور می‌خوای شروع کنی؟» — opens from the plan card's شروع برنامه button. No API calls. */
 export default function StartProgramModal({
   open,
   onClose,
