@@ -20,6 +20,7 @@ export default function ProfilePage() {
   const [profile, setProfile] = useState<ProfileResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [activeStep, setActiveStep] = useState(0);
+  const [sessionsPerWeek, setSessionsPerWeek] = useState(1);
 
   useEffect(() => {
     let cancelled = false;
@@ -93,12 +94,19 @@ export default function ProfilePage() {
   ];
 
   return (
-    <div>
-      <header className="sticky top-0 z-50 -mb-16 h-16 w-full bg-neutral-200 flex items-center justify-between px-4 gap-1">
+    <div
+      className="min-h-screen bg-neutral-200 flex flex-col"
+      style={{
+        backgroundImage: `
+      radial-gradient(circle at 0% 0%, rgba(236, 251, 109, 0.7) 0%, transparent 30%),
+      radial-gradient(circle at 100% 0%, rgba(210, 235, 255, 0.9) 0%, transparent 50%)
+    `,
+      }}
+    >
+      <header className="top-0 z-50 -mb-16 h-16 w-full bg-transparent flex items-center justify-between px-4 gap-1">
         <button className="p-2 rounded-full hover:bg-primary-300/30 transition disabled:opacity-40">
           <FeedbackOutlinedIcon style={{ color: "black", fontSize: 24 }} />
         </button>
-
         <div className="flex items-center gap-2">
           <h1 className="text-lg font-bold text-neutral-darker">
             طراحی برنامه
@@ -113,34 +121,63 @@ export default function ProfilePage() {
         </div>
       </header>
 
-      <main className="px-5 pt-20 flex flex-col gap-5">
-        <div className="w-full flex items-center gap-2">
+      <main className="pt-20 flex flex-col gap-5 flex-1">
+        <div className="w-full flex items-center px-5">
           {steps.map((step, index) => {
             const Icon = step.icon;
             const isActive = activeStep === index;
 
             return (
-              <button
-                key={step.label}
-                onClick={() => setActiveStep(index)}
-                className={`flex-1 h-11 rounded-full flex items-center justify-center gap-1.5 text-xs font-medium transition ${
-                  isActive
-                    ? "bg-neutral-darker text-neutral-white"
-                    : "bg-neutral-white text-neutral-dark"
-                }`}
-              >
-                <Icon sx={{ fontSize: 18 }} />
-                <span>{step.label}</span>
-              </button>
+              <div key={step.label} className="flex items-center flex-1">
+                <button
+                  onClick={() => setActiveStep(index)}
+                  className={`w-full h-11 rounded-full flex items-center justify-center gap-1.5 text-xs font-medium transition ${
+                    isActive
+                      ? index === 2
+                        ? "bg-[#ABECC9] text-neutral-darker"
+                        : "bg-neutral-darker text-neutral-white"
+                      : "bg-neutral-white text-neutral-darker"
+                  }`}
+                >
+                  <Icon sx={{ fontSize: 18 }} />
+                  <span>{step.label}</span>
+                </button>
+
+                {index < steps.length - 1 && (
+                  <div className="w-4 h-px bg-neutral-gray shrink-0" />
+                )}
+              </div>
             );
           })}
         </div>
+        <div className="relative flex-1">
+          <div className="absolute inset-0 bg-black/5 backdrop-blur-[2px]" />
 
-        {activeStep === 0 && <DetailsStep profile={profile} />}
-        {/* {activeStep === 1 && <WorkoutStep />}
-        {activeStep === 2 && <NutritionStep />} */}
+          <div className="relative h-full">
+            {activeStep === 0 && (
+              <DetailsStep
+                profile={profile}
+                sessionsPerWeek={sessionsPerWeek}
+                setSessionsPerWeek={setSessionsPerWeek}
+              />
+            )}
+
+            {activeStep === 1 && (
+              <WorkoutStep sessionsPerWeek={sessionsPerWeek} />
+            )}
+
+            {activeStep === 2 && <NutritionStep />}
+          </div>
+        </div>
       </main>
-        <ProgramStepFooter>مرحله بعد</ProgramStepFooter>
+
+      <div className="mt-auto bg-black/5 backdrop-blur-[2px] ">
+        <ProgramStepFooter
+          step={activeStep}
+          onNext={() => setActiveStep((prev) => Math.min(prev + 1, 2))}
+          onBack={() => setActiveStep((prev) => Math.max(prev - 1, 0))}
+        />
+      </div>
     </div>
   );
 }

@@ -10,18 +10,23 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 type DetailsStepProps = {
   profile: ProfileResponse;
+  sessionsPerWeek: number;
+  setSessionsPerWeek: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export default function DetailsStep({ profile }: DetailsStepProps) {
-  const [sessionsPerWeek, setSessionsPerWeek] = useState(1);
+export default function DetailsStep({
+  profile,
+  sessionsPerWeek,
+  setSessionsPerWeek,
+}: DetailsStepProps) {
   const [selectedGoal, setSelectedGoal] = useState("چربی‌سوزی");
   const [selectedSport, setSelectedSport] = useState("بدنسازی");
   const [selectedLevel, setSelectedLevel] = useState("تازه‌کار");
   const [selectedDuration, setSelectedDuration] = useState("۴ هفته");
 
   return (
-    <div className="w-full my-3 flex flex-col gap-2">
-      <div className="mb-2">
+    <div className="w-full my-3 flex flex-col gap-2 px-5">
+      <div className="my-3">
         <div className="flex items-center gap-2">
           <div className="w-7 h-7 rounded-full bg-neutral-darker flex items-center justify-center shrink-0">
             <span className="text-base font-bold text-primary-300">۱</span>
