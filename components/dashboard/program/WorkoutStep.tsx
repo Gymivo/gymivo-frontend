@@ -2,6 +2,7 @@ import { useState } from "react";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import CheckIcon from "@mui/icons-material/Check";
 import AddIcon from "@mui/icons-material/Add";
+import { useRouter } from "next/navigation";
 
 type WorkoutStepProps = {
   sessionsPerWeek: number;
@@ -12,6 +13,12 @@ export default function WorkoutStep({ sessionsPerWeek }: WorkoutStepProps) {
     Array.from({ length: sessionsPerWeek }, () => "بی‌نام"),
   );
   const [editingSession, setEditingSession] = useState<number | null>(null);
+
+  const router = useRouter();
+
+  const openWorkoutPage = () => {
+    router.push("/program/workout");
+  };
 
   return (
     <div className="w-full my-3 flex flex-col gap-2 px-5">
@@ -95,10 +102,13 @@ export default function WorkoutStep({ sessionsPerWeek }: WorkoutStepProps) {
                   alt="افزودن حرکت"
                   width={100}
                   height={120}
+                  onClick={openWorkoutPage}
+                  className="cursor-pointer"
                 />
 
                 <button
                   type="button"
+                  onClick={openWorkoutPage}
                   className="w-full h-12 rounded-[15px] bg-neutral-white flex items-center justify-center gap-2 font-bold text-[16px] text-neutral-darker transition hover:bg-neutral-200"
                   style={{
                     border: "2px dashed #949494",
